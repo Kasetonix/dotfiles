@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# Color variables
+normalSolarized=#073642
+focusedSolarized=#2aa198
+normalOneDark=#31343f
+focusedOneDark=#56b6c2
+
+pgrep -x sxhkd > /dev/null || sxhkd &    # exporting config
+
+bspc monitor -d I II III IV V # Workspaces
+bspc config split_ratio             0.50 # Split ratio for new windows
+bspc config top_padding               25 # Spacing for polybar
+
+# Windows gaps
+  bspc config window_gap            15
+  bspc config borderless_monocle    true
+  bspc config gapless_monocle       true
+
+# Focus
+  bspc config pointer_follows_focus false
+  bspc config focus_follows_pointer true
+
+# Border
+  bspc config normal_border_color   $normalOneDark
+  bspc config active_border_color   $normalOneDark
+  bspc config focused_border_color  $focusedOneDark
+  bspc config border_width          2
+
+# Autostart
+  polybar main &                                                              # polybar
+  dunst &                                                                     # Notifications
+  feh --bg-fill /home/kasetonix/Pictures/Wallpapers/One-Dark/Arch-Linux.png & # Wallpaper
+  picom --experimental-backend &                                              # Compositor
+  nm-applet --indicator &                                                     # Network Manager
+  xsetroot -cursor_name left_ptr &                                            # Cursor
+  xinput --set-prop 15 'libinput Accel Profile Enabled' 0, 1 &                # Mouse Acceleration
+  xinput --set-prop 18 'libinput Tapping Enabled' 1 &                         # Mouse Tapping
+  xinput --set-prop 18 'libinput Natural Scrolling Enabled' 1 &               # Natural Scrolling
+#  xinput disable 12 &                                                         # Turning touchscreen off 
+  setxkbmap pl &                                                              # Polish keymap
+  #sudo systemctl start sshd &
+
+  # Screen
+  #xrandr --output eDP --primary --mode 1920x1080 --rate 144.15 --output HDMI-A-1-0 --mode 1920x1080 --rate 74.97 --same-as eDP

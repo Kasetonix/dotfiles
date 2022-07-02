@@ -1,0 +1,193 @@
+# use i3-config-wizard to get a default config file
+
+# /// KEYBINDINGS ///
+exec_always --no-startup-id setxkbmap pl
+set $mod Mod4
+set $alt Mod1
+set $gapsize 20
+
+bindsym $mod+q kill
+
+# /// changing focus ///
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# /// moving focused window ///
+bindsym $mod+Shift+Left move left 50px
+bindsym $mod+Shift+Down move down 50px
+bindsym $mod+Shift+Up move up 50px
+bindsym $mod+Shift+Right move right 50px
+
+bindsym $mod+b split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout tabbed
+bindsym $mod+a layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# /// workspace names ///
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+# /// going to a specific workspace ///
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+
+# /// moving window to a specific workspace ///
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+
+# /// reloading configs ///
+bindsym $mod+$alt+c reload
+bindsym $mod+$alt+r restart
+
+# /// modes ///
+mode "resize" {
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height  10 px or 10 ppt
+    bindsym Up resize shrink height  10 px or 10 ppt
+    bindsym Right resize grow width  10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Volume + Brightness keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% # Sound
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -d "amdgpu_bl1" set +5% # Brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -d "amdgpu_bl1" set 5%-
+
+bindsym $mod+e exec --no-startup-id rofi -show drun -display-drun "Search" -show-icons       # App menu
+bindsym $mod+w exec --no-startup-id rofi -show window -display-windows "Windows" -show-icons # Window menu
+
+
+# /// i3 SETTINGS ///
+title_align center # Title alignment
+workspace_layout default # Workspace layout
+default_border pixel 3 
+default_floating_border pixel 3 
+default_orientation horizontal # Screen orientation
+#floating_maximum_size 1200 x 675 # Maximum size of floating windows
+for_window [class=Gnome-calculator] floating toggle # Starting apps in floating mode [xprop | grep "WM_CLASS(STRING)"]
+for_window [class=steam] floating toggle # Starting apps in floating mode [xprop | grep "WM_CLASS(STRING)"]
+font pango:mononoki Nerd Font Regular 12 # font
+floating_modifier $mod 
+gaps inner $gapsize # Gaps between windows
+bindsym $mod+g gaps inner all toggle 20
+
+# /// DEVICES ///
+exec_always --no-startup-id xrandr --output eDP --primary --mode 1920x1080 --rate 144.15 --output HDMI-A-1-0 --mode 1920x1080 --rate 74.97 --same-as eDP # Screens setting
+
+# /// PROGRAMS ///
+exec_always --no-startup-id feh --bg-fill /home/kasetonix/Pictures/Wallpapers/Neon-Jungle.jpg # Wallpaper
+exec_always --no-startup-id nm-applet # nm-applet
+exec_always --no-startup-id picom --experimental-backends # compositor 
+exec_always --no-startup-id /usr/bin/dunst # bluetooth
+#exec_always --no-startup-id blueman-applet # notifications
+exec_always --no-startup-id sh /home/kasetonix/.config/polybar/launch.sh # polybar
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#bindsym Print exec --no-startup-id "scrot -s -f -l style=solid,width=5,color=#2aa198"
+bindsym Print exec --no-startup-id shutter -s
+bindsym $mod+Return exec alacritty
+#bindsym $mod+Escape exec alacritty -t "HTop" -e "htop"
+bindsym $mod+Escape exec alacritty -t "BTop" -e "btop"
+#bindsym $mod+p exec eog -n /home/kasetonix/Pictures/Plan-Lekcji-Current.png
+bindsym $mod+p exec feh -xZN --geometry 750x560 --zoom 75% --class plan --image-bg "#ffffff" /home/kasetonix/Pictures/Plan-Lekcji-Current.png
+for_window [class=plan] floating toggle
+bindsym $mod+m exec alacritty -t "VIS" -e "vis"
+
+# /// COLORSCHEMES ///
+# colors (Nord)
+set $nord-light-gray  #4C566A
+set $nord-gray        #3B4252
+set $nord-dark-gray   #2E3440
+set $nord-light-white #ECEFF4
+set $nord-white       #E5E9F0
+set $nord-dark-white  #D8DEE9
+set $nord-light-blue  #81A1C1
+set $nord-blue        #5E81AC
+set $nord-red         #BF616A
+set $nord-orange      #D08770
+set $nord-green       #A3BE8C
+set $nord-yellow      #EBCB8B
+set $nord-magenta     #B48EAD
+
+# colors (gruvbox)
+set $gruvbox-light-gray  #665C54
+set $gruvbox-gray        #3C3836
+set $gruvbox-dark-gray   #282828
+set $gruvbox-light-white #FBF1C7
+set $gruvbox-white       #EBDBB2
+set $gruvbox-dark-white  #D5C4A1
+set $gruvbox-red         #FB4934
+set $gruvbox-green       #B8BB26
+set $gruvbox-blue        #83A598
+set $gruvbox-yellow      #FABD2F
+set $gruvbox-purple      #D3869B
+set $gruvbox-aqua        #8EC07C
+
+# colors (Solarized)
+set $solarized-light-gray  #657b83
+set $solarized-gray        #073642
+set $solarized-dark-gray   #002b36
+set $solarized-red         #dc322f
+set $solarized-green       #859900
+set $solarized-blue        #268bd2
+set $solarized-yellow      #b58900
+set $solarized-purple      #d33682
+set $solarized-cyan        #2aa198
+
+# colors (One Dark)
+set $onedark-white         #abb2bf
+set $onedark-light-gray    #5c6370
+set $onedark-black         #262b32
+set $onedark-gray          #31343f
+set $onedark-red		   #e06c75
+set $onedark-green         #98c379
+set $onedark-blue          #61afef
+set $onedark-yellow        #e5c07b
+set $onedark-magenta       #c678dd
+set $onedark-cyan          #56b6c2
+
+# windows
+# colors (Nord)         border            background         text             indicator
+#client.focused          $nord-gray        $nord-gray         $nord-white      $nord-gray
+#client.unfocused        $nord-dark-gray   $nord-dark-gray    $nord-light-gray $nord-dark-gray
+#client.focused_inactive $nord-dark-gray   $nord-dark-gray    $nord-light-gray $nord-dark-gray
+#client.urgent           $nord-light-blue  $nord-light-blue   $nord-white      $nord-light-blue
+
+#colors (Gruvbox)       border              background          text                 indicator
+#client.focused          $gruvbox-gray       $gruvbox-gray       $gruvbox-white       $gruvbox-gray
+#client.unfocused        $gruvbox-dark-gray  $gruvbox-dark-gray  $gruvbox-light-gray  $gruvbox-dark-gray
+#client.focused_inactive $gruvbox-dark-gray  $gruvbox-dark-gray  $gruvbox-light-gray  $gruvbox-dark-gray
+#client.urgent           $gruvbox-blue       $gruvbox-blue       $gruvbox-white       $gruvbox-blue
+
+#colors (Solarized)     border                background            text                   indicator
+#client.focused          $solarized-cyan       $solarized-cyan       $solarized-white       $solarized-cyan
+#client.unfocused        $solarized-gray       $solarized-dark-gray  $solarized-light-gray  $solarized-dark-gray
+#client.focused_inactive $solarized-gray       $solarized-dark-gray  $solarized-light-gray  $solarized-dark-gray
+#client.urgent           $solarized-orange     $solarized-blue       $solarized-white       $solarized-blue
+
+#colors (One Dark)      border              background          text                 indicator
+client.focused          $onedark-cyan       $onedark-cyan       $onedark-gray        $onedark-cyan
+client.unfocused        $onedark-black      $onedark-black      $onedark-light-gray  $onedark-black
+client.focused_inactive $onedark-black      $onedark-black      $onedark-light-gray  $onedark-black
+client.urgent           $onedark-red        $onedark-red        $onedark-gray        $onedark-blue
