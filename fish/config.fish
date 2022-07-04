@@ -7,6 +7,7 @@
 
 # Coloring
 alias ls='ls --color=auto'
+alias exa='exa --color=always'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias egrep='egrep --color=auto'
@@ -22,7 +23,7 @@ alias rm='rm -i'
 alias ln='ln -i'
 
 # configs
-alias catpat='cat /home/kasetonix/Documents/GitPAT'
+alias catpat='set_color -o yellow; cat /home/kasetonix/Documents/GitPAT'
 
 alias conf-i3='$EDITOR ~/.config/i3/config'
 alias conf-alacritty='$EDITOR ~/.config/alacritty/alacritty.yml'
@@ -45,9 +46,13 @@ alias conf-syncdot='$EDITOR ~/.scripts/syncdot'
 alias conf-vis='$EDITOR ~/.config/vis/config'
 
 # Misc.
-alias ll='ls -Alh'
-alias la='ls -Ah'
-alias lh='ls --format=single-column'
+#alias ll='ls -Alh'
+#alias la='ls -Ah'
+#alias lh='ls --format=single-column'
+alias ls='exa'
+alias ll='exa -la'
+alias la='exa -a'
+alias lh='exa -1'
 alias mkdir='mkdir -pv'
 alias ..='cd ..'
 alias df='df -h'

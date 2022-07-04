@@ -23,11 +23,12 @@ scrolling:
 
 # Font configuration
 font:
+  #size: 8
   size: 10
   #size: 12
   normal:
     family: Mononoki Nerd Font
-    #family: SpaceMono Nerd Font Mono 
+      #family: SpaceMono Nerd Font Mono 
 
 # Default Shell
 shell:
