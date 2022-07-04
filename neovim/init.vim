@@ -10,6 +10,7 @@ Plug 'chiel92/vim-autoformat' " Autoformatting
 Plug 'ap/vim-css-color' " Color codes coloring in vim
 Plug 'hdima/python-syntax' " Python syntax highligting
 Plug 'octol/vim-cpp-enhanced-highlight' " C++ syntax highlighting
+Plug 'vim-scripts/fish.vim' " Fish syntax highlighting
 Plug 'tpope/vim-fugitive' " Plugin for git to make life easier
 Plug 'scrooloose/nerdtree' " File explorer
 Plug 'ryanoasis/vim-devicons' " Plugin for adding icons to VIM plugins

@@ -31,7 +31,7 @@ font:
 
 # Default Shell
 shell:
-  program: /usr/bin/bash
+  program: /bin/fish
 
 # Colors (Nord)
 #colors:

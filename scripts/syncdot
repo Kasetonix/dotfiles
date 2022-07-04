@@ -8,7 +8,7 @@ then
 	cp -r $HOME/.bashrc                   $DOTDIR/bashrc
 	cp -r $HOME/.config/bspwm/*           $DOTDIR/bspwm/
 	cp -r $HOME/.config/dunst/*           $DOTDIR/dunst/
-	#cp -r $HOME/.config/fish/*            $DOTDIR/fish/
+	cp -r $HOME/.config/fish/*            $DOTDIR/fish/
 	cp -r /etc/default/grub               $DOTDIR/grub
 	cp -r $HOME/.config/htop/htoprc       $DOTDIR/htoprc
 	cp -r $HOME/.config/i3/*              $DOTDIR/i3wm/
@@ -19,7 +19,6 @@ then
 	cp -r $HOME/.scripts/*                $DOTDIR/scripts/
 	cp -r $HOME/.config/sxhkd/*           $DOTDIR/sxhkd/
 	cp -r $HOME/.vimrc                    $DOTDIR/vimrc
-	cp -r $HOME/Pictures/Wallpapers       $DOTDIR/
 	cp -r $HOME/.config/zathura/zathurarc $DOTDIR/zathurarc
 
 	cp -r $HOME/.scripts/syncdot          $DOTDIR/
@@ -33,7 +32,7 @@ then
     cp -r $DOTDIR/bashrc                  $HOME/.bashrc                  
     cp -r $DOTDIR/bspwm/*                 $HOME/.config/bspwm/
     cp -r $DOTDIR/dunst/*                 $HOME/.config/dunst/
-    #cp -r $DOTDIR/fish/*           		  $HOME/.config/fish/           
+    cp -r $DOTDIR/fish/*           		  $HOME/.config/fish/           
     cp -r $DOTDIR/htoprc                  $HOME/.config/htop/htoprc      
     cp -r $DOTDIR/i3wm/*                  $HOME/.config/i3/
     cp -r $DOTDIR/neofetch/*              $HOME/.config/neofetch/
@@ -43,7 +42,6 @@ then
     cp -r $DOTDIR/scripts/*               $HOME/.scripts/
     cp -r $DOTDIR/sxhkd/*         		  $HOME/.config/sxhkd/
     cp -r $DOTDIR/vimrc                   $HOME/.vimrc                   
-    cp -r $DOTDIR/Wallpapers/*            $HOME/Pictures/Wallpapers
     cp -r $DOTDIR/zathurarc               $HOME/.config/zathura/zathurarc
 
 	cp -r $DOTDIR/syncdot                 $HOME/.scripts/
