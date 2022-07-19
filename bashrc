@@ -120,6 +120,5 @@ export diskspace
 # /// Autostart ///
 #fetch
 #fetch-logo | lolcat
-fetch-logo | lolcat -as 240
+#fetch-logo | lolcat -as 240
 #Print BASH | lolcat
-alias update='fetch-logo | lolcat -a; sudo pacman -Syu'

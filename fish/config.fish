@@ -7,14 +7,13 @@
 
 # Coloring
 alias ls='ls --color=auto'
-alias exa='exa --color=always'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias egrep='egrep --color=auto'
 set GCC_COLORS 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # $PATH
-set PATH /usr/local/bin /usr/sbin $HOME/.emacs.d/bin $HOME/Applications/* $HOME/.local/bin $HOME/.scritps $PATH
+set PATH /usr/local/bin /usr/sbin $HOME/.emacs.d/bin $HOME/Applications/* $HOME/.local/bin $HOME/.scripts $PATH
 
 # Turning confirmations on
 alias mv='mv -i'
@@ -49,10 +48,11 @@ alias conf-vis='$EDITOR ~/.config/vis/config'
 #alias ll='ls -Alh'
 #alias la='ls -Ah'
 #alias lh='ls --format=single-column'
-alias ls='exa'
-alias ll='exa -la'
-alias la='exa -a'
-alias lh='exa -1'
+alias rm='rm -r'
+alias ls='exa --icons --color=always'
+alias ll='exa -la --icons --color=always'
+alias la='exa -a --icons --color=always'
+alias lh='exa -1 --icons --color=always'
 alias mkdir='mkdir -pv'
 alias ..='cd ..'
 alias df='df -h'
@@ -63,9 +63,11 @@ alias emacs-term='emacs -nw'
 alias name='echo (set_color -o yellow)$USER(set_color -o blue)@(set_color -o green)$hostname(set_color white)'
 alias vimtutorshort='bat ~/Documents/VIMTutorSummaries.txt'
 alias Print='figlet -f /usr/share/figlet/fonts/ansi-shadow.flf'
-alias fetch='PF_INFO="ascii title os kernel wm" pfetch'
-alias fetch-logo='PF_INFO="ascii" pfetch'
+#alias fetch='PF_INFO="ascii title os kernel wm" pfetch'
+#alias fetch-logo='PF_INFO="ascii" pfetch'
+alias fetch="neofetch"
 alias bonsai="cbonsai -il"
 alias spt="sh /home/kasetonix/.scripts/spt-launch.sh"
 alias check-wmclass='xprop | grep "WM_CLASS(STRING)"'
 alias matrix='cmatrix -aBs'
+alias aesth='feh --bg-fill /home/kasetonix/Pictures/Wallpapers/Aesthetically-pleasing.jpg'

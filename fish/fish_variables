@@ -1,5 +1,14 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR EDITOR:nvim
+SETUVAR --export LESS:\x2d\x2dquit\x2dif\x2done\x2dscreen
+SETUVAR LESS_TERMCAP_mb:\x28printf\x20\x5ce\x5b01\x3b32m\x29
+SETUVAR LESS_TERMCAP_md:\x28printf\x20\x5ce\x5b01\x3b34\x3b5\x3b75m\x29
+SETUVAR LESS_TERMCAP_me:\x28printf\x20\x5ce\x5b0m\x29
+SETUVAR LESS_TERMCAP_se:\x28printf\x20\x5ce\x5b0m\x29
+SETUVAR LESS_TERMCAP_so:\x28printf\x20\x5ce\x5b01\x3b36m\x29
+SETUVAR LESS_TERMCAP_ue:\x28printf\x20\x5ce\x5b0m\x29
+SETUVAR LESS_TERMCAP_us:\x28printf\x20\x5ce\x5b04\x3b33\x3b5\x3b200m\x29
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
@@ -29,14 +38,3 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-
-# Custom
-SETUVAR EDITOR:nvim
-SETUVAR LESS:-R
-SETUVAR LESS_TERMCAP_mb:(printf '\e[01;32m')
-SETUVAR LESS_TERMCAP_md:(printf '\e[01;34;5;75m')
-SETUVAR LESS_TERMCAP_me:(printf '\e[0m')
-SETUVAR LESS_TERMCAP_so:(printf '\e[01;36m')
-SETUVAR LESS_TERMCAP_se:(printf '\e[0m')
-SETUVAR LESS_TERMCAP_us:(printf '\e[04;33;5;200m')
-SETUVAR LESS_TERMCAP_ue:(printf '\e[0m')
