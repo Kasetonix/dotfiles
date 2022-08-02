@@ -31,7 +31,7 @@ then
 	cp -r $HOME/.scripts/syncdot          $DOTDIR/
 
 	echo "/// superuser privilages are only used to copy bash config for root user ///"
-	sudo cp -r /root/.bashrc  	          $DOTDIR/bashrc-root
+	doas cp -r /root/.bashrc  	          $DOTDIR/bashrc-root
 
 elif [ "$1" == "-r" ]
 then
@@ -54,8 +54,8 @@ then
 	cp -r $DOTDIR/syncdot                 $HOME/.scripts/
 
 	echo "/// superuser privilages are only used to copy bash config for root user and grub config ///"
-    sudo cp -r $DOTDIR/grub               /etc/default/grub 
-	sudo cp -r $DOTDIR/bashrc-root        /root/.bashrc
+    doas cp -r $DOTDIR/grub               /etc/default/grub 
+	doas cp -r $DOTDIR/bashrc-root        /root/.bashrc
 
 elif [ "$1" == "-h" ]
 then

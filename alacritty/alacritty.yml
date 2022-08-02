@@ -12,7 +12,13 @@ window:
   padding:
     x: 10
     y: 10
-  
+    
+  # opacity
+  opacity: 0.8
+
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
+
   # Startup mode
   startup_mode: Maximized
 
@@ -33,8 +39,8 @@ font:
   #size: 8
   size: 10
   normal:
-    #family: Mononoki Nerd Font
-    family: Source Code Pro
+    family: Mononoki Nerd Font
+    #family: Source Code Pro
 
 # Default Shell
 shell:
@@ -368,14 +374,11 @@ color_schemes:
 colors: *onedark
 
 # Background opacity
-window.opacity: 1 #0.90
 
 # Selection
 selection:
   save_to_clipboard: true
 
-# Allow terminal applications to change Alacritty's window title.
-window.dynamic_title: true
 
 # Cursor changing
 cursor:

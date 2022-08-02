@@ -101,14 +101,14 @@ gaps inner $gapsize # Gaps between windows
 bindsym $mod+g gaps inner all toggle 20
 
 # /// DEVICES ///
-#exec_always --no-startup-id xrandr --output eDP --primary --mode 1920x1080 --rate 144.15 --output HDMI-A-1-0 --mode 1920x1080 --rate 74.97 --same-as eDP # Screens setting
+exec_always --no-startup-id xrandr --output eDP --primary --mode 1920x1080 --rate 144.15 --output HDMI-A-1-0 --mode 1920x1080 --rate 74.97 --same-as eDP # Screens setting
 exec_always --no-startup-id xinput --set-prop 11 'libinput Tapping Enabled' 1
 exec_always --no-startup-id nmcli radio wifi on
 
 # /// PROGRAMS ///
 exec_always --no-startup-id feh --bg-fill /home/kasetonix/Pictures/Wallpapers/Singles.jpg # Wallpaper
 exec_always --no-startup-id nm-applet # nm-applet
-exec_always --no-startup-id picom --experimental-backends # compositor 
+exec_always --no-startup-id DRI_PRIME=0 picom --experimental-backends # compositor 
 exec_always --no-startup-id /usr/bin/dunst # bluetooth
 #exec_always --no-startup-id blueman-applet # notifications
 exec_always --no-startup-id sh /home/kasetonix/.config/polybar/launch.sh # polybar
