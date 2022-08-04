@@ -25,6 +25,9 @@ alias ln='ln -i'
 alias catpat='set_color -o yellow; cat /home/kasetonix/Documents/GitPAT'
 
 alias conf-i3='$EDITOR ~/.config/i3/config'
+alias conf-hypr='$EDITOR ~/.config/hypr/hypr.conf'
+alias conf-dwm='cd ~/.dwm; $EDITOR ~/.dwm/config.h'
+alias make-dwm='cd ~/.dwm; make; doas make install; cd -'
 alias conf-alacritty='$EDITOR ~/.config/alacritty/alacritty.yml'
 alias conf-kitty='$EDITOR ~/.config/kitty/kitty.conf'
 alias conf-polybar='$EDITOR ~/.config/polybar/config.ini'
@@ -68,5 +71,6 @@ alias fetch="neofetch"
 alias bonsai="cbonsai -il"
 alias spt="sh /home/kasetonix/.scripts/spt-launch.sh"
 alias check-wmclass='xprop | grep "WM_CLASS(STRING)"'
-alias matrix='cmatrix -aBs'
+#alias matrix='cmatrix -aBs'
+alias matrix='unimatrix -b -s 90 -l o -a'
 alias aesth='feh --bg-fill /home/kasetonix/Pictures/Wallpapers/Aesthetically-pleasing.jpg'

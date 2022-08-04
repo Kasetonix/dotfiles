@@ -60,12 +60,12 @@ bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+$alt+c reload
 bindsym $mod+$alt+r restart
 
-# /// modes ///
+# /// modes /// 
 mode "resize" {
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height  10 px or 10 ppt
-    bindsym Up resize shrink height  10 px or 10 ppt
-    bindsym Right resize grow width  10 px or 10 ppt
+    bindsym Left resize shrink width 200 px 
+    bindsym Down resize grow height  200 px 
+    bindsym Up resize shrink height  200 px 
+    bindsym Right resize grow width  200 px 
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -82,8 +82,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -d "amdgpu_bl1" set +5% # Brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -d "amdgpu_bl1" set 5%-
 
-bindsym $mod+e exec --no-startup-id rofi -show drun -display-drun "Search" -show-icons       # App menu
-bindsym $mod+w exec --no-startup-id rofi -show window -display-windows "Windows" -show-icons # Window menu
+bindsym $mod+e exec --no-startup-id rofi -show drun -display-drun "Search" -show-icons -scroll-method 1       # App menu
+bindsym $mod+w exec --no-startup-id rofi -show window -display-window "Windows" -show-icons -scroll-method 1 # Window menu
 
 
 # /// i3 SETTINGS ///

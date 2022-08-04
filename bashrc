@@ -93,6 +93,7 @@ alias matrix='cmatrix -aBs'
 export DRI_PRIME=1
 export EDITOR='nvim'
 export TERM='alacritty'
+export TERMINAL='alacritty'
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US:en'

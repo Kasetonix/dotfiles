@@ -2,16 +2,7 @@
 # VERSION: 3.0
 SETUVAR EDITOR:nvim
 SETUVAR RANGER_LOAD_DEFAULT_RC:FALSE
-
-SETUVAR --export LESS:\x2d\x2dquit\x2dif\x2done\x2dscreen
-SETUVAR LESS_TERMCAP_mb:\x28printf\x20\x5ce\x5b01\x3b32m\x29
-SETUVAR LESS_TERMCAP_md:\x28printf\x20\x5ce\x5b01\x3b34\x3b5\x3b75m\x29
-SETUVAR LESS_TERMCAP_me:\x28printf\x20\x5ce\x5b0m\x29
-SETUVAR LESS_TERMCAP_se:\x28printf\x20\x5ce\x5b0m\x29
-SETUVAR LESS_TERMCAP_so:\x28printf\x20\x5ce\x5b01\x3b36m\x29
-SETUVAR LESS_TERMCAP_ue:\x28printf\x20\x5ce\x5b0m\x29
-SETUVAR LESS_TERMCAP_us:\x28printf\x20\x5ce\x5b04\x3b33\x3b5\x3b200m\x29
-
+SETUVAR TERMINAL:alacritty
 SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_conf_2D_fish:\x24EDITOR\x20\x7e/\x2econfig/fish/
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
