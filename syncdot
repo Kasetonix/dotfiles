@@ -20,6 +20,7 @@ then
 	cp -r $HOME/.config/htop/htoprc       $DOTDIR/htoprc
 	cp -r $HOME/.config/i3/*              $DOTDIR/i3wm/
 	cp -r $HOME/.config/hypr/*            $DOTDIR/hypr/
+	cp -r $HOME/.dwm                      $DOTDIR/dwm
 	cp -r $HOME/.config/neofetch/*        $DOTDIR/neofetch/
 	cp -r $HOME/.config/nvim/*            $DOTDIR/neovim/
 	cp -r $HOME/.config/picom.conf        $DOTDIR/picom.conf
@@ -42,7 +43,7 @@ then
     cp -r $DOTDIR/dunst/*                 $HOME/.config/dunst/
     cp -r $DOTDIR/fish/*           		  $HOME/.config/fish/           
     cp -r $DOTDIR/htoprc                  $HOME/.config/htop/htoprc      
-    cp -r $DOTDIR/i3wm/*                  $HOME/.config/i3/
+    cp -r $DOTDIR/dwm                     $HOME/.dwm
     cp -r $DOTDIR/hypr/*                  $HOME/.config/hypr/
     cp -r $DOTDIR/neofetch/*              $HOME/.config/neofetch/
     cp -r $DOTDIR/neovim/*         		  $HOME/.config/nvim/

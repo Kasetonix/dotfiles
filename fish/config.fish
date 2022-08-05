@@ -60,6 +60,7 @@ alias df='df -h'
 alias space='du -sh 2>/dev/null'
 alias untar='tar -xzf'
 alias pls='doas'
+alias vbc='echo (volume)(battery)(clock)'
 
 alias emacs-term='emacs -nw'
 alias name='echo (set_color -o yellow)$USER(set_color -o blue)@(set_color -o green)$hostname(set_color white)'
