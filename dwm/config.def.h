@@ -13,6 +13,7 @@ static const unsigned int snap      = 20; /* snap pixel */
 static const Gap default_gap        = {.isgap = 1, .realgap = 15, .gappx = 15};
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
+static const int barheight          = 30;
 
 /* colors */
 static const char fgnorm[]         = "#5c6370";
@@ -50,6 +51,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "lplan",    NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -84,7 +86,7 @@ static const char *roficmd[]  = { "rofi", "-show", "drun", "-display-drun", "Sea
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *btopcmd[]  = { "alacritty", "-e", "btop", NULL };
 static const char *viscmd[]   = { "alacritty", "-e", "vis", NULL };
-static const char *lplancmd[] = { "feh", "-xZN", "--geometry", "750x560", "--zoom", "75%", "image-bg", "#ffffff", "/home/kasetonix/Pictures/Lessonplan-Current.png", NULL };
+static const char *lplancmd[] = { "feh", "-xZN", "--geometry", "750x560", "--class", "lplan", "--zoom", "75%", "image-bg", "#ffffff", "/home/kasetonix/Pictures/Lessonplan-Current.png", NULL };
 
 /* media keys */
 #include <X11/XF86keysym.h>
