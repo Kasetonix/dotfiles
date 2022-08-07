@@ -32,8 +32,11 @@ then
 
 	cp -r $HOME/.scripts/syncdot          $DOTDIR/
 
-	echo "/// superuser privilages are only used to copy bash config for root user ///"
+	echo "/// superuser privilages are used to copy root's bashrc and scripts for volume battery and clock ///"
 	doas cp -r /root/.bashrc  	          $DOTDIR/bashrc-root
+	doas cp -r /usr/bin/volume            $DOTDIR/scripts/volume
+	doas cp -r /usr/bin/battery           $DOTDIR/scripts/battery
+	doas cp -r /usr/bin/clock             $DOTDIR/scripts/clock
 
 elif [ "$1" == "-r" ]
 then
@@ -56,9 +59,12 @@ then
 
 	cp -r $DOTDIR/syncdot                 $HOME/.scripts/
 
-	echo "/// superuser privilages are only used to copy bash config for root user and grub config ///"
+	echo "/// superuser privilages are used to copy root's bashrc, cripts for volume battery and clock and a grub config ///"
     doas cp -r $DOTDIR/grub               /etc/default/grub 
 	doas cp -r $DOTDIR/bashrc-root        /root/.bashrc
+	doas cp -r $DOTDIR/scripts/volume     /usr/bin/volume
+	doas cp -r $DOTDIR/scripts/battery    /usr/bin/battery
+	doas cp -r $DOTDIR/scripts/clock      /usr/bin/clock
 
 elif [ "$1" == "-h" ]
 then

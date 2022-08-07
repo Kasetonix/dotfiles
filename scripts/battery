@@ -1,0 +1,30 @@
+#!/bin/bash
+perc="$(cat /sys/class/power_supply/BAT1/capacity)"
+
+#if [ "$perc" -ge "80" ]; then
+#	icon="   ﭳﭳﭳﭳ "
+#elif [ "$perc" -ge "60" ]; then
+#	icon="   ﭳﭳﭳ  "
+#elif [ "$perc" -ge "40" ]; then
+#	icon="   ﭳﭳ   "
+#elif [ "$perc" -ge "20" ]; then
+#	icon="   ﭳ    "
+#elif [ "$perc" -lt "20" ]; then
+#	icon="        "
+#fi
+
+if [ "$perc" -ge "80" ]; then
+	icon="   ﭳﭳﭳﭳ "
+elif [ "$perc" -ge "60" ]; then
+	icon="   ﭳﭳﭳ— "
+elif [ "$perc" -ge "40" ]; then
+	icon="   ﭳﭳ—— "
+elif [ "$perc" -ge "20" ]; then
+	icon="   ﭳ——— "
+elif [ "$perc" -lt "20" ]; then
+	icon="   ———— "
+fi
+
+echo "$icon"
+#echo "[ $(cat /sys/class/power_supply/BAT1/capacity)% ]"
+#vim:ft=sh

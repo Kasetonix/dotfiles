@@ -91,40 +91,40 @@ static const char *brir[]  = { "brightnessctl", "-d", "amdgpu_bl1", "set", "+5%"
 static const char *bril[]  = { "brightnessctl", "-d", "amdgpu_bl1", "set", "5%-", NULL };
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_e,      spawn,          {.v = roficmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Left,   incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Right,  incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_comma,  setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_period, setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_a,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_a,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
-	{ MODKEY,                       XK_Tab,    view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_Tab,    tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_g,      setgaps,        {.i = GAP_TOGGLE} },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	{ MODKEY|Mod1Mask,              XK_q,      quit,           {0} },
+	/* modifier            key        function        argument */
+	{ MODKEY,              XK_e,      spawn,          {.v = roficmd } },
+	{ MODKEY,              XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,              XK_b,      togglebar,      {0} },
+	{ MODKEY,              XK_Down,   focusstack,     {.i = +1 } },
+	{ MODKEY,              XK_Right,  focusstack,     {.i = +1 } },
+	{ MODKEY,              XK_Up,     focusstack,     {.i = -1 } },
+	{ MODKEY,              XK_Left,   focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,    XK_Left,   incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,    XK_Right,  incnmaster,     {.i = -1 } },
+	{ MODKEY,              XK_comma,  setmfact,       {.f = -0.05} },
+	{ MODKEY,              XK_period, setmfact,       {.f = +0.05} },
+	{ MODKEY,              XK_q,      killclient,     {0} },
+	{ MODKEY,              XK_a,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,    XK_a,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,              XK_s,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,              XK_d,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,              XK_space,  togglefloating, {0} },
+	{ MODKEY,              XK_f,      togglefullscr,  {0} },
+	{ MODKEY,              XK_Tab,    view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,    XK_Tab,    tag,            {.ui = ~0 } },
+	{ MODKEY,              XK_g,      setgaps,        {.i = GAP_TOGGLE} },
+	TAGKEYS(               XK_1,                      0)
+	TAGKEYS(               XK_2,                      1)
+	TAGKEYS(               XK_3,                      2)
+	TAGKEYS(               XK_4,                      3)
+	TAGKEYS(               XK_5,                      4)
+	{ MODKEY|Mod1Mask,     XK_q,      quit,           {0} },
 
 	/* media keys */
-	{ 0,          XF86XK_AudioRaiseVolume,     spawn,          {.v = volr } },
-	{ 0,          XF86XK_AudioLowerVolume,     spawn,          {.v = voll } },
-	{ 0,          XF86XK_MonBrightnessUp,      spawn,          {.v = brir } },
-	{ 0,          XF86XK_MonBrightnessDown,    spawn,          {.v = bril } },
+	{ 0, XF86XK_AudioRaiseVolume,     spawn,          {.v = volr } },
+	{ 0, XF86XK_AudioLowerVolume,     spawn,          {.v = voll } },
+	{ 0, XF86XK_MonBrightnessUp,      spawn,          {.v = brir } },
+	{ 0, XF86XK_MonBrightnessDown,    spawn,          {.v = bril } },
 };
 
 /* button definitions */

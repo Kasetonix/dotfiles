@@ -1,0 +1,56 @@
+#!/bin/sh
+perc="$(pamixer --get-volume)"
+
+#if [ "$perc" -ge "100" ]; then
+#    icon="   ﭳﭳﭳﭳﭳﭳﭳﭳﭳﭳ "
+#elif [ "$perc" -ge "90" ]; then
+#    icon="   ﭳﭳﭳﭳﭳﭳﭳﭳﭳ  "
+#elif [ "$perc" -ge "80" ]; then
+#    icon="   ﭳﭳﭳﭳﭳﭳﭳﭳ   "
+#elif [ "$perc" -ge "70" ]; then
+#    icon="   ﭳﭳﭳﭳﭳﭳﭳ    "
+#elif [ "$perc" -ge "60" ]; then
+#    icon="   ﭳﭳﭳﭳﭳﭳ     "
+#elif [ "$perc" -ge "50" ]; then
+#    icon="   ﭳﭳﭳﭳﭳ      "
+#elif [ "$perc" -ge "40" ]; then
+#    icon="   ﭳﭳﭳﭳ       "
+#elif [ "$perc" -ge "30" ]; then
+#    icon="   ﭳﭳﭳ        "
+#elif [ "$perc" -ge "20" ]; then
+#    icon="   ﭳﭳ         "
+#elif [ "$perc" -ge "10" ]; then
+#    icon="   ﭳ          "
+#elif [ "$perc" -lt "10" ]; then
+#    icon="              "
+#fi
+
+if [ "$perc" -ge "100" ]; then
+    icon="   ﭳﭳﭳﭳﭳﭳﭳﭳﭳﭳ "
+elif [ "$perc" -ge "90" ]; then
+    icon="   ﭳﭳﭳﭳﭳﭳﭳﭳﭳ— "
+elif [ "$perc" -ge "80" ]; then
+    icon="   ﭳﭳﭳﭳﭳﭳﭳﭳ—— "
+elif [ "$perc" -ge "70" ]; then
+    icon="   ﭳﭳﭳﭳﭳﭳﭳ——— "
+elif [ "$perc" -ge "60" ]; then
+    icon="   ﭳﭳﭳﭳﭳﭳ———— "
+elif [ "$perc" -ge "50" ]; then
+    icon="   ﭳﭳﭳﭳﭳ————— "
+elif [ "$perc" -ge "40" ]; then
+    icon="   ﭳﭳﭳﭳ—————— "
+elif [ "$perc" -ge "30" ]; then
+    icon="   ﭳﭳﭳ——————— "
+elif [ "$perc" -ge "20" ]; then
+    icon="   ﭳﭳ———————— "
+elif [ "$perc" -ge "10" ]; then
+    icon="   ﭳ————————— "
+elif [ "$perc" -lt "10" ]; then
+    icon="   —————————— "
+fi
+
+echo "$icon"
+
+#echo "[ $(pamixer --get-volume)% ]"
+
+#vim:ft=sh
