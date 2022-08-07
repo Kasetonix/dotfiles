@@ -16,15 +16,20 @@ static const int topbar             = 1;  /* 0 means bottom bar */
 static const int barheight          = 30;
 
 /* colors */
-static const char fgnorm[]         = "#5c6370";
-static const char fgsel[]          = "#31343f";
-static const char bgnorm[]         = "#262b32";
-static const char bgsel[]          = "#56b6c2";
-static const char bdnorm[]         = "#262b32";
-static const char bdsel[]          = "#56b6c2";
-static const unsigned int fgalpha  = OPAQUE;
-static const unsigned int bgalpha  = OPAQUE;
-static const unsigned int bdalpha  = OPAQUE;
+static const char fgnorm[]             = "#5c6370";
+static const char fgsel[]              = "#31343f";
+//static const char bgnorm[]             = "#262b32";
+static const char bgnorm[]             = "#000000";
+static const char bgsel[]              = "#56b6c2";
+static const char bdnorm[]             = "#262b32";
+static const char bdsel[]              = "#56b6c2";
+static const unsigned int fgalphanorm  = OPAQUE;
+static const unsigned int fgalphasel   = OPAQUE;
+//static const unsigned int bgalphanorm  = OPAQUE;
+static const unsigned int bgalphanorm  = 0x33;
+static const unsigned int bgalphasel   = OPAQUE;
+static const unsigned int bdalphanorm  = OPAQUE;
+static const unsigned int bdalphasel   = OPAQUE;
 
 static const char *colors[][3] = {
     /*               fg      bg      border   */
@@ -33,9 +38,9 @@ static const char *colors[][3] = {
 };
 
 static const unsigned int alphas[][3] = {
-	/*               fg       bg       border  */
-	[SchemeNorm] = { fgalpha, bgalpha, bdalpha },
-	[SchemeSel]  = { fgalpha, bgalpha, bdalpha },
+	/*               fg           bg           border  */
+	[SchemeNorm] = { fgalphanorm, bgalphanorm, bdalphanorm },
+	[SchemeSel]  = { fgalphasel,  bgalphasel,  bdalphasel  },
 };
 
 /* fonts */
