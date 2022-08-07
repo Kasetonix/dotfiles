@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ $(pwd) != "/home/kasetonix/.dwm" ]; then
+	PRVDIR=$(pwd)
+	cd /home/kasetonix/.dwm/
+fi
+
+cp config.def.h config.h
+doas make clean install
+doas rm dwm *.o
+cd $PRVDIR
