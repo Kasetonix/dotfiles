@@ -82,6 +82,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", bgnorm, "-nf", fgnorm, "-sb", bgsel, "-sf", fgsel, NULL };
 static const char *roficmd[]  = { "rofi", "-show", "drun", "-display-drun", "Search", "-show-icons", "-scroll-method", "1", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *btopcmd[]  = { "alacritty", "-e", "btop", NULL };
+static const char *viscmd[]   = { "alacritty", "-e", "vis", NULL };
+static const char *lplancmd[] = { "feh", "-xZN", "--geometry", "750x560", "--zoom", "75%", "image-bg", "#ffffff", "/home/kasetonix/Pictures/Lessonplan-Current.png", NULL };
 
 /* media keys */
 #include <X11/XF86keysym.h>
@@ -94,6 +97,9 @@ static Key keys[] = {
 	/* modifier            key        function        argument */
 	{ MODKEY,              XK_e,      spawn,          {.v = roficmd } },
 	{ MODKEY,              XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,              XK_Escape, spawn,          {.v = btopcmd } },
+	{ MODKEY,              XK_m,      spawn,          {.v = viscmd } },
+	{ MODKEY,              XK_p,      spawn,          {.v = lplancmd } },
 	{ MODKEY,              XK_b,      togglebar,      {0} },
 	{ MODKEY,              XK_Down,   focusstack,     {.i = +1 } },
 	{ MODKEY,              XK_Right,  focusstack,     {.i = +1 } },
