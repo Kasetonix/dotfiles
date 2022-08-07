@@ -8,45 +8,41 @@
 */ 
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-
+static const unsigned int borderpx  = 3;  /* border pixel of windows */
+static const unsigned int snap      = 20; /* snap pixel */
+static const Gap default_gap        = {.isgap = 1, .realgap = 15, .gappx = 15};
+static const int showbar            = 1;  /* 0 means no bar */
+static const int topbar             = 1;  /* 0 means bottom bar */
 
 /* colors */
+static const char fgnorm[]         = "#5c6370";
+static const char fgsel[]          = "#31343f";
+static const char bgnorm[]         = "#262b32";
+static const char bgsel[]          = "#56b6c2";
+static const char bdnorm[]         = "#262b32";
+static const char bdsel[]          = "#56b6c2";
+static const unsigned int fgalpha  = OPAQUE;
+static const unsigned int bgalpha  = OPAQUE;
+static const unsigned int bdalpha  = OPAQUE;
 
-static const char fgnorm[]     = "#5c6370";
-static const char fgsel[]      = "#31343f";
-static const char bgnorm[]     = "#262b32";
-static const char bgsel[]      = "#56b6c2";
-static const char bdnorm[]     = "#262b32";
-static const char bdsel[]      = "#56b6c2";
-//static const char *colors[][3] = {
-	/*               fg      bg      border   */
-//	[SchemeNorm] = { fgnorm, bgnorm, bdnorm },
-//	[SchemeSel]  = { fgsel,  bgsel,  bdsel },
-//};
+static const char *colors[][3] = {
+    /*               fg      bg      border   */
+	[SchemeNorm] = { fgnorm, bgnorm, bdnorm },
+	[SchemeSel]  = { fgsel,  bgsel,  bdsel  },
+};
 
-/* default colors */
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char *colors[][3]      = {
-    /*               fg         bg         border   */
-    [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-    [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+static const unsigned int alphas[][3] = {
+	/*               fg       bg       border  */
+	[SchemeNorm] = { fgalpha, bgalpha, bdalpha },
+	[SchemeSel]  = { fgalpha, bgalpha, bdalpha },
 };
 
 /* fonts */
-static const char *fonts[]          = { "mononoki Nerd Font:size=14", "monospace:size=14" };
-static const char dmenufont[]       = "mononoki Nerd Font:size=14";
+static const char *fonts[]    = { "mononoki Nerd Font:size=14", "monospace:size=14" };
+static const char dmenufont[] = "mononoki Nerd Font:size=14";
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5"};
-
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -57,16 +53,17 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const float mfact        = 0.5;  /* factor of master area size [0.05..0.95] */
+static const int nmaster        = 1;    /* number of clients in master area */
+static const int resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]-",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[F]",      monocle },
+	{ "[]=",      tile    }, /* first entry is default */
+	{ "[]_",      bstack  },  /* tile with slaves at the bottom */
+	{ "><>",      NULL    }, /* no layout function means floating behavior */
+	{ "[F]",      monocle }, /* basically a fullscreen layout */
 };
 
 /* key definitions */
@@ -85,6 +82,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", bgnorm, "-nf", fgnorm, "-sb", bgsel, "-sf", fgsel, NULL };
 static const char *roficmd[]  = { "rofi", "-show", "drun", "-display-drun", "Search", "-show-icons", "-scroll-method", "1", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+
+/* media keys */
 #include <X11/XF86keysym.h>
 static const char *volr[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *voll[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
@@ -100,35 +99,28 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Left,   incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Right,  incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_comma,  setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_period, setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_a,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_a,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_Tab,    view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_Tab,    tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_g,      setgaps,        {.i = GAP_TOGGLE} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|Mod1Mask,              XK_q,      quit,           {0} },
 
-	// Media Keys
+	/* media keys */
 	{ 0,          XF86XK_AudioRaiseVolume,     spawn,          {.v = volr } },
 	{ 0,          XF86XK_AudioLowerVolume,     spawn,          {.v = voll } },
 	{ 0,          XF86XK_MonBrightnessUp,      spawn,          {.v = brir } },
