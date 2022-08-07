@@ -92,6 +92,8 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *btopcmd[]  = { "alacritty", "-e", "btop", NULL };
 static const char *viscmd[]   = { "alacritty", "-e", "vis", NULL };
 static const char *lplancmd[] = { "feh", "-xZN", "--geometry", "750x560", "--class", "lplan", "--zoom", "75%", "image-bg", "#ffffff", "/home/kasetonix/Pictures/Lessonplan-Current.png", NULL };
+static const char *poweroff[]  = { "poweroff", NULL };
+static const char *reboot[]  = { "reboot", NULL };
 
 /* media keys */
 #include <X11/XF86keysym.h>
@@ -123,6 +125,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_d,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,              XK_space,  togglefloating, {0} },
 	{ MODKEY,              XK_f,      togglefullscr,  {0} },
+	{ MODKEY,              XK_f,      togglebar,      {0} },
 	{ MODKEY,              XK_Tab,    view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,    XK_Tab,    tag,            {.ui = ~0 } },
 	{ MODKEY,              XK_g,      setgaps,        {.i = GAP_TOGGLE} },
@@ -131,7 +134,9 @@ static Key keys[] = {
 	TAGKEYS(               XK_3,                      2)
 	TAGKEYS(               XK_4,                      3)
 	TAGKEYS(               XK_5,                      4)
-	{ MODKEY|Mod1Mask,     XK_q,      quit,           {0} },
+	{ MODKEY|Mod1Mask,     XK_q,      spawn,          {.v = poweroff } },
+	{ MODKEY|Mod1Mask,     XK_w,      spawn,          {.v = reboot } },
+	{ MODKEY|Mod1Mask,     XK_e,      quit,           {0} },
 
 	/* media keys */
 	{ 0, XF86XK_AudioRaiseVolume,     spawn,          {.v = volr } },
