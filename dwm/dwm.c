@@ -197,6 +197,7 @@ static void monocle(Monitor *m);
 static void motionnotify(XEvent *e);
 static void movemouse(const Arg *arg);
 static Client *nexttiled(Client *c);
+static void pop(Client *c);
 static void propertynotify(XEvent *e);
 static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
@@ -246,6 +247,7 @@ static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
+static void zoom(const Arg *arg);
 static void xinitvisual();
 static void bstack(Monitor *m);
 
@@ -1198,6 +1200,15 @@ nexttiled(Client *c)
 {
 	for (; c && (c->isfloating || !ISVISIBLE(c)); c = c->next);
 	return c;
+}
+
+void
+pop(Client *c)
+{
+    detach(c);
+    attach(c);
+    focus(c);
+    arrange(c->mon);
 }
 
 void
@@ -2174,6 +2185,19 @@ xinitvisual()
 		depth = DefaultDepth(dpy, screen);
 		cmap = DefaultColormap(dpy, screen);
 	}
+}
+void
+zoom(const Arg *arg)
+{
+    Client *c = selmon->sel;
+
+    if (!selmon->lt[selmon->sellt]->arrange
+    || (selmon->sel && selmon->sel->isfloating))
+        return;
+    if (c == nexttiled(selmon->clients))
+        if (!c || !(c = nexttiled(c->next)))
+            return;
+    pop(c);
 }
 
 int
