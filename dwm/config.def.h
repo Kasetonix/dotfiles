@@ -9,7 +9,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 3;  /* border pixel of windows */
-static const unsigned int snap      = 20; /* snap pixel */
+static const unsigned int snap      = 15; /* snap pixel */
 static const Gap default_gap        = {.isgap = 1, .realgap = 15, .gappx = 15};
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
@@ -125,7 +125,6 @@ static Key keys[] = {
 	{ MODKEY,              XK_d,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,    XK_s,      togglefloating, {0} },
 	{ MODKEY,              XK_f,      togglefullscr,  {0} },
-	{ MODKEY,              XK_f,      togglebar,      {0} },
 	{ MODKEY,              XK_space,  zoom,           {0} },
 	{ MODKEY,              XK_Tab,    view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,    XK_Tab,    tag,            {.ui = ~0 } },

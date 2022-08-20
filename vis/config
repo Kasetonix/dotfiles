@@ -1,0 +1,37 @@
+# ██╗   ██╗██╗███████╗
+# ██║   ██║██║██╔════╝
+# ██║   ██║██║███████╗
+# ╚██╗ ██╔╝██║╚════██║
+#  ╚████╔╝ ██║███████║
+#   ╚═══╝  ╚═╝╚══════╝
+
+audio.sources=pulse
+
+colors.scheme=rainbow,cyan
+
+visualizer.spectrum.smoothing.mode=sgs
+visualizers=spectrum,ellipse
+
+visualizer.sgs.smoothing.passes=3
+visualizer.sgs.smoothing.points=3
+
+visualizer.spectrum.falloff.mode=fill
+visualizer.spectrum.bar.width=2
+visualizer.spectrum.bar.spacing=1
+visualizer.spectrum.falloff.weight=1
+visualizer.spectrum.scaling.multiplier=1.5
+
+#visualizer.spectrum.top.margin=0.01
+#visualizer.spectrum.bottom.margin=0.01
+#visualizer.spectrum.right.margin=0.01
+#visualizer.spectrum.left.margin=0.01
+
+visualizer.ellipse.radius=2
+visualizer.ellipse.character=
+
+audio.stereo.enabled=false
+visualizer.fps=30
+
+audio.sampling.frequency=44100
+audio.low.cutoff.frequency=20
+audio.high.cutoff.frequency=20000
