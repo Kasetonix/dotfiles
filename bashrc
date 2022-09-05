@@ -123,3 +123,8 @@ export diskspace
 #fetch-logo | lolcat
 #fetch-logo | lolcat -as 240
 #Print BASH | lolcat
+
+if [ $TERM == linux ]; then
+#    /bin/setfont /usr/share/consolefonts/Lat2-Terminus32x16.psf.gz
+	/bin/setfont -d
+fi

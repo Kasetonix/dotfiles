@@ -21,3 +21,6 @@ Makes windows spawn on the center of the screen while in floating layout
 
 # fullgaps-toggle.diff
 Adds support for gaps
+
+# swallow.diff
+Adds swallowing windows - when running gui applications from the terminal it gets "swallowed" until the gui application has been closed

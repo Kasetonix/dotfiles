@@ -13,7 +13,7 @@ alias egrep='egrep --color=auto'
 set GCC_COLORS 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # $PATH
-set PATH /usr/local/bin /usr/sbin $HOME/.emacs.d/bin $HOME/Applications/* $HOME/.local/bin $HOME/.scripts $PATH
+set PATH /usr/local/bin /usr/local/lib /usr/sbin $HOME/.emacs.d/bin $HOME/Applications/* $HOME/.local/bin $HOME/.scripts $PATH
 
 # Turning confirmations on
 alias mv='mv -i'
@@ -22,11 +22,11 @@ alias rm='rm -i'
 alias ln='ln -i'
 
 # configs
-alias catpat='set_color -o yellow; cat /home/kasetonix/Documents/GitPAT'
+alias catpat='set_color -o yellow; cat /home/kasetonix/docs/gitpat'
 
 alias conf-i3='$EDITOR ~/.config/i3/config'
 alias conf-hypr='$EDITOR ~/.config/hypr/hypr.conf'
-alias conf-dwm='cd ~/.dwm'
+alias conf-dwm='$EDITOR ~/.dwm/config.def.h'
 alias conf-alacritty='$EDITOR ~/.config/alacritty/alacritty.yml'
 alias conf-kitty='$EDITOR ~/.config/kitty/kitty.conf'
 alias conf-polybar='$EDITOR ~/.config/polybar/config.ini'
@@ -48,6 +48,7 @@ alias conf-vis='$EDITOR ~/.config/vis/config'
 #alias ll='ls -Alh'
 #alias la='ls -Ah'
 #alias lh='ls --format=single-column'
+alias mpv='mpv --no-audio-display'
 alias rm='rm -r'
 alias ls='exa --icons --color=always'
 alias ll='exa -la --icons --color=always'
@@ -63,6 +64,7 @@ alias vbc='echo (volume)(battery)(clock)'
 
 alias emacs-term='emacs -nw'
 alias name='echo (set_color -o yellow)$USER(set_color -o blue)@(set_color -o green)$hostname(set_color white)'
+alias glg='git log --oneline --graph --decorate'
 alias vimtutorshort='bat ~/Documents/VIMTutorSummaries.txt'
 alias Print='figlet -f /usr/share/figlet/fonts/ansi-shadow.flf'
 #alias fetch='PF_INFO="ascii title os kernel wm" pfetch'

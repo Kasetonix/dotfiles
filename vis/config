@@ -18,8 +18,8 @@ visualizer.sgs.smoothing.points=3
 visualizer.spectrum.falloff.mode=fill
 visualizer.spectrum.bar.width=2
 visualizer.spectrum.bar.spacing=1
-visualizer.spectrum.falloff.weight=1
-visualizer.spectrum.scaling.multiplier=1.5
+visualizer.spectrum.falloff.weight=5
+visualizer.spectrum.scaling.multiplier=1
 
 #visualizer.spectrum.top.margin=0.01
 #visualizer.spectrum.bottom.margin=0.01
@@ -30,7 +30,7 @@ visualizer.ellipse.radius=2
 visualizer.ellipse.character=
 
 audio.stereo.enabled=false
-visualizer.fps=30
+visualizer.fps=40
 
 audio.sampling.frequency=44100
 audio.low.cutoff.frequency=20
