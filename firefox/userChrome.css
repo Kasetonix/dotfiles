@@ -1,0 +1,17 @@
+/* ~/.mozilla/firefox/<profile>/chrome/userChrome.css */
+
+* {
+	font-family: JetBrains Mono Nerd Font !important;
+	font-size:   10pt !important;
+	font-weight: bold !important;
+}
+
+/*** Remove items from image context menu ***/
+#context-sendimage, 
+#context-sep-setbackground, 
+#context-setDesktopBackground, 
+#context-inspect-a11y
+{
+  display: none !important;
+}
+

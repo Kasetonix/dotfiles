@@ -42,6 +42,9 @@ alias conf-sxhkd='$EDITOR ~/.config/sxhkd/sxhkdrc'
 alias conf-picom='$EDITOR ~/.config/picom.conf'
 alias conf-dunst='$EDITOR ~/.config/dunst/dunstrc'
 alias conf-syncdot='$EDITOR ~/.scripts/syncdot'
+alias conf-ncspot='$EDITOR ~/.config/ncspot/config.toml'
+alias conf-mpd='$EDITOR ~/.config/mpd/mpd.conf'
+alias conf-ncmpcpp='$EDITOR ~/.config/ncmpcpp/'
 alias conf-vis='$EDITOR ~/.config/vis/config'
 
 # Misc.
