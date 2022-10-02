@@ -1,12 +1,12 @@
-/* ~/.mozilla/firefox/<profile>/chrome/userChrome.css */
-
+/* font change on the bar */
 * {
 	font-family: JetBrains Mono Nerd Font !important;
 	font-size:   10pt !important;
-	font-weight: bold !important;
+	font-weight: regular !important;
 }
 
 /*** Remove items from image context menu ***/
+
 #context-sendimage, 
 #context-sep-setbackground, 
 #context-setDesktopBackground, 
@@ -14,4 +14,3 @@
 {
   display: none !important;
 }
-

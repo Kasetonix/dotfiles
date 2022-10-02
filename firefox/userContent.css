@@ -1,0 +1,29 @@
+@-moz-document url("about:privatebrowsing"){
+  .info { display: none !important; }
+}
+
+.private-browsing-indicator,
+#private-browsing-indicator-with-label{
+  display: none !important;
+}
+
+.search-inner-wrapper { display: none !important; }
+.wordmark             { display: none !important; }
+.icon                 { display: none !important; }
+.search-wrapper 
+.logo-and-wordmark    { margin-bottom: 21px !important; }
+.outer-wrapper {
+	display: flex !important;
+	padding-top: 40px !important;
+	padding-bottom: 30px !important;
+}
+
+.logo {
+/*	background: url("https://cdn.betterttv.net/emote/58493695987aab42df852e0f/3x") !important; */
+	background: url("chrome://branding/content/about-logo.png") no-repeat center center !important;
+	background-size: 192px !important;
+	height: 192px !important;
+	width: 192px !important;
+}
+
+
