@@ -24,7 +24,7 @@
     sort = yes
 
     # /// Text ///
-    font = mononoki Nerd Font 12
+    font = JetBrains Mono Nerd Font 11
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"

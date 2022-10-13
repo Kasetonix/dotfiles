@@ -45,11 +45,14 @@ static const unsigned int alphas[][3] = {
 };
 
 /* fonts */
-static const char *fonts[]    = { "mononoki Nerd Font:size=14", "monospace:size=14" };
-static const char dmenufont[] = "mononoki Nerd Font:size=14";
+//static const char *fonts[]    = { "mononoki Nerd Font:size=14", "monospace:size=14" };
+static const char *fonts[]    = { "JetBrains Mono Nerd Font:size=13", "monospace:size=13" };
+//static const char dmenufont[] = "mononoki Nerd Font:size=14";
+static const char dmenufont[] = "JetBrains Mono Nerd Font:size=13";
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5"};
+// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -96,6 +99,8 @@ static const char *btopcmd[]   = { "alacritty", "-e", "btop", NULL };
 static const char *viscmd[]    = { "alacritty", "-e", "vis", NULL };
 static const char *lplancmd[]  = { "feh", "-xZN", "--geometry", "1000x682", "--class", "lplan", /*"--zoom", "75%",*/ "image-bg", "#ffffff", "/home/kasetonix/pics/lplan-current.png", NULL };
 static const char *scrotcmd[]  = { "scrot", "scrot-%H.%M.%S.png", "-s", "-p", "-l", "width=2,color=#56b6c2,opacity=0,mode=edge;", "mv", "/home/kasetonix/scrot*", "/home/kasetonix/pics/screens", NULL };
+static const char *altwallcmd[]  = { "feh", "--bg-fill", "/home/kasetonix/pics/walls/altwall", NULL };
+static const char *defwallcmd[]  = { "feh", "--bg-fill", "/home/kasetonix/pics/walls/defwall", NULL };
 static const char *poweroff[]  = { "poweroff", NULL };
 static const char *reboot[]    = { "reboot", NULL };
 
@@ -109,12 +114,15 @@ static const char *bril[]  = { "brightnessctl", "-d", "amdgpu_bl1", "set", "5%-"
 static Key keys[] = {
 	/* modifier            key        function        argument */
 	{ MODKEY,              XK_e,      spawn,          {.v = roficmd } },
+	{ MODKEY,              XK_slash,  spawn,          {.v = roficmd } },
 	{ MODKEY,              XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,              XK_r,      spawn,          {.v = rangercmd } },
 	{ MODKEY,              XK_Escape, spawn,          {.v = btopcmd } },
 	{ MODKEY,              XK_m,      spawn,          {.v = viscmd } },
 	{ MODKEY,              XK_p,      spawn,          {.v = lplancmd } },
 	{ 0,                   XK_Print,  spawn,          {.v = scrotcmd } },
+	{ MODKEY|ShiftMask,    XK_u,      spawn,          {.v = altwallcmd } },
+	{ MODKEY,              XK_u,      spawn,          {.v = defwallcmd } },
 	{ MODKEY,              XK_b,      togglebar,      {0} },
 	{ MODKEY,              XK_Down,   focusstack,     {.i = +1 } },
 	{ MODKEY,              XK_Right,  focusstack,     {.i = +1 } },

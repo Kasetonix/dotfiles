@@ -12,36 +12,24 @@ window:
   padding:
     x: 10
     y: 10
-    
-  # opacity
   opacity: 0.8
-
-  # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
-
-  # Startup mode
   startup_mode: Maximized
-
-  # Window title
   title: Alacritty
-  
-  # Class
   class:
     instance: Alacritty
     general: Alacritty
 
-# Scrolling settings
 scrolling:
   history: 10000
 
-# Font configuration
 font:
-  size: 10
+  size: 9
   normal:
-    family: Mononoki Nerd Font
-    #family: Source Code Pro
-
-# Default Shell
+    #family: Mononoki Nerd Font
+    family: JetBrains Mono Nerd Font
+    #family: Iosevka Nerd Font
+    #
 shell:
   program: /bin/fish
 

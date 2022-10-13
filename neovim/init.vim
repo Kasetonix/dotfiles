@@ -7,22 +7,22 @@
 
 " Vim plug
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox' " Gruvbox theme
-Plug 'altercation/vim-colors-solarized' "Solarized theme
-Plug 'arcticicestudio/nord-vim' " Nord theme
+" Plug 'morhetz/gruvbox' " Gruvbox theme
+" Plug 'altercation/vim-colors-solarized' " Solarized theme
+" Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'joshdick/onedark.vim' " One Dark theme
 Plug 'vim-airline/vim-airline' " Vim airline
-Plug 'vim-airline/vim-airline-themes' " Themes for vim airline
+Plug 'vim-airline/vim-airline-themes'
 Plug 'chiel92/vim-autoformat' " Autoformatting
 Plug 'ap/vim-css-color' " Color codes coloring in vim
 Plug 'hdima/python-syntax' " Python syntax highligting
 Plug 'octol/vim-cpp-enhanced-highlight' " C++ syntax highlighting
 Plug 'vim-scripts/fish.vim' " Fish syntax highlighting
-Plug 'tpope/vim-fugitive' " Plugin for git to make life easier
-Plug 'scrooloose/nerdtree' " File explorer
-Plug 'ryanoasis/vim-devicons' " Plugin for adding icons to VIM plugins
-Plug 'Xuyuanp/nerdtree-git-plugin' " Plugin for showing Git statuses on NERDTree
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Plugin for icons in NERDTree
+Plug 'tpope/vim-fugitive' " git plugin to make life easier
+" Plug 'scrooloose/nerdtree' " File explorer
+" Plug 'Xuyuanp/nerdtree-git-plugin' " Showing git statuses on NERDTree
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Icons in NERDTree
+Plug 'ryanoasis/vim-devicons' " Adding icons to VIM plugins
 call plug#end()
 
 " Editor settings
@@ -60,7 +60,7 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 " Keybindings
 nnoremap <C-a> :q<CR> " Exiting
 nnoremap <C-q> :wq<CR> 
-nnoremap <C-f> :NERDTreeToggle<CR> " Toggling NERDTree with keybinding
+"nnoremap <C-f> :NERDTreeToggle<CR> " Toggling NERDTree with keybinding
 nnoremap <C-s> :vsplit 
 nnoremap <C-t> :tabnew 
 "nnoremap <C-n> :tabprevious<CR> 
