@@ -90,7 +90,6 @@ alias check-wmclass='xprop | grep "WM_CLASS(STRING)"'
 alias matrix='cmatrix -aBs'
 
 # /// Variable Settings ///
-export DRI_PRIME=1
 export EDITOR='nvim'
 export TERM='alacritty'
 export TERMINAL='alacritty'

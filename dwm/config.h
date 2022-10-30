@@ -11,10 +11,10 @@
 static const unsigned int borderpx  = 3;  /* border pixel of windows */
 static const unsigned int snap      = 15; /* snap pixel */
 static const int swallowfloating    = 0;  /* 1 means swallow floating windows by default */
-static const Gap default_gap        = {.isgap = 1, .realgap = 15, .gappx = 15};
+static const Gap default_gap        = {.isgap = 1, .realgap = 15, .gappx = 20};
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
-static const int barheight          = 30;
+static const int barheight          = 40;
 
 /* colors */
 static const char fgnorm[]             = "#5c6370";
@@ -46,9 +46,9 @@ static const unsigned int alphas[][3] = {
 
 /* fonts */
 //static const char *fonts[]    = { "mononoki Nerd Font:size=14", "monospace:size=14" };
-static const char *fonts[]    = { "JetBrains Mono Nerd Font:size=13", "monospace:size=13" };
+static const char *fonts[]    = { "JetBrains Mono Nerd Font:size=16", "monospace:size=13" };
 //static const char dmenufont[] = "mononoki Nerd Font:size=14";
-static const char dmenufont[] = "JetBrains Mono Nerd Font:size=13";
+static const char dmenufont[] = "JetBrains Mono Nerd Font:size=16";
 
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -60,8 +60,9 @@ static const Rule rules[] = {
 	 */
 	/* class       instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Alacritty", NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,        NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 	{ "lplan",     NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "todo",      NULL,     NULL,           0,         1,          1,           0,        -1 },
+	{ NULL,        NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -97,10 +98,11 @@ static const char *termcmd[]   = { "alacritty", NULL };
 static const char *rangercmd[] = { "alacritty", "-e", "ranger", NULL };
 static const char *btopcmd[]   = { "alacritty", "-e", "btop", NULL };
 static const char *viscmd[]    = { "alacritty", "-e", "vis", NULL };
+static const char *todocmd[]    = { "alacritty", "--class", "todo", "-e", "glow", "/home/kasetonix/todo.md", "-p", NULL };
 static const char *lplancmd[]  = { "feh", "-xZN", "--geometry", "1000x682", "--class", "lplan", /*"--zoom", "75%",*/ "image-bg", "#ffffff", "/home/kasetonix/pics/lplan-current.png", NULL };
 static const char *scrotcmd[]  = { "scrot", "scrot-%H.%M.%S.png", "-s", "-p", "-l", "width=2,color=#56b6c2,opacity=0,mode=edge;", "mv", "/home/kasetonix/scrot*", "/home/kasetonix/pics/screens", NULL };
-static const char *altwallcmd[]  = { "feh", "--bg-fill", "/home/kasetonix/pics/walls/altwall", NULL };
-static const char *defwallcmd[]  = { "feh", "--bg-fill", "/home/kasetonix/pics/walls/defwall", NULL };
+static const char *altwallcmd[]  = { "feh", "--bg-fill", "/home/kasetonix/pics/walls/altwall", "--no-fehbg", NULL };
+static const char *defwallcmd[]  = { "feh", "--bg-fill", "/home/kasetonix/pics/walls/defwall", "--no-fehbg", NULL };
 static const char *poweroff[]  = { "poweroff", NULL };
 static const char *reboot[]    = { "reboot", NULL };
 
@@ -108,8 +110,9 @@ static const char *reboot[]    = { "reboot", NULL };
 #include <X11/XF86keysym.h>
 static const char *volr[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *voll[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
-static const char *brir[]  = { "brightnessctl", "-d", "amdgpu_bl1", "set", "+5%", NULL };
-static const char *bril[]  = { "brightnessctl", "-d", "amdgpu_bl1", "set", "5%-", NULL };
+static const char *volm[]  = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *brir[]  = { "brightnessctl", "-d", "intel_backlight", "set", "+5%", NULL };
+static const char *bril[]  = { "brightnessctl", "-d", "intel_backlight", "set", "5%-", NULL };
 
 static Key keys[] = {
 	/* modifier            key        function        argument */
@@ -119,10 +122,11 @@ static Key keys[] = {
 	{ MODKEY,              XK_r,      spawn,          {.v = rangercmd } },
 	{ MODKEY,              XK_Escape, spawn,          {.v = btopcmd } },
 	{ MODKEY,              XK_m,      spawn,          {.v = viscmd } },
+	{ MODKEY,              XK_t,      spawn,          {.v = todocmd} },
 	{ MODKEY,              XK_p,      spawn,          {.v = lplancmd } },
 	{ 0,                   XK_Print,  spawn,          {.v = scrotcmd } },
-	{ MODKEY|ShiftMask,    XK_u,      spawn,          {.v = altwallcmd } },
 	{ MODKEY,              XK_u,      spawn,          {.v = defwallcmd } },
+	{ MODKEY|ShiftMask,    XK_u,      spawn,          {.v = altwallcmd } },
 	{ MODKEY,              XK_b,      togglebar,      {0} },
 	{ MODKEY,              XK_Down,   focusstack,     {.i = +1 } },
 	{ MODKEY,              XK_Right,  focusstack,     {.i = +1 } },
@@ -155,6 +159,7 @@ static Key keys[] = {
 	/* media keys */
 	{ 0, XF86XK_AudioRaiseVolume,     spawn,          {.v = volr } },
 	{ 0, XF86XK_AudioLowerVolume,     spawn,          {.v = voll } },
+	{ 0, XF86XK_AudioMute,            spawn,          {.v = volm } },
 	{ 0, XF86XK_MonBrightnessUp,      spawn,          {.v = brir } },
 	{ 0, XF86XK_MonBrightnessDown,    spawn,          {.v = bril } },
 };
@@ -165,6 +170,7 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkStatusText,        0,              Button1,        spawn,          {.v = roficmd } },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },

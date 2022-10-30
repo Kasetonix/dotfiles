@@ -8,12 +8,12 @@
 [global]
     follow = none
     # /// Appearance ///
-    width = (192, 384)
+    width = (256, 512)
     origin = top-right
     progress_bar = true
     progress_bar_height = 10
     progress_bar_frame_width = 1
-    progress_bar_min_width = 150
+    progress_bar_min_width = 300
     separator_height = 0
     padding = 10
     horizontal_padding = 10
@@ -24,7 +24,7 @@
     sort = yes
 
     # /// Text ///
-    font = JetBrains Mono Nerd Font 11
+    font = JetBrains Mono Nerd Font 13
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -40,8 +40,8 @@
     # /// Icons ///
     icon_position = left
     min_icon_size = 0
-    max_icon_size = 32
-    icon_path = /usr/share/icons/Papirus/16x16/status/:/usr/share/icons/Papirus/16x16/devices/
+    max_icon_size = 64
+    icon_path = /usr/share/icons/Papirus/32x32/status/:/usr/share/icons/Papirus/32x32/devices/
 
     # /// History ///
     sticky_history = yes
