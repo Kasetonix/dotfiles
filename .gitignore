@@ -1,0 +1,9 @@
+# Ignore all files without extensions
+*
+!*.*
+!*/
+
+# Ignore containing non-text files
+.cbor
+.pyc
+
