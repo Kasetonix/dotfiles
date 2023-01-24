@@ -15,7 +15,6 @@ then
 #	cp -r $HOME/.config/bspwm/*           $DOTDIR/bspwm/
 #	cp -r $HOME/.config/sxhkd/*           $DOTDIR/sxhkd/
 #	cp -r $HOME/.config/hypr/*            $DOTDIR/hypr/
-	cp -r $HOME/.dwm/*                    $DOTDIR/dwm/
 #	cp -r $HOME/.config/polybar/*         $DOTDIR/polybar/
 	cp -r $HOME/.config/dunst/*           $DOTDIR/dunst/
 	cp -r $HOME/.config/picom.conf        $DOTDIR/picom.conf
@@ -29,11 +28,11 @@ then
 	cp -r $HOME/.scripts/*                $DOTDIR/scripts/
 #	cp -r $HOME/.config/zathura/zathurarc $DOTDIR/zathurarc
 	cp -r $HOME/.config/vis/*             $DOTDIR/vis/
-	cp -r /etc/default/grub               $DOTDIR/grub
+#   cp -r /etc/default/grub               $DOTDIR/grub
 
 	cp -r $HOME/.scripts/syncdot          $DOTDIR/
 
-	echo "/// superuser privilages are used to copy root's bashrc and scripts for volume battery and clock ///"
+	echo "/// superuser privilages are used to copy root's bashrc ///"
 	doas cp -r /root/.bashrc  	          $DOTDIR/bashrc-root
 
 elif [ "$1" == "-r" ]
@@ -42,7 +41,6 @@ then
 #	cp -r $DOTDIR/bspwm/*                 $HOME/.config/bspwm/
 #	cp -r $DOTDIR/sxhkd/*         		  $HOME/.config/sxhkd/
 #	cp -r $DOTDIR/hypr/*                  $HOME/.config/hypr/
-	cp -r $DOTDIR/dwm/*                   $HOME/.dwm/
 #	cp -r $DOTDIR/polybar/*               $HOME/.config/polybar/
 	cp -r $DOTDIR/alacritty/*      		  $HOME/.config/alacritty/
 	cp -r $DOTDIR/bashrc                  $HOME/.bashrc                  
@@ -59,8 +57,8 @@ then
 
 	cp -r $DOTDIR/syncdot                 $HOME/.scripts/
 
-	echo "/// superuser privilages are used to copy root's bashrc, cripts for volume battery and clock and a grub config ///"
-	doas cp -r $DOTDIR/grub               /etc/default/grub 
+	echo "/// superuser privilages are used to copy root's bashrc and a grub config ///"
+#	doas cp -r $DOTDIR/grub               /etc/default/grub 
 	doas cp -r $DOTDIR/bashrc-root        /root/.bashrc
 
 elif [ "$1" == "-h" ]

@@ -1,17 +1,21 @@
 #!/bin/bash
-perc="$(cat /sys/class/power_supply/BAT1/capacity)"
 
-#if [ "$perc" -ge "80" ]; then
-#	icon="   ﭳﭳﭳﭳ "
-#elif [ "$perc" -ge "60" ]; then
-#	icon="   ﭳﭳﭳ  "
-#elif [ "$perc" -ge "40" ]; then
-#	icon="   ﭳﭳ   "
-#elif [ "$perc" -ge "20" ]; then
-#	icon="   ﭳ    "
-#elif [ "$perc" -lt "20" ]; then
-#	icon="        "
-#fi
+bat0curr="$(cat /sys/class/power_supply/BAT0/energy_now)"
+bat0full="$(cat /sys/class/power_supply/BAT0/energy_full)"
+
+if [[ -d /sys/class/power_supply/BAT1 ]]; then
+	bat1curr="$(cat /sys/class/power_supply/BAT1/energy_now)"
+	bat1full="$(cat /sys/class/power_supply/BAT1/energy_full)"
+else
+	bat1curr="0"
+	bat1full="0"
+fi
+
+batcurr=$(($bat0curr+$bat1curr))
+batfull=$(($bat0full+$bat1full))
+
+batcurrperc=$(($batcurr*100))
+perc=$(($batcurrperc/$batfull))
 
 if [ "$perc" -ge "80" ]; then
 	icon="   ﭳﭳﭳﭳ "
@@ -26,5 +30,3 @@ elif [ "$perc" -lt "20" ]; then
 fi
 
 echo "$icon"
-#echo "[ $(cat /sys/class/power_supply/BAT1/capacity)% ]"
-#vim:ft=sh
