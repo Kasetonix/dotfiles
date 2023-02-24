@@ -18,9 +18,7 @@ Plug 'ap/vim-css-color' " Color codes coloring in vim
 Plug 'hdima/python-syntax' " Python syntax highligting
 Plug 'octol/vim-cpp-enhanced-highlight' " C++ syntax highlighting
 Plug 'vim-scripts/fish.vim' " Fish syntax highlighting
-Plug 'tpope/vim-fugitive' " git plugin to make life easier
 " Plug 'scrooloose/nerdtree' " File explorer
-" Plug 'Xuyuanp/nerdtree-git-plugin' " Showing git statuses on NERDTree
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Icons in NERDTree
 Plug 'ryanoasis/vim-devicons' " Adding icons to VIM plugins
 call plug#end()
@@ -31,7 +29,7 @@ set number " Setting line numbers
 set tabstop=4 " Setting tab length
 set shiftwidth=4
 set expandtab " Changing tabs to spaces
-"set softtabstop=4 " Deleting multiple spaces in the row
+set softtabstop=4 " Deleting multiple spaces in the row
 set encoding=utf-8 " Setting encoding
 set wrap " Wrapping text if it goes beyond screen width
 syntax on " Enabling syntax highlighting
