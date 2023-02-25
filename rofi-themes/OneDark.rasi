@@ -40,7 +40,7 @@
     alternate-urgent-background: @urgent-background;
 
     spacing: 3;
-	font: "Mononoki Nerd Font 16";
+	font: "JetBrains Mono Nerd Font 16";
 	lines: 9;
 
 }
