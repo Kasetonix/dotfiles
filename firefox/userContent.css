@@ -56,155 +56,101 @@
 }
 
 @-moz-document url-prefix(about:){
-    body {
-        background-color: var(--bgcolor)!important
-    }
+    body                                { background-color: var(--bgcolor) !important; }
+    body,html                           { overflow-y: auto !important; }
+    .selector                           { background-color: var(--ndcolor) !important; border: var(--ndcolor) !important; }
+    .rich-icon, .tile, .top-site-icon   { background-color: var(--ndcolor) !important; }
+    .section input:checked+.slider      { --newtab-primary-action-background: var(--prcolor) !important; }
+    .customize-menu                     { border-radius: 5px !important; }
+    .customize-menu .close-button       { border-color: var(--stcolor)  !important; }
+    .customize-menu .close-button:hover { background-color: var(--ndcolor) !important; border-color: var(--ndcolor) !important; }
+    #sponsored-shortcuts                { background-color: var(--prcolor) !important; }
+    #newtab-personalize-icon-label      { color: var(--hpcolor )!important; }
+    #customization-panelWrapper         { max-width: 30em !important; }
 
-    .rich-icon,.tile,.top-site-icon {
-        background-color: var(--ndcolor)!important
-    }
-
-    .customize-animate-enter-done,.customize-menu,.top-site-outer:hover,button {
-        background-color: var(--stcolor)!important
-    }
-
-    .selector {
-        background-color: var(--ndcolor)!important;
-        border: var(--ndcolor)!important
-    }
-
-    #sponsored-shortcuts {
-        background-color: var(--prcolor)!important
-    }
-
-    .section input:checked+.slider {
-        --newtab-primary-action-background: var(--prcolor)!important
-    }
-
-    #newtab-personalize-icon-label {
-        color: var(--hpcolor)!important
-    }
-
-
-    body,html {
-        overflow-y: auto
-    }
-
-    #customization-panelWrapper {
-        max-width: 30em!important
-    }
-
-
-    .customize-menu .close-button {
-        border-color: var(--stcolor)!important
-    }
-
-    .customize-menu .close-button:hover {
-        background-color: var(--ndcolor)!important;
-        border-color: var(--ndcolor)!important
-    }
-
-    .customize-menu {
-        border-radius: 5px!important
-    }}
-
-.category-button:not(:hover){
-    background-color: var(--bgcolor)
+    .customize-animate-enter-done,
+    .customize-menu,
+    .top-site-outer:hover,
+    button { background-color: var(--stcolor)!important }
 }
-@-moz-document url-prefix(about:addons){.category:not(:hover){
-    background-color: var(--bgcolor) !important;
-    }}
 
-@-moz-document url-prefix(about:devtools){
-#toolbox-container{margin-top: 10px !important;}
-.devtools-tabbar{background: transparent !important;}
-.devtools-tab-line{border-radius: 0 0 5px 5px}
-.customize-animate-enter-done,.customize-menu,.top-site-outer:hover,button{background-color: transparent!important}}
+.category-button:not(:hover) { background-color: var(--bgcolor) }
 
+@-moz-document url-prefix(about:addons) {
+    .category:not(:hover) { background-color: var(--bgcolor) !important; }
+}
 
+@-moz-document url-prefix(about:devtools) {
+    #toolbox-container { margin-top: 10px !important; }
+    .devtools-tabbar   { background: transparent !important }
+    .devtools-tab-line { border-radius: 0 0 5px 5px }
+
+    .customize-animate-enter-done, 
+    .customize-menu,
+    .top-site-outer:hover,
+    button { background-color: transparent !important }
+}
 
 @-moz-document url("about:home"),
 url("about:newtab") {
-  .search-wrapper .search-handoff-button .fake-caret {
-    top: 13px !important;
-    inset-inline-start: 48px !important;
-  }
+    .search-wrapper .search-handoff-button {
+        font-family: JetBrainsMono Nerd Font !important 
+    }
 
-  .search-wrapper .logo-and-wordmark {
-    opacity: 0.9 !important;
-    order: 1 !important;
-    margin-bottom: 0 !important;
-    flex: 1 !important;
-    flex-basis: 20% !important;
-  }
+    .search-wrapper .search-handoff-button .fake-caret {
+        top: 13px !important;
+        inset-inline-start: 48px !important;
+    }
 
 
-  .search-wrapper .search-handoff-button .fake-caret {
-    top: 13px !important;
-    inset-inline-start: 48px !important;
-  }
+    .search-wrapper .logo-and-wordmark {
+        opacity: 0.9 !important;
+        order: 1 !important;
+        margin-bottom: 0 !important;
+        flex: 1 !important;
+        flex-basis: 20% !important;
+    }
 
-  .search-wrapper .logo-and-wordmark {
-    opacity: 0.9 !important;
-    order: 1 !important;
-    margin-bottom: 0 !important;
-    flex: 1 !important;
-    flex-basis: 20% !important;
-  }
+    .outer-wrapper .search-wrapper {
+        padding: 0px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        align-content: space-around !important;
+        gap: 20px 10px !important;
+    }
 
-  .outer-wrapper .search-wrapper {
-    padding: 0px !important;
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    align-content: space-around !important;
-    gap: 20px 10px !important;
-  }
+    .search-wrapper .logo-and-wordmark .logo {
+        background-size: 60px !important;
+        height: 60px !important;
+        width: 60px !important;
+        /* background: url("https://cdn.betterttv.net/emote/58493695987aab42df852e0f/3x") !important; */
+        /* background: url("file:///home/kasetonix/pics/icons/firefox-anime-icon.png") !important; */
+    }
 
-  .search-wrapper .logo-and-wordmark .logo {
-    background-size: 60px !important;
-    height: 60px !important;
-    width: 60px !important;
-  }
+    .search-wrapper .search-inner-wrapper {
+        min-height: 42px !important;
+        order: 2 !important;
+        flex: 3 !important;
+        flex-basis: 60% !important;
+        top: 4px !important;
+    }
 
-  .search-wrapper .search-inner-wrapper {
-    min-height: 42px !important;
-   52px default
-    order: 2 !important;
-    flex: 3 !important;
-    flex-basis: 60% !important;
-    top: 4px !important;
-  }
+    .info { display: none !important; }
+    #root > div { align-items: center; display: flex }
 
-  .search-wrapper .search-inner-wrapper {
-    min-height: 42px !important;
-    order: 2 !important;
-    flex: 3 !important;
-    flex-basis: 60% !important;
-    top: 4px !important;
-  }
-  #root > div{align-items: center; display: flex;}
-  .outer-wrapper.ds-outer-wrapper-breakpoint-override.only-search.visible-logo{display: flex !important; padding-top: 0px !important;vertical-align: middle;}
-
-    .logo {
-        /*
-        background: url("https://cdn.betterttv.net/emote/58493695987aab42df852e0f/3x") !important;
-        */
-
-	    background-size: 192px !important;
-	    height: 192px !important;
-	    width: 192px !important;
-
+    .outer-wrapper.ds-outer-wrapper-breakpoint-override.only-search.visible-logo {
+        display: flex !important; 
+        padding-top: 0px !important;
+        vertical-align: middle;
     }
 }
 
-@-moz-document url("about:privatebrowsing"){
-  .info { display: none !important; }
+@-moz-document url("about:privatebrowsing") {
+    .info { display: none !important; }
+    .private-browsing-indicator,
+    #private-browsing-indicator-with-label { display: none !important; }
 }
 
-.private-browsing-indicator,
-#private-browsing-indicator-with-label{
-  display: none !important;
-}
