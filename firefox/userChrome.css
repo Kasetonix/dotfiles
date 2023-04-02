@@ -1,6 +1,14 @@
 /* 
- * Source: u/Bali10050
- * https://pastebin.com/vqGZ3Kxj 
+ * Sources: 
+ * u/Bali10050   | https://pastebin.com/vqGZ3Kxj
+ *     Oneline theme, the whole config is based on his
+ * u/thereact0rr | https://www.paste.org/117526
+ *     Tab animations
+ * u/fainas1337  | https://github.com/datguypiko/Firefox-Mod-Blur/tree/master/EXTRA%20MODS/Compact%20extensions%20menu/Style%202
+ *     Extensions menu
+ * u/It_Was_The_Other_Guy
+ *     Snippet changing the tooltips
+ *
  * Modified by u/Kasetonix
 */
 
@@ -215,6 +223,80 @@
 [position="bottomleft topleft"] { --panel-border-radius: 5px 0 5px 5px !important; }
 [part="content"] { border: none !important; }
 .toolbarbutton-1[open] { --toolbarbutton-border-radius: 4px 4px 0 0!important; }
+
+
+/* Make all tabs small except selected one */
+.tabbrowser-tab[fadein]:not([selected]):not([pinned]) {  
+    max-width: 150px !important;
+}
+/* Selected tabs width */
+.tabbrowser-tab[fadein][selected]:not([pinned]) {  
+    min-width: 250px !important;
+}
+
+/* Show close button even when mouse hover on inactive tabs */
+#TabsToolbar .tabbrowser-tab:not([selected="true"]):not([pinned]):hover .close-icon{
+    display: -moz-box !important;
+}
+
+/*  Clean and tight extensions menu */
+#unified-extensions-panel #unified-extensions-view {
+    max-width: 200px !important;
+}
+
+#unified-extensions-view{
+    --uei-icon-size: 20px; /*  Change icon size */
+    --firefoxcss-number-of-extensions-in-a-row: 4; /*  Increase to the number of icons you want in one row */
+}
+
+#unified-extensions-view .panel-header,
+#unified-extensions-view .panel-header + toolbarseparator,
+#unified-extensions-view .panel-subview-body + toolbarseparator,
+#unified-extensions-view #unified-extensions-manage-extensions,
+#unified-extensions-view .unified-extensions-item-menu-button.subviewbutton,
+#unified-extensions-view .unified-extensions-item-action-button .unified-extensions-item-contents{
+    display:none !important;
+}
+
+#unified-extensions-view .panel-subview-body {
+    padding:5px !important;
+}
+
+#unified-extensions-view .unified-extensions-item .unified-extensions-item-icon, 
+#unified-extensions-view .unified-extensions-item .toolbarbutton-badge-stack {
+    margin-inline-end: 0px !important;
+}
+
+#unified-extensions-view #overflowed-extensions-list,
+#unified-extensions-view #unified-extensions-area,
+#unified-extensions-view .unified-extensions-list {
+    display: grid !important;
+    grid-template-columns: repeat(var(--firefoxcss-number-of-extensions-in-a-row),auto);
+    justify-items:center !important;
+    align-items:center !important;
+}
+
+#unified-extensions-view .unified-extensions-list .unified-extensions-item-action-button {
+     margin-left:2px !important;
+     margin-right:2px !important;
+}
+
+#unified-extensions-view #unified-extensions-area .unified-extensions-item  {
+     margin-left:2px !important;
+     margin-right:2px !important;  
+}
+
+#unified-extensions-view .unified-extensions-list .unified-extensions-item,
+#unified-extensions-view .unified-extensions-list{
+     max-width: max-content;
+}
+
+tooltip { 
+    -moz-appearance: none !important;
+    background:#262b32 !important;
+    color: #abb2bf !important;
+    font-family: JetBrainsMono Nerd Font !important;
+}
 
 /* font change on the bar */
 * {
