@@ -18,8 +18,8 @@ Plug 'ap/vim-css-color' " Color codes coloring in vim
 Plug 'hdima/python-syntax' " Python syntax highligting
 Plug 'octol/vim-cpp-enhanced-highlight' " C++ syntax highlighting
 Plug 'vim-scripts/fish.vim' " Fish syntax highlighting
-" Plug 'scrooloose/nerdtree' " File explorer
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Icons in NERDTree
+Plug 'preservim/nerdtree' " File explorer
+Plug 'johnstef99/vim-nerdtree-syntax-highlight' " syntax for nerdtree 
 Plug 'ryanoasis/vim-devicons' " Adding icons to VIM plugins
 call plug#end()
 
@@ -58,7 +58,7 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 " Keybindings
 nnoremap <C-a> :q<CR> " Exiting
 nnoremap <C-q> :wq<CR> 
-"nnoremap <C-f> :NERDTreeToggle<CR> " Toggling NERDTree with keybinding
+nnoremap <C-f> :NERDTreeToggle<CR> " Toggling NERDTree with keybinding
 nnoremap <C-s> :vsplit 
 nnoremap <C-t> :tabnew 
 "nnoremap <C-n> :tabprevious<CR> 

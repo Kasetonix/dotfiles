@@ -226,12 +226,26 @@
 
 
 /* Make all tabs small except selected one */
+/*
 .tabbrowser-tab[fadein]:not([selected]):not([pinned]) {  
     max-width: 150px !important;
 }
+*/
+
 /* Selected tabs width */
+/*
 .tabbrowser-tab[fadein][selected]:not([pinned]) {  
     min-width: 250px !important;
+}
+*/
+
+/* adaptive tab width */
+.tabbrowser-tab[fadein][selected]:not([pinned]) {
+    max-width: clamp(100px, 30vw, 250px) !important; 
+}
+
+.tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
+    max-width: clamp(100px, 20vw, 150px) !important; 
 }
 
 /* Show close button even when mouse hover on inactive tabs */
@@ -300,9 +314,9 @@ tooltip {
 
 /* font change on the bar */
 * {
-	font-family: JetBrains Mono Nerd Font !important;
-	font-size:   10pt !important;
-	font-weight: regular !important;
+    font-family: JetBrains Mono Nerd Font !important;
+    font-size:   10pt !important;
+    font-weight: regular !important;
 }
 
 /* Remove items from image context menu */
