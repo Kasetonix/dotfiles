@@ -53,6 +53,8 @@
     --in-content-primary-button-border-color: transparent!important;
     --in-content-box-info-background: var(--bbcolor)!important;
     --message-bar-text-color: var(--bbcolor) !important;
+    --bg-image: url("bg.png") !important;
+    --bg-size: cover !important;
 }
 
 @-moz-document url-prefix(about:){
@@ -93,6 +95,9 @@
 
 @-moz-document url("about:home"),
 url("about:newtab") {
+    /* Search bar setup */
+
+    /*
     .search-wrapper .search-handoff-button {
         font-family: JetBrainsMono Nerd Font !important 
     }
@@ -101,7 +106,6 @@ url("about:newtab") {
         top: 13px !important;
         inset-inline-start: 48px !important;
     }
-
 
     .search-wrapper .logo-and-wordmark {
         opacity: 0.9 !important;
@@ -126,8 +130,6 @@ url("about:newtab") {
         background-size: 60px !important;
         height: 60px !important;
         width: 60px !important;
-        /* background: url("https://cdn.betterttv.net/emote/58493695987aab42df852e0f/3x") !important; */
-        /* background: url("file:///home/kasetonix/pics/icons/firefox-anime-icon.png") !important; */
     }
 
     .search-wrapper .search-inner-wrapper {
@@ -146,11 +148,36 @@ url("about:newtab") {
         padding-top: 0px !important;
         vertical-align: middle;
     }
+    */
+
+    /* Blank setup */
+    .search-wrapper .search-handoff-button { display: none !important; }
+    .search-wrapper .logo-and-wordmark { display: none !important; }
+    .personalize-button { display: none !important; }
+
+    html { filter: blur(3px) !important; }
+    body { 
+        background: url("bg.png") !important;
+        background-size: cover !important;
+    }
 }
 
 @-moz-document url("about:privatebrowsing") {
-    .info { display: none !important; }
-    .private-browsing-indicator,
-    #private-browsing-indicator-with-label { display: none !important; }
+    .search-inner-wrapper { display: none !important; } 
+    .wordmark             { display: none !important; }
+    .icon                 { display: none !important; }
+    .search-wrapper 
+    .logo-and-wordmark    { display: none !important; }
+    .logo                 { display: none !important; }
+    .outer-wrapper        { display: none !important; }
+    .info                 { display: none !important; }
+    body { 
+        filter: blur(3px) !important;
+        background: url("bg.png") !important; 
+        background-size: cover !important;
+    }
 }
 
+@-moz-document url("about:blank") {
+    :root { --in-content-page-background: #262b32 !important; }
+}
