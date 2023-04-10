@@ -155,7 +155,7 @@ url("about:newtab") {
     .search-wrapper .logo-and-wordmark { display: none !important; }
     .personalize-button { display: none !important; }
 
-    html { filter: blur(3px) !important; }
+    html { filter: blur(5px) !important; }
     body { 
         background: url("bg.png") !important;
         background-size: cover !important;
@@ -172,7 +172,7 @@ url("about:newtab") {
     .outer-wrapper        { display: none !important; }
     .info                 { display: none !important; }
     body { 
-        filter: blur(3px) !important;
+        filter: blur(5px) !important;
         background: url("bg.png") !important; 
         background-size: cover !important;
     }

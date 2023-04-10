@@ -326,3 +326,8 @@ tooltip {
 #context-inspect-a11y {
   display: none !important;
 }
+
+/* Blurring the browser when a dialog opens */
+#browser .browserStack:has(.dialogStack.tab-dialog-box:not([hidden="true"])) > browser {
+    filter: blur(5px);
+}
