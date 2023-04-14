@@ -53,8 +53,6 @@
     --in-content-primary-button-border-color: transparent!important;
     --in-content-box-info-background: var(--bbcolor)!important;
     --message-bar-text-color: var(--bbcolor) !important;
-    --bg-image: url("bg.png") !important;
-    --bg-size: cover !important;
 }
 
 @-moz-document url-prefix(about:){
@@ -150,16 +148,26 @@ url("about:newtab") {
     }
     */
 
-    /* Blank setup */
     .search-wrapper .search-handoff-button { display: none !important; }
-    .search-wrapper .logo-and-wordmark { display: none !important; }
+    .wordmark { display: none !important; }
     .personalize-button { display: none !important; }
+    body { background: #262b32 !important; }
 
-    /* html { filter: blur(5px) !important; } */
-    body { 
-        background: url("bg.png") !important;
-        background-size: cover !important;
+    .logo {
+        background: url("logo.png") no-repeat center center !important;
+	    width: 750px !important;
+	    height: 600px !important;
     }
+
+
+    /* Setup with only background and blur */
+    /* html { filter: blur(5px) !important; } */
+    /* body {  */
+    /*     background: url("bg.png") !important; */
+    /*     background-size: cover !important; */
+    /* } */
+
+    /* .search-wrapper .logo-and-wordmark { display: none !important; } */
 }
 
 @-moz-document url("about:privatebrowsing") {
@@ -167,15 +175,23 @@ url("about:newtab") {
     .wordmark             { display: none !important; }
     .icon                 { display: none !important; }
     .search-wrapper 
-    .logo-and-wordmark    { display: none !important; }
-    .logo                 { display: none !important; }
     .outer-wrapper        { display: none !important; }
     .info                 { display: none !important; }
-    body { 
-        /* filter: blur(5px) !important; */
-        background: url("bg.png") !important; 
-        background-size: cover !important;
+
+    .logo {
+        background: url("logo.png") no-repeat center center !important;
+	    height: 600px !important;
+	    width: 750px !important;
     }
+
+    /* Setup with only background and blur */
+    /* .logo-and-wordmark    { display: none !important; } */
+    /* .logo                 { display: none !important; } */
+    /* body {  */
+    /*     filter: blur(5px) !important; */
+    /*     background: url("bg.png") !important;  */
+    /*     background-size: cover !important; */
+    /* } */
 }
 
 @-moz-document url("about:blank") {
