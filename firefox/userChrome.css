@@ -37,7 +37,7 @@
     }
 }
 
-@media screen and (min-width:975px) and (max-width:1325px) {
+@media screen and (min-width:925px) and (max-width:1325px) {
     #TabsToolbar, #nav-bar { transition: var(--animationSpeed) !important; }
     #TabsToolbar { margin-left: 35vw !important }
     #urlbar-container{ min-width: 0px !important } 
@@ -55,7 +55,7 @@
     }
 }
 
-@media screen and (max-width:975px) {
+@media screen and (max-width:925px) {
     #TabsToolbar, #nav-bar { transition: var(--animationSpeed) !important; }
     toolbarspring{ display: none !important; }
 
@@ -315,7 +315,7 @@ tooltip {
 /* font change on the bar */
 * {
     font-family: JetBrains Mono Nerd Font !important;
-    font-size:   12pt !important;
+    font-size:   10pt !important;
     font-weight: regular !important;
 }
 
