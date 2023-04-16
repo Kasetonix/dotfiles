@@ -37,7 +37,7 @@
     }
 }
 
-@media screen and (min-width:925px) and (max-width:1325px) {
+@media screen and (min-width:900px) and (max-width:1325px) {
     #TabsToolbar, #nav-bar { transition: var(--animationSpeed) !important; }
     #TabsToolbar { margin-left: 35vw !important }
     #urlbar-container{ min-width: 0px !important } 
@@ -55,7 +55,7 @@
     }
 }
 
-@media screen and (max-width:925px) {
+@media screen and (max-width:900px) {
     #TabsToolbar, #nav-bar { transition: var(--animationSpeed) !important; }
     toolbarspring{ display: none !important; }
 
