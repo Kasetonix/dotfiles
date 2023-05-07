@@ -27,7 +27,11 @@ fi
 # echo "FULL: $brightFull"
 # echo "PERC: $brightPerc"
 
-# Printing the result
-echo "$icon"
+# Checking if laptop's lid is open or closed
+lidstatus="$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')"
 
+# Printing the result if the lid is open
+if [ $lidstatus = "open" ]; then
+    echo "$icon"
+fi
 #vim:ft=sh
