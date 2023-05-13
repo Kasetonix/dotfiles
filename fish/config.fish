@@ -22,30 +22,7 @@ alias rm='rm -i'
 alias ln='ln -i'
 
 # configs
-alias catpat='set_color -o yellow; cat /home/kasetonix/docs/gitpat'
-
-alias conf-i3='$EDITOR ~/.config/i3/config'
-alias conf-hypr='$EDITOR ~/.config/hypr/hypr.conf'
-alias conf-dwm='$EDITOR ~/.dwm/config.def.h'
-alias conf-alacritty='$EDITOR ~/.config/alacritty/alacritty.yml'
-alias conf-kitty='$EDITOR ~/.config/kitty/kitty.conf'
-alias conf-polybar='$EDITOR ~/.config/polybar/config.ini'
-alias conf-bash='$EDITOR ~/.bashrc'
-abbr -a conf-fish '$EDITOR ~/.config/fish/'
-alias conf-vim='$EDITOR ~/.vimrc'
-alias conf-nvim='$EDITOR ~/.config/nvim/init.vim'
-alias conf-fish='$EDITOR ~/.config/fish/config.fish'
-alias conf-neofetch='$EDITOR ~/.config/neofetch/config.conf'
-alias conf-zathura='$EDITOR ~/.config/zathura/zathurarc'
-alias conf-bspwm='$EDITOR ~/.config/bspwm/bspwmrc'
-alias conf-sxhkd='$EDITOR ~/.config/sxhkd/sxhkdrc'
-alias conf-picom='$EDITOR ~/.config/picom.conf'
-alias conf-dunst='$EDITOR ~/.config/dunst/dunstrc'
-alias conf-syncdot='$EDITOR ~/.scripts/syncdot'
-alias conf-ncspot='$EDITOR ~/.config/ncspot/config.toml'
-alias conf-mpd='$EDITOR ~/.config/mpd/mpd.conf'
-alias conf-ncmpcpp='$EDITOR ~/.config/ncmpcpp/'
-alias conf-vis='$EDITOR ~/.config/vis/config'
+source ~/.config/fish/conf.d/conf-aliases.fish
 
 # Misc.
 #alias ll='ls -Alh'
@@ -65,6 +42,7 @@ alias space='du -sh 2>/dev/null'
 alias untar='tar -xzf'
 alias pls='doas'
 alias vbc='echo (volume)(battery)(clock)'
+alias print-ip='ip -br -4 -c addr'
 
 alias emacs-term='emacs -nw'
 alias name='echo (set_color -o yellow)$USER(set_color -o blue)@(set_color -o green)$hostname(set_color white)'
@@ -81,3 +59,8 @@ alias check-wmclass='xprop | grep "WM_CLASS(STRING)"'
 alias matrix='unimatrix -b -s 90 -l o -a'
 alias aesth='feh --bg-fill /home/kasetonix/pics/walls/Aesthetically-pleasing.jpg'
 alias defwall='feh --bg-fill /home/kasetonix/pics/walls/Singles.jpg'
+
+# Function for choosing a wallpaper
+function choose-bg --description 'Choose a background using rofi -dmenu'
+  feh --bg-fill ~/pics/walls/(/bin/ls ~/pics/walls/ | rofi -dmenu) --no-fehbg $argv
+end

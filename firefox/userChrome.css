@@ -19,7 +19,7 @@
 :root { --tab-border-radius: 3px !important; }
 
 /*  Oneline hack  */
-:root { --navbarWidth: 440pt; --animationSpeed: .15s }
+:root { --navbarWidth: 450pt; --animationSpeed: .15s }
 
 /* Next two sections are for turning the oneline hack 
  * back off when the window is narrow enough */
