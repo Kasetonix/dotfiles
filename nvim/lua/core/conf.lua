@@ -10,6 +10,7 @@ vim.o.undofile = true -- saving undo history
 vim.wo.signcolumn = 'yes' -- turning on the signcolumn
 vim.o.completeopt = 'menuone,noselect' -- Better autocompletion
 vim.o.termguicolors = true -- Using terminal colors
+vim.loader.enable() -- optimizes loading plugins
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true

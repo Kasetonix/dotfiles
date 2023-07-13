@@ -10,7 +10,7 @@ local lspconfig = require 'lspconfig' -- makes writeing the config easier
 local on_attach = function(_, bufnr)
   -- Creating a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
-  local nmap = function(keys, func, desc)
+  local lspmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
     end
@@ -18,14 +18,14 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>r', vim.lsp.buf.rename, '[R]ename')
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-  nmap('<leader>s', require('telescope.builtin').lsp_document_symbols, '[S]ymbols')
+  lspmap('<leader>r', vim.lsp.buf.rename, '[R]ename')
+  lspmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+  lspmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  lspmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  lspmap('<leader>s', require('telescope.builtin').lsp_document_symbols, '[S]ymbols')
 
   -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  lspmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -54,10 +54,8 @@ lspconfig.lua_ls.setup { -- Lua
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
       },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
+
+      telemetry = { enable = false, },
     },
   },
 }
@@ -75,8 +73,8 @@ lspconfig.rust_analyzer.setup { --rust
 }
 
 -- /// NVIM-CMP | LUASNIP ///
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 cmp.setup {
   snippet = {

@@ -34,8 +34,8 @@ function conf-vim --description '~/.vimrc'
     $EDITOR ~/.vimrc $argv
 end
 
-function conf-nvim --description '~/.config/nvim/init.lua'
-    $EDITOR ~/.config/nvim/init.lua $argv
+function conf-nvim --description '~/.config/nvim/lua/'
+    $EDITOR ~/.config/nvim/lua/ $argv
 end
 
 function conf-fish --description '~/.config/fish/config.fish'

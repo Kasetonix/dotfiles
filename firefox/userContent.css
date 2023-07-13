@@ -5,79 +5,85 @@
 */
 
 :root:-moz-window-inactive{--bgcolor: #262b32;}
+
 :root {
+    --bg-dark:  #262b32;
+    --bg-light: #31343f;
+    --fg:       #abb2bf;
+    --accent:   #56b6c2;
+
     --bgcolor: #262b32;
     --bbcolor: #31343f;
     --stcolor: #31343f;
-    --prcolor: #56b6c2;
+    --prcolor: #262b32;
     --hpcolor: #56b6c2;
     --ndcolor: #31343f;
     --tpcolor: #abb2bf;
     --tscolor: #abb2bf;
     --ttcolor: #abb2bf;
 
-    --in-content-page-background: var(--bgcolor)!important;
-    --in-content-box-background: var(--bbcolor)!important;
-    --in-content-button-border-color: var(--stcolor)!important;
-    --in-content-box-background-odd: var(--bgcolor)!important;
-    --in-content-button-background: var(--bbcolor)!important;
-    --in-content-button-background-hover: var(--stcolor)!important;
-    --in-content-button-border-color: var(--bgcolor)!important;
-    --checkbox-checked-bgcolor: var(--prcolor)!important;
-    --checkbox-checked-hover-bgcolor: var(--hpcolor)!important;
-    --in-content-accent-color: var(--prcolor)!important;
-    --in-content-button-background-active: var(--ndcolor)!important;
-    --in-content-primary-button-background: var(--ndcolor)!important;
-    --in-content-primary-button-text-color: var(--tpcolor)!important;
-    --in-content-table-background: var(--bgcolor)!important;
-    --in-content-link-color: var(--hpcolor)!important;
-    --in-content-link-color-hover: var(--hpcolor)!important;
-    --link-color-hover: var(--hpcolor)!important;
-    --link-color: var(--hpcolor)!important;
-    --in-content-background-color: var(--bgcolor)!important;
-    --box-background: var(--stcolor)!important;
-    --card-background-color: var(--stcolor)!important;
-    --in-content-table-header-color: var(--tpcolor)!important;
-    --moz-dialog: var(--bgcolor)!important;
-    --in-content-text-color: var(--tpcolor)!important;
-    --in-content-page-color: var(--tpcolor)!important;
-    --in-content-deemphasized-text: var(--tscolor)!important;
-    --in-content-border-color: var(--ttcolor)!important;
-    --in-content-button-border-color-hover: var(--ndcolor)!important;
-    --checkbox-unchecked-bgcolor: var(--bbcolor)!important;
+    --in-content-page-background: var(--bg-dark) !important;
+    --in-content-box-background: var(--bg-light) !important;
+    --in-content-button-border-color: var(--bg-light) !important;
+    --in-content-box-background-odd: var(--bg-dark) !important;
+    --in-content-button-background: var(--bg-light) !important;
+    --in-content-button-background-hover: var(--bg-light) !important;
+    --in-content-button-border-color: var(--bg-dark) !important;
+    --checkbox-checked-bgcolor: var(--bg-dark) !important;
+    --checkbox-checked-hover-bgcolor: var(--accent) !important;
+    --in-content-accent-color: var(--accent) !important;
+    --in-content-button-background-active: var(--bg-light) !important;
+    --in-content-primary-button-background: var(--bg-light) !important;
+    --in-content-primary-button-text-color: var(--fg) !important;
+    --in-content-table-background: var(--bg-dark) !important;
+    --in-content-link-color: var(--accent) !important;
+    --in-content-link-color-hover: var(--accent) !important;
+    --link-color-hover: var(--accent) !important;
+    --link-color: var(--accent) !important;
+    --in-content-background-color: var(--bg-dark) !important;
+    --box-background: var(--bg-light) !important;
+    --card-background-color: var(--bg-light) !important;
+    --in-content-table-header-color: var(--fg) !important;
+    --moz-dialog: var(--bg-dark) !important;
+    --in-content-text-color: var(--fg) !important;
+    --in-content-page-color: var(--fg) !important;
+    --in-content-deemphasized-text: var(--fg) !important;
+    --in-content-border-color: var(--ttcolor) !important;
+    --in-content-button-border-color-hover: var(--bg-light) !important;
+    --checkbox-unchecked-bgcolor: var(--bg-light) !important;
     --in-content-focus-outline-width: 0px!important;
-    --in-content-primary-button-border-color: var(--stcolor)!important;
-    --in-content-primary-button-background-hover: var(--prcolor)!important;
-    --in-content-primary-button-background: var(--prcolor)!important;
-    --in-content-primary-button-background-hover: var(--hpcolor)!important;
+    --in-content-primary-button-border-color: var(--bg-light) !important;
+    --in-content-primary-button-background-hover: var(--bg-dark) !important;
+    --in-content-primary-button-background: var(--bg-dark) !important;
+    --in-content-primary-button-background-hover: var(--accent) !important;
     --in-content-primary-button-border-color: transparent!important;
-    --in-content-box-info-background: var(--bbcolor)!important;
-    --message-bar-text-color: var(--bbcolor) !important;
+    --in-content-box-info-background: var(--bg-light) !important;
+    --message-bar-text-color: var(--bg-light) !important;
 }
 
 @-moz-document url-prefix(about:){
-    body                                { background-color: var(--bgcolor) !important; }
-    body,html                           { overflow-y: auto !important; }
-    .selector                           { background-color: var(--ndcolor) !important; border: var(--ndcolor) !important; }
-    .rich-icon, .tile, .top-site-icon   { background-color: var(--ndcolor) !important; }
-    .section input:checked+.slider      { --newtab-primary-action-background: var(--prcolor) !important; }
+    body                                { background-color: var(--bg-dark) !important; }
+    body,html                           { overflow-y: auto !important; font-family: JetBrainsMono Nerd Font !important; }
+    .selector                           { background-color: var(--bg-light) !important; border: var(--bg-light) !important; }
+    .rich-icon, .tile, .top-site-icon   { background-color: var(--bg-light) !important; }
+    .section input:checked+.slider      { --newtab-primary-action-background: var(--bg-dark) !important; }
     .customize-menu                     { border-radius: 5px !important; }
-    .customize-menu .close-button       { border-color: var(--stcolor)  !important; }
-    .customize-menu .close-button:hover { background-color: var(--ndcolor) !important; border-color: var(--ndcolor) !important; }
-    #sponsored-shortcuts                { background-color: var(--prcolor) !important; }
-    #newtab-personalize-icon-label      { color: var(--hpcolor )!important; }
+    .customize-menu .close-button       { border-color: var(--bg-light) !important; }
+    .customize-menu .close-button:hover { background-color: var(--bg-light) !important; border-color: var(--bg-light) !important; }
+    #sponsored-shortcuts                { background-color: var(--bg-dark) !important; }
+    #newtab-personalize-icon-label      { color: var(--hpcolor ) !important; }
     #customization-panelWrapper         { max-width: 30em !important; }
 
     .customize-animate-enter-done,
     .customize-menu,
     .top-site-outer:hover,
-    button { background-color: var(--stcolor)!important }
+    button { background-color: var(--bg-light) !important }
 }
 
-.category-button:not(:hover) { background-color: var(--bgcolor) }
+.category-button:not(:hover) { background-color: var(--bg-dark) }
 
 @-moz-document url-prefix(about:addons) {
-    .category:not(:hover) { background-color: var(--bgcolor) !important; }
+    .category:not(:hover) { background-color: var(--bg-dark) !important; }
 }
 
 @-moz-document url-prefix(about:devtools) {

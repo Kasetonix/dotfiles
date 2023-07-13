@@ -1,4 +1,4 @@
 #!/bin/bash
 
 clear
-figlet -f /usr/share/figlet/fonts/ansi-shadow.flf $1 | lolcat
+figlet -f /usr/share/figlet/fonts/ansi-shadow.flf $1

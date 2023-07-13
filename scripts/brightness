@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# Checking if laptop's lid is open or closed
+lidstatus="$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')"
+
+# Exiting if the lid is closed
+if [ $lidstatus = "closed" ]; then
+    exit 1
+fi
+
 # Getting current and maximum brightness
 brightCurr="$(brightnessctl get)"
 brightFull="$(brightnessctl max)"
@@ -22,16 +30,7 @@ elif [ "$brightPerc" -ge "0" ]; then
 	icon="  ———— "
 fi
 
-# Debug
-# echo "CURR: $brightCurr"
-# echo "FULL: $brightFull"
-# echo "PERC: $brightPerc"
+# Printing the output
+echo "$icon"
 
-# Checking if laptop's lid is open or closed
-lidstatus="$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')"
-
-# Printing the result if the lid is open
-if [ $lidstatus = "open" ]; then
-    echo "$icon"
-fi
 #vim:ft=sh

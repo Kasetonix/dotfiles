@@ -47,7 +47,7 @@
 window {
     //background-color: @background;
     border:           0;
-    padding:          10;
+    padding:          16;
 	transparency: "real";
 	background-color: #282c34aa;
 	//border-radius: 20px;

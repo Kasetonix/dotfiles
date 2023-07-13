@@ -3,8 +3,8 @@
 SETUVAR EDITOR:nvim
 SETUVAR RANGER_LOAD_DEFAULT_RC:FALSE
 SETUVAR TERMINAL:alacritty
+
 SETUVAR __fish_initialized:3400
-SETUVAR _fish_abbr_conf_2D_fish:\x24EDITOR\x20\x7e/\x2econfig/fish/
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:cyan
@@ -33,3 +33,11 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
+
+SETUVAR LESS_TERMCAP_mb:(echo '\e[01;32m')        # enter blinking mode
+SETUVAR LESS_TERMCAP_md:(echo '\e[01;34;5;75m')   # enter double-bright mode
+SETUVAR LESS_TERMCAP_me:(echo '\e[0m')            # turn off all appearance modes (mb, md, so, us)
+SETUVAR LESS_TERMCAP_so:(echo '\e[01;36m')        # enter standout mode
+SETUVAR LESS_TERMCAP_se:(echo '\e[0m')            # leave standout mode
+SETUVAR LESS_TERMCAP_us:(echo '\e[04;33;5;200m')  # enter underline mode
+SETUVAR LESS_TERMCAP_ue:(echo '\e[0m')            # leave underline mode

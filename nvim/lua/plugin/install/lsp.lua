@@ -5,10 +5,19 @@ return {
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
 
-  'neovim/nvim-lspconfig', -- LSP Configuration & Plugins
-  'folke/neodev.nvim',     -- Support for init.lua and plugin dev
-  { 'hrsh7th/nvim-cmp',    -- Autocompletion
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+  'neovim/nvim-lspconfig',    -- LSP Configuration & Plugins
+  'folke/neodev.nvim',        -- support for init.lua and plugin development
+  -- 'simrat39/rust-tools.nvim', -- LSP rust support made easier
+
+  { 'hrsh7th/nvim-cmp',       -- Autocompletion
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+    },
   },
 }
 

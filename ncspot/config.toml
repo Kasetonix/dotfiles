@@ -1,5 +1,7 @@
 statusbar_format = "%title [%artists]"
 notify = true
+flip_status_indicators = true
+use_nerdfont = true
 
 [keybindings]
 "Ctrl+a"   = "focus library"
@@ -17,7 +19,6 @@ notify = true
 "|"        = "open current"
 "Space"    = "playpause"
 "u"        = "update"
-"m"        = "move playing"
 "t"        = "shuffle"
 
 # NOOPS
@@ -53,7 +54,7 @@ notify = true
 "x"          = "noop"
 "z"          = "noop"
 
-[theme]
+[theme]#
 background = "#00262B32"
 primary = "#ABB2BF"
 secondary = "#98C379"

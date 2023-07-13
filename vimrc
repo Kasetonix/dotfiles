@@ -9,8 +9,8 @@
 set number " Setting line numbers
 "set relativenumber " setting relative line numbers
 set tabstop=4 " Setting tab length
-"set expandtab " Changing tabs to spaces
-"set softtabstop=4 " Deleting multiple spaces in the row
+set expandtab " Changing tabs to spaces
+set softtabstop=4 " Deleting multiple spaces in the row
 set encoding=utf-8 " Setting encoding
 set wrap " Wrapping text if it goes beyond screen width
 syntax on " Enabling syntax highlighting
