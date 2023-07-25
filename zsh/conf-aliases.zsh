@@ -26,4 +26,4 @@ alias conf-ranger='$EDITOR ~/.config/ranger/ && cd ~/.config/ranger/'
 FPROFILE='uzjsy4yj.kasetonix'
 alias conf-firefox='$EDITOR ~/.mozilla/firefox/$FPROFILE/chrome && cd ~/.mozilla/firefox/$FPROFILE/chrome'
 
-alias catpat='set_color -o yellow; cat /home/kasetonix/docs/gitpat'
+alias catpat='echo "$fg_bold[yellow]$(cat /home/kasetonix/docs/gitpat)"'
