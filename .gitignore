@@ -11,3 +11,9 @@
 ranger/plugins/ranger_devicons
 ranger/plugins/__pycache__
 nvim/lazy-lock.json
+
+# Ignore the plugins directory and history in zsh
+zsh/.plugins
+zsh/.compinit-dump
+zsh/.zcalc_history
+zsh/.zsh-history
