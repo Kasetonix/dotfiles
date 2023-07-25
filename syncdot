@@ -15,7 +15,6 @@ then
 #	cp -r $HOME/.config/bspwm/*           $DOTDIR/bspwm/
 #	cp -r $HOME/.config/sxhkd/*           $DOTDIR/sxhkd/
 #	cp -r $HOME/.config/hypr/*            $DOTDIR/hypr/
-#	cp -r $HOME/.dwm/*                    $DOTDIR/dwm/
 #	cp -r $HOME/.config/polybar/*         $DOTDIR/polybar/
 	cp -r $HOME/.config/dunst/*           $DOTDIR/dunst/
 	cp -r $HOME/.config/picom.conf        $DOTDIR/picom.conf

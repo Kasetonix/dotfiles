@@ -10,7 +10,7 @@ HISTFILE=~/.config/zsh/.zsh-history
 HISTSIZE=10000
 SAVEHIST=10000
 
-setopt autocd nomatch notify
+setopt autocd nomatch notify PROMPT_SUBST
 unsetopt beep # turning the beep off
 stty stop undef # disabling ctrl-s stopping the terminal 
 
@@ -22,14 +22,18 @@ path+=("$HOME/.local/bin")
 path+=("$HOME/.scripts")
 export PATH
 
+# Sourcing functions for sourcing files more easily
+source "$ZDOTDIR/source-functions.zsh"
+
 # Prompt
 autoload -U colors && colors
-PS1="%{$fg_bold[green]%}%~ %{$fg_bold[cyan]%}➜ %{$reset_color%}%{$fg_bold[white]%}"
-PS2="%{$fg_bold[cyan]%}> %{$reset_color%}%{$fg_bold[white]%}"
+setopt PROMPT_SUBST
+source-plugin-local "short-pwd.zsh" # Sourcing the function for shortening the pwd
+PS1='%{$fg_bold[green]%}$(short-pwd) %{$fg_bold[cyan]%}➜ %{$reset_color%}%{$fg_bold[white]%}'
+PS2='%{$fg_bold[cyan]%}$(short-pwd-len) ➜ %{$reset_color%}%{$fg_bold[white]%}'
 preexec() { printf "\e[0m"; } # resetting the formatting before the command executes
 
 # Sourcing configs
-source "$ZDOTDIR/source-functions.zsh"
 source-file "aliases.zsh"
 source-file "conf-aliases.zsh"
 source-file "functions.zsh"
