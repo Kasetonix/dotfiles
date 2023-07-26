@@ -3,10 +3,6 @@
 # !*.*
 # !*/
 
-# Ignore containing non-text files
-.cbor
-.pyc
-
 # Ignore ranger-devicons plugin and lazy.nvim lock file
 ranger/plugins/ranger_devicons
 ranger/plugins/__pycache__
@@ -17,3 +13,6 @@ zsh/.plugins
 zsh/.compinit-dump
 zsh/.zcalc_history
 zsh/.zsh-history
+
+# Ignore the fibonacci in .scripts
+scripts/fibonacci

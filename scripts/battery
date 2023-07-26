@@ -1,30 +1,54 @@
-#!/bin/bash
-perc="$(cat /sys/class/power_supply/BAT1/capacity)"
+#!/bin/zsh
 
-#if [ "$perc" -ge "80" ]; then
-#	icon="   ﭳﭳﭳﭳ "
-#elif [ "$perc" -ge "60" ]; then
-#	icon="   ﭳﭳﭳ  "
-#elif [ "$perc" -ge "40" ]; then
-#	icon="   ﭳﭳ   "
-#elif [ "$perc" -ge "20" ]; then
-#	icon="   ﭳ    "
-#elif [ "$perc" -lt "20" ]; then
-#	icon="        "
-#fi
-
-if [ "$perc" -ge "80" ]; then
-	icon="   ﭳﭳﭳﭳ "
-elif [ "$perc" -ge "60" ]; then
-	icon="   ﭳﭳﭳ— "
-elif [ "$perc" -ge "40" ]; then
-	icon="   ﭳﭳ—— "
-elif [ "$perc" -ge "20" ]; then
-	icon="   ﭳ——— "
-elif [ "$perc" -lt "20" ]; then
-	icon="   ———— "
+# Checking if the external battery is connected
+if [[ -d /sys/class/power_supply/BAT1 ]]; then
+    bat1exists=true
 fi
 
-echo "$icon"
-#echo "[ $(cat /sys/class/power_supply/BAT1/capacity)% ]"
+# Reading the charge levels and states of the batteries
+bat0curr="$(cat /sys/class/power_supply/BAT0/energy_now)"
+bat0full="$(cat /sys/class/power_supply/BAT0/energy_full)"
+bat0status="$(cat /sys/class/power_supply/BAT0/status)"
+
+if [[ "$bat1exists" -eq "true" ]]; then
+	bat1curr="$(cat /sys/class/power_supply/BAT1/energy_now)"
+	bat1full="$(cat /sys/class/power_supply/BAT1/energy_full)"
+    bat1status="$(cat /sys/class/power_supply/BAT1/status)"
+else
+	bat1curr="0"
+	bat1full="0"
+    bat1status="Not charging"
+fi
+
+# Calculating the percentage of the batteries combined
+batcurr=$(($bat0curr+$bat1curr))
+batfull=$(($bat0full+$bat1full))
+
+batcurrperc=$(($batcurr*100))
+perc=$(($batcurrperc/$batfull))
+
+# Writing the state
+if [[ $bat0status = "Charging" ]] || [[ $bat1status = "Charging" ]]; then
+    batstatus="▲"
+elif [[ $bat0status = "Discharging" ]] || [[ $bat1status = "Discharging" ]]; then
+    batstatus="▼"
+else
+    batstatus=" "
+fi
+
+# Showing the correct percentage and state
+if [ "$perc" -ge "80" ]; then
+	icon="   $batstatus ﭳﭳﭳﭳ "
+elif [ "$perc" -ge "60" ]; then
+	icon="   $batstatus ﭳﭳﭳ— "
+elif [ "$perc" -ge "40" ]; then
+	icon="   $batstatus ﭳﭳ—— "
+elif [ "$perc" -ge "20" ]; then
+	icon="   $batstatus ﭳ——— "
+elif [ "$perc" -lt "20" ]; then
+	icon="   $batstatus ———— "
+fi
+
+echo $icon
+
 #vim:ft=sh

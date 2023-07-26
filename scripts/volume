@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 perc="$(pamixer --get-volume)"
 
 #if [ "$perc" -ge "100" ]; then
