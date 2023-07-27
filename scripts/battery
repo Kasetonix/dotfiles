@@ -6,7 +6,7 @@ bat1="/sys/class/power_supply/BAT1"
 GetStatus() {
     bat=$1
     
-    if [ $(cat $bat/energy_now) -gt $(($(cat $bat/energy_full)*95/100)) ]; then;
+    if [ $(cat $bat/energy_now) -ge $(($(cat $bat/energy_full)*95/100)) ]; then;
         echo "Full"
     else
         echo "$(cat $bat/status)"
