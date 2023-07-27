@@ -32,7 +32,9 @@ batCurrPerc=$(($batCurr*100))
 perc=$(($batCurrPerc/$batFull))
 
 # Writing the state
-if [[ $bat0Status = "Charging" ]] || [[ $bat1Status = "Charging" ]]; then
+if [[ $bat0Status = "Full" ]] && [[ $bat1Status = "Full" ]]; then
+    batStatus="" # Full
+elif [[ $bat0Status = "Charging" ]] || [[ $bat1Status = "Charging" ]]; then
     batStatus="" # Charging
 elif [[ $bat0Status = "Discharging" ]] || [[ $bat1Status = "Discharging" ]]; then
     if [ $perc -gt 10 ]; then;
@@ -46,10 +48,8 @@ elif [[ $bat0Status = "Discharging" ]] || [[ $bat1Status = "Discharging" ]]; the
             batStatus=" "
         fi
     fi
-elif [[ $bat0Status = "Full" ]] && [[ $bat1Status = "Full" ]]; then
-    batStatus="" # Full
 else 
-    batStatus="~"
+    batStatus="~" # <- for when something weird happens
 fi
 
 # Showing the correct percentage and state
