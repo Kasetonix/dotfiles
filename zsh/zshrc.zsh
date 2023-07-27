@@ -10,7 +10,7 @@ HISTFILE=~/.config/zsh/.zsh-history
 HISTSIZE=10000
 SAVEHIST=10000
 
-setopt autocd nomatch notify PROMPT_SUBST
+setopt autocd nomatch notify PROMPT_SUBST hist_ignore_all_dups
 unsetopt beep # turning the beep off
 stty stop undef # disabling ctrl-s stopping the terminal 
 
@@ -29,7 +29,7 @@ source "$ZDOTDIR/source-functions.zsh"
 autoload -U colors && colors
 setopt PROMPT_SUBST
 source-plugin-local "short-pwd.zsh" # Sourcing the function for shortening the pwd
-PS1='%{$fg_bold[green]%}$(short-pwd) %{$fg_bold[cyan]%}➜ %{$reset_color%}%{$fg_bold[white]%}'
+PS1='%{$fg_bold[green]%}$(short-pwd) %(?.%{$fg_bold[cyan]%}.%{$fg_bold[red]%})➜ %{$reset_color%}%{$fg_bold[white]%}'
 PS2='%{$fg_bold[cyan]%}$(short-pwd-len) ➜ %{$reset_color%}%{$fg_bold[white]%}'
 preexec() { printf "\e[0m"; } # resetting the formatting before the command executes
 

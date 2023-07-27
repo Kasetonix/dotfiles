@@ -1,52 +1,68 @@
 #!/bin/zsh
 
-# Checking if the external battery is connected
-if [[ -d /sys/class/power_supply/BAT1 ]]; then
-    bat1exists=true
-fi
+bat0="/sys/class/power_supply/BAT0"
+bat1="/sys/class/power_supply/BAT1"
+
+GetStatus() {
+    bat=$1
+    
+    if [ $(cat $bat/energy_now) -gt $(($(cat $bat/energy_full)*95/100)) ]; then;
+        echo "Full"
+    else
+        echo "$(cat $bat/status)"
+    fi
+}
 
 # Reading the charge levels and states of the batteries
-bat0curr="$(cat /sys/class/power_supply/BAT0/energy_now)"
-bat0full="$(cat /sys/class/power_supply/BAT0/energy_full)"
-bat0status="$(cat /sys/class/power_supply/BAT0/status)"
+bat0Curr="$(cat $bat0/energy_now)"; bat0Full="$(cat $bat0/energy_full)"
+bat0Status="$(GetStatus $bat0)"
 
-if [[ "$bat1exists" -eq "true" ]]; then
-	bat1curr="$(cat /sys/class/power_supply/BAT1/energy_now)"
-	bat1full="$(cat /sys/class/power_supply/BAT1/energy_full)"
-    bat1status="$(cat /sys/class/power_supply/BAT1/status)"
+if [[ -d $bat1 ]]; then # if bat1 exists
+	bat1Curr="$(cat $bat1/energy_now)"; bat1Full="$(cat $bat1/energy_full)"
+    bat1Status="$(GetStatus $bat1)"
 else
-	bat1curr="0"
-	bat1full="0"
-    bat1status="Not charging"
+	bat1Curr="0"; bat1Full="0"
+    bat1Status="Not charging"
 fi
 
 # Calculating the percentage of the batteries combined
-batcurr=$(($bat0curr+$bat1curr))
-batfull=$(($bat0full+$bat1full))
-
-batcurrperc=$(($batcurr*100))
-perc=$(($batcurrperc/$batfull))
+batCurr=$(($bat0Curr+$bat1Curr))
+batFull=$(($bat0Full+$bat1Full))
+batCurrPerc=$(($batCurr*100))
+perc=$(($batCurrPerc/$batFull))
 
 # Writing the state
-if [[ $bat0status = "Charging" ]] || [[ $bat1status = "Charging" ]]; then
-    batstatus="▲"
-elif [[ $bat0status = "Discharging" ]] || [[ $bat1status = "Discharging" ]]; then
-    batstatus="▼"
-else
-    batstatus=" "
+if [[ $bat0Status = "Charging" ]] || [[ $bat1Status = "Charging" ]]; then
+    batStatus="" # Charging
+elif [[ $bat0Status = "Discharging" ]] || [[ $bat1Status = "Discharging" ]]; then
+    if [ $perc -gt 10 ]; then;
+        batStatus="" # Discharging
+    elif [ $perc -gt 5 ]; then
+        batStatus="" # Low Battery
+    else
+        if (( $(date "+%S") % 2 == 0 )); then
+            batStatus="" # Low Battery++
+        else 
+            batStatus=" "
+        fi
+    fi
+elif [[ $bat0Status = "Full" ]] && [[ $bat1Status = "Full" ]]; then
+    batStatus="" # Full
+else 
+    batStatus="~"
 fi
 
 # Showing the correct percentage and state
-if [ "$perc" -ge "80" ]; then
-	icon="   $batstatus ﭳﭳﭳﭳ "
-elif [ "$perc" -ge "60" ]; then
-	icon="   $batstatus ﭳﭳﭳ— "
-elif [ "$perc" -ge "40" ]; then
-	icon="   $batstatus ﭳﭳ—— "
-elif [ "$perc" -ge "20" ]; then
-	icon="   $batstatus ﭳ——— "
-elif [ "$perc" -lt "20" ]; then
-	icon="   $batstatus ———— "
+if [ "$perc" -ge "95" ]; then
+	icon="   $batStatus "
+elif [ "$perc" -ge "75" ]; then
+	icon="   $batStatus "
+elif [ "$perc" -ge "50" ]; then
+	icon="   $batStatus "
+elif [ "$perc" -ge "25" ]; then
+	icon="   $batStatus "
+elif [ "$perc" -lt "25" ]; then
+	icon="   $batStatus "
 fi
 
 echo $icon
