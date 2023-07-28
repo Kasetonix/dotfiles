@@ -2,18 +2,20 @@
 
 bat0="/sys/class/power_supply/BAT0"
 bat1="/sys/class/power_supply/BAT1"
+ac="/sys/class/power_supply/AC"
 
 GetStatus() {
     bat=$1
-    
-    if [ $(cat $bat/energy_now) -ge $(($(cat $bat/energy_full)*95/100)) ]; then;
+
+    # that 999/1000 is for setting the battery to Full when it's nearly full (sometimes it stays on 'charging')
+    if [ $(cat $bat/energy_now) -ge $(($(cat $bat/energy_full)*999/1000)) ]; then;
         echo "Full"
     else
         echo "$(cat $bat/status)"
     fi
 }
 
-# Reading the charge levels and states of the batteries
+# Reading the charge levels and states of the batteries + state of the charger
 bat0Curr="$(cat $bat0/energy_now)"; bat0Full="$(cat $bat0/energy_full)"
 bat0Status="$(GetStatus $bat0)"
 
@@ -25,6 +27,8 @@ else
     bat1Status="Not charging"
 fi
 
+acStatus="$(cat $ac/online)"
+
 # Calculating the percentage of the batteries combined
 batCurr=$(($bat0Curr+$bat1Curr))
 batFull=$(($bat0Full+$bat1Full))
@@ -32,7 +36,7 @@ batCurrPerc=$(($batCurr*100))
 perc=$(($batCurrPerc/$batFull))
 
 # Writing the state
-if [[ $bat0Status = "Full" ]] && [[ $bat1Status = "Full" ]]; then
+if [[ $acStatus = "1" ]] && [[ $bat0Status = "Full" ]] && [[ $bat1Status = "Full" ]]; then
     batStatus="" # Full
 elif [[ $bat0Status = "Charging" ]] || [[ $bat1Status = "Charging" ]]; then
     batStatus="" # Charging
