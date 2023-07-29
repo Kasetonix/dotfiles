@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Checking if laptop's lid is open or closed
-lidstatus="$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')"
+lidstatus="$(cat /proc/acpi/button/lid/LID/state | awk '{print $2}')"
 
 # Exiting if the lid is closed
 if [ $lidstatus = "closed" ]; then
