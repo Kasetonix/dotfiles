@@ -14,5 +14,6 @@ zsh/.compinit-dump
 zsh/.zcalc_history
 zsh/.zsh-history
 
-# Ignore the fibonacci in .scripts
-scripts/fibonacci
+# Ignore the binary files in statusbar
+scripts/statusbar-rs/Cargo.lock
+scripts/statusbar-rs/target

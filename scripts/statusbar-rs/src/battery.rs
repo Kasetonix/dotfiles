@@ -1,18 +1,12 @@
 use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
-use std::process::ExitCode;
 
 /* Global variables containing the path to batteries and the ac */
 static BAT0: &'static str = "/sys/class/power_supply/BAT0";
 static BAT1: &'static str = "/sys/class/power_supply/BAT1";
 static NOW:  &'static str = "now";
 static FULL: &'static str = "full";
-
-fn main() -> ExitCode {
-    println!(" {} {} ", draw_charge_icon(), draw_status_icon());
-    ExitCode::SUCCESS
-}
 
 fn get_energy(bat: &str, which: &str) -> i32 {
     let mut value = String::from("0"); /* To return if `bat` isn't connected */
@@ -51,7 +45,7 @@ fn get_battery_percentage() -> i8 {
     (energy_now * 100 / energy_full).try_into().unwrap()
 }
 
-fn draw_charge_icon() -> &'static str {
+fn draw_charge() -> &'static str {
     let percentage: i8 = get_battery_percentage();
 
     if percentage >= 95 {
@@ -68,7 +62,7 @@ fn draw_charge_icon() -> &'static str {
     }
 }
 
-fn draw_status_icon() -> &'static str {
+fn draw_status() -> &'static str {
     let tmp_status = get_status(BAT0); let bat0_status: &str = String::as_str(&tmp_status);
     let tmp_status = get_status(BAT1); let bat1_status: &str = String::as_str(&tmp_status);
     let percentage: i8 = get_battery_percentage();
@@ -83,4 +77,8 @@ fn draw_status_icon() -> &'static str {
 
     /* Return a fallback value */
     "~"
+}
+
+pub fn draw_icon() -> String {
+    format!("{} {}", draw_charge(), draw_status())
 }

@@ -1,16 +1,8 @@
 use std::process::Command;
-use std::process::ExitCode;
 use std::fs::File;
 use std::io::prelude::*;
 
 static LID_STATE: &'static str = "/proc/acpi/button/lid/LID/state";
-
-fn main() -> ExitCode {
-    if is_lid_open() {
-        println!("  {} ", draw_brightness_bar());
-    }
-    ExitCode::SUCCESS /* Exits the program with exit code for success */ 
-}
 
 fn get_brightness() -> i16 {
     /* Getting the current brightness */
@@ -31,29 +23,6 @@ fn get_brightness() -> i16 {
     (brightness_now * 100 / brightness_max).try_into().unwrap()
 }
 
-fn draw_brightness_bar() -> String {
-    /* dividing the brightness (in percent) by ten to
-     * get the number of full bits in a bar */
-    const BITS: i16 = 4;
-    let level: i16 = get_brightness() * BITS / 100;
-    let mut bar = String::from("");
-    let mut iterator: i16 = 0;
-
-    /* Adding the full bits to the bar */
-    while iterator < level {
-        bar += "ﭳ";
-        iterator += 1;
-    }
-
-    /* Adding the empty bits to the bar */
-    while iterator < BITS {
-        bar += "—";
-        iterator += 1;
-    }
-
-    bar
-}
-
 fn is_lid_open() -> bool {
     /* Define consts for messages */
     const MSG_OPEN: &str   = "state:      open"; 
@@ -71,4 +40,32 @@ fn is_lid_open() -> bool {
         MSG_CLOSED => return false,
         _ => true /* as a fallback */
     }
+}
+
+pub fn draw_bar() -> String {
+    /* returning an empty string when the lid is closed */
+    if !is_lid_open() {
+        return String::from("");
+    }
+
+    /* dividing the brightness (in percent) by ten to
+     * get the number of full bits in a bar */
+    const BITS: i16 = 4;
+    let level: i16 = get_brightness() * BITS / 100;
+    let mut bar = String::from(" ");
+    let mut iterator: i16 = 0;
+
+    /* Adding the full bits to the bar */
+    while iterator < level {
+        bar += "ﭳ";
+        iterator += 1;
+    }
+
+    /* Adding the empty bits to the bar */
+    while iterator < BITS {
+        bar += "—";
+        iterator += 1;
+    }
+
+    bar
 }

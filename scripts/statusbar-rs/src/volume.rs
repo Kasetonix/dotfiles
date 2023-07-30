@@ -1,10 +1,4 @@
 use std::process::Command;
-use std::process::ExitCode;
-
-fn main() -> ExitCode {
-    println!("  {} ", draw_volume_bar());
-    ExitCode::SUCCESS
-}
 
 fn get_volume() -> i8 {
     let output = Command::new("pamixer").arg("--get-volume").output().expect("pamixer couldn't be run.");
@@ -15,11 +9,12 @@ fn get_volume() -> i8 {
     volume.parse::<i8>().unwrap()
 }
 
-fn draw_volume_bar() -> String {
+pub fn draw_bar() -> String {
     /* dividing the volume (in percent) by ten to
      * get the number of full bits in a bar */
     let level = get_volume() / 10;
-    let mut bar = String::from("");
+    /* Prefix the bar with a speaker icon */
+    let mut bar = String::from(" ");
     let mut iterator: i8 = 0;
 
     /* Adding the full bits to the bar */
