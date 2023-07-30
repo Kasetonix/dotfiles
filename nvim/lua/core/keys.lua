@@ -1,4 +1,4 @@
--- /// KEYS.LUA | Custom keybinds (excluding plugins) ///
+-- /// KEYS.LUA | Custom keybinds (excluding plugins) /// 
 
 -- Setting the leader to space
 vim.g.mapleader = " "

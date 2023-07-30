@@ -10,17 +10,22 @@ require('telescope').setup {
       },
     },
   },
+  pickers = {
+    find_files = {
+      hidden = false, -- disabling hidden files
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
 -- Telescope shortcuts
-vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc = 'Search [F]iles' })
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc = 'Search files' })
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
 vim.keymap.set('n', '<leader>/', function()
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { previewer = false })
-end, { desc = '[/] Fuzzily search in current buffer' })
+end, { desc = 'Fuzzily search in current buffer' })
 
 -- /// TODO-COMMENTS ///
 require("todo-comments").setup {
@@ -76,7 +81,7 @@ vim.g.loaded_netrwPlugin = 1
 
 require("nvim-tree").setup {
   view = { width = 30, },         -- set width
-  filters = { dotfiles = true, }, -- Showing dotfiles
+  filters = { dotfiles = false, }, -- Showing dotfiles
 }
 
 vim.keymap.set("n", "<leader>t", vim.cmd.NvimTreeToggle, { desc = "Toggle nvim-tree "}) -- opening the nvim-tree

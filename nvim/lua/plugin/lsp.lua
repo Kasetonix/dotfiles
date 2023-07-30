@@ -18,11 +18,11 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  lspmap('<leader>r', vim.lsp.buf.rename, '[R]ename')
-  lspmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  lspmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  lspmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-  lspmap('<leader>s', require('telescope.builtin').lsp_document_symbols, '[S]ymbols')
+  lspmap('<leader>r', vim.lsp.buf.rename, 'Rename')
+  lspmap('gd', vim.lsp.buf.definition, 'Go to definition')
+  lspmap('gr', require('telescope.builtin').lsp_references, 'Go to references')
+  lspmap('gI', vim.lsp.buf.implementation, 'Go to implementation')
+  lspmap('<leader>s', require('telescope.builtin').lsp_document_symbols, 'Symbols')
 
   -- See `:help K` for why this keymap
   lspmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -67,7 +67,7 @@ lspconfig.clangd.setup { -- C/C++
 }
 
 -- /// RUST ///
-lspconfig.rust_analyzer.setup { --rust
+lspconfig.rust_analyzer.setup { -- rust
   on_attach = on_attach,
   capabilities = capabilities,
 }

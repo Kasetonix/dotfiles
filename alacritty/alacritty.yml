@@ -26,12 +26,13 @@ scrolling:
 font:
   size: 9
   normal:
-    #family: Mononoki Nerd Font
+    # family: Mononoki Nerd Font
     family: JetBrainsMono Nerd Font
-    #family: Iosevka 
+    # family: Iosevka 
+    # family: Comic Shanns
     
 shell:
-  program: /bin/fish
+  program: /bin/zsh
 
 color_schemes:
 # /// Nord ///
@@ -115,7 +116,6 @@ color_schemes:
     magenta: '#D3869B'
     cyan: '#8EC07C'
     white: '#FBF1C7'
-
 # /// Solarized ///
   solarized: &solarized
     primary:
@@ -189,7 +189,7 @@ color_schemes:
       cyan: '#56b6c2'
       white: '#abb2bf'
     bright:
-      black: '#31343f'
+      black: '#5c6370'
       red: '#e06c75'
       green: '#98c379'
       yellow: '#e5c07b'
