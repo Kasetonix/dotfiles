@@ -40,7 +40,7 @@
     alternate-urgent-background: @urgent-background;
 
     spacing: 3;
-	font: "JetBrains Mono Nerd Font 18";
+	font: "JetBrains Mono Nerd Font 16";
 	lines: 9;
 
 }
@@ -143,13 +143,6 @@ prompt {
 inputbar {
     children:   [ prompt,entry,case-indicator ];
 }
-textbox-prompt-colon {
-    expand:     false;
-    str:        ":";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @cyan;
-}
-
 listview {
     scrollbar:    false;
     padding:      5px 0px 0px ;
