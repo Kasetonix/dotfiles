@@ -1,5 +1,6 @@
 # Environment variables
 EDITOR="nvim"
+VISUAL="nvim"
 RANGER_LOAD_DEFAULT_RC="false"
 PAGER="bat"
 

@@ -8,3 +8,4 @@ function diskspace() {
 
 # cd & ls at the same time 
 function cl() { cd $1 && ls }
+

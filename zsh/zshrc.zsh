@@ -12,6 +12,7 @@ SAVEHIST=10000
 
 setopt autocd nomatch notify PROMPT_SUBST hist_ignore_all_dups
 unsetopt beep # turning the beep off
+bindkey -e # Default keybinds (emacs-like) 
 stty stop undef # disabling ctrl-s stopping the terminal 
 
 # PATH

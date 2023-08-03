@@ -2,7 +2,7 @@
 alias conf-i3='$EDITOR ~/.config/i3/config && cd ~/.config/i3/'
 alias conf-hypr='$EDITOR ~/.config/hypr/hypr.conf && cd ~/.config/hypr/'
 alias conf-dwm='$EDITOR ~/.dwm/config.def.h && cd ~/.dwm/'
-alias conf-alacritty='$EDITOR ~/.config/alacritty/alacritty.yml && cd ~/.config/alacritty/'
+alias conf-alacritty='$EDITOR ~/.config/alacritty/ && cd ~/.config/alacritty/'
 alias conf-kitty='$EDITOR ~/.config/kitty/kitty.conf && cd ~/.config/kitty/'
 alias conf-polybar='$EDITOR ~/.config/polybar/config.ini && cd ~/.config/polybar/'
 alias conf-bash='$EDITOR ~/.bashrc && cd ~'
