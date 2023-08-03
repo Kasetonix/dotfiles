@@ -28,6 +28,18 @@ elif [[ $quality == "3" ]]; then
     quality="high"
 fi
 
+case $quality in
+"1")
+    quality="low"
+    ;;
+"2")
+    quality="standard"
+    ;;
+"3")
+    quality="high"
+    ;;
+esac
+
 # Getting the desired framerate
 inc_answer="true"
 while [[ $inc_answer == "true" ]]; do
@@ -40,13 +52,17 @@ while [[ $inc_answer == "true" ]]; do
 done
 
 # Converting the framerate from numbers to values
-if [[ $framerate == "1" ]]; then
+case $framerate in
+"1")
     framerate="24"
-elif [[ $framerate == "2" ]]; then
+    ;;
+"2")
     framerate="30"
-elif [[ $framerate == "2" ]]; then
+    ;;
+"3")
     framerate="60"
-fi
+    ;;
+esac
 
 # Some verbose output
 echo "$fg_bold[yellow][output]: $fg_no_bold[green]$recording_path_display"
@@ -61,14 +77,78 @@ microphone_audio_input="$(pactl list short sources | grep "alsa_input.usb" | awk
 # audio_input='$(pactl list short sources | grep "IDLE" | awk '{print $1}')'
 
 # Setting the correct options based on chosen quality 
-case $quality in
+if [[ $headphone_audio_input != "" ]]; then
+    case $quality in
     "low")
-        ffmpeg -loglevel quiet -threads 4 -framerate $framerate -color_range 2 -f x11grab -i $DISPLAY -f pulse -i $headphone_audio_input -f pulse -i $microphone_audio_input -pix_fmt yuv420p -acodec aac $recording_path
+        ffmpeg_args=(
+            -loglevel quiet -threads 4
+            -framerate $framerate -color_range 2
+            -f x11grab -i $DISPLAY
+            -f pulse -i $headphone_audio_input -f pulse -i $microphone_audio_input
+            -pix_fmt yuv420p
+            -acodec aac
+            $recording_path
+        )
     ;;
     "standard")
-        ffmpeg -loglevel quiet -threads 4 -framerate $framerate -color_range 2 -f x11grab -i $DISPLAY -f pulse -i $headphone_audio_input -f pulse -i $microphone_audio_input -crf 20 -preset faster -vcodec libx264rgb -acodec aac $recording_path
+        ffmpeg_args=(
+            -loglevel quiet -threads 4 
+            -framerate $framerate -color_range 2 
+            -f x11grab -i $DISPLAY 
+            -f pulse -i $headphone_audio_input -f pulse -i $microphone_audio_input 
+            -crf 24 -preset superfast -vcodec libx264rgb 
+            -acodec aac 
+            $recording_path
+        )
     ;;
     "high")
-        ffmpeg -loglevel quiet -threads 4 -framerate $framerate -color_range 2 -f x11grab -i $DISPLAY -f pulse -i $headphone_audio_input -f pulse -i $microphone_audio_input -crf 16 -preset faster -vcodec libx264rgb -acodec aac $recording_path
+        ffmpeg_args=(
+            -loglevel quiet -threads 4 
+            -framerate $framerate -color_range 2 
+            -f x11grab -i $DISPLAY 
+            -f pulse -i $headphone_audio_input -f pulse -i $microphone_audio_input 
+            -crf 16 -preset superfast -vcodec libx264rgb 
+            -acodec aac 
+            $recording_path
+        )
+    ;;  
+    esac
+else
+    case $quality in
+    "low")
+        ffmpeg_args=(
+            -loglevel quiet -threads 4
+            -framerate $framerate -color_range 2
+            -f x11grab -i $DISPLAY
+            -f pulse -i $speaker_audio_input
+            -pix_fmt yuv420p
+            -acodec aac
+            $recording_path
+        )
     ;;
-esac
+    "standard")
+        ffmpeg_args=(
+            -loglevel quiet -threads 4 
+            -framerate $framerate -color_range 2 
+            -f x11grab -i $DISPLAY 
+            -f pulse -i $speaker_audio_input
+            -crf 24 -preset superfast -vcodec libx264rgb 
+            -acodec aac 
+            $recording_path
+        )
+    ;;
+    "high")
+        ffmpeg_args=(
+            -loglevel quiet -threads 4 
+            -framerate $framerate -color_range 2 
+            -f x11grab -i $DISPLAY 
+            -f pulse -i $speaker_audio_input
+            -crf 16 -preset superfast -vcodec libx264rgb 
+            -acodec aac 
+            $recording_path
+        )
+    ;;  
+    esac
+fi
+
+ffmpeg "${ffmpeg_args[@]}" 
