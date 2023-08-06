@@ -33,7 +33,7 @@ require("todo-comments").setup {
   sign_priority = 8,
 
   keywords = { -- keywords to recognise and color
-    FIX  = { icon = " ", color = "error", alt = { "BUG", "ISSUE" }, },
+    FIX  = { icon = " ", color = "error", alt = { "BUG", "ERR", "ERROR" }, },
     TODO = { icon = " ", color = "info" },
     HACK = { icon = " ", color = "warning" },
     WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
