@@ -2,7 +2,6 @@
 EDITOR="nvim"
 VISUAL="nvim"
 RANGER_LOAD_DEFAULT_RC="false"
-PAGER="bat"
 
 # FZF default options
 fzf_default_opts+=(

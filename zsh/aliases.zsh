@@ -7,9 +7,10 @@ alias print-ip='ip -br -4 -c addr'
 alias fetch="neofetch"
 alias mount="doas mount -o dmask=000,fmask=111"
 alias umount="doas umount"
+alias emerge="emerge --ask --quiet"
 
 # functionality
-alias untar='tar -xzf'
+alias untar='tar -xf'
 alias space='du -sh 2>/dev/null'
 alias glg='git log --oneline --graph --decorate'
 alias check-wmclass='xprop | grep "WM_CLASS(STRING)"'
@@ -23,13 +24,13 @@ alias cp='cp -ir'
 alias rm='rm -ir'
 alias ln='ln -i'
 
-# ls -> exa
-alias exa='exa --icons --color=always --group-directories-first'
-alias ls='exa'
-alias ll='exa -la'
-alias la='exa -a'
-alias lh='exa -1'
-alias lt='exa --tree'
+# ls -> eza
+alias eza='eza --icons --color=always --group-directories-first'
+alias ls='eza'
+alias ll='eza -la'
+alias la='eza -a'
+alias lh='eza -1'
+alias lt='eza --tree'
 
 # cat / less -> bat
 alias bat="bat --theme OneHalfDark"
