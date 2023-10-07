@@ -25,15 +25,15 @@ fi
 
 # CTRL-R - Paste the selected command from history into the command line
 fzf-history-widget() {
-  fzf_ctrl_r_opts+=(
+  fzf_history_search_opts+=(
     "--scheme=history"
     "--height=33%"
-  ) export FZF_CTRL_R_OPTS=$(printf '%s\n' "${fzf_ctrl_r_opts[@]}")
+  ) export FZF_HISTORY_SEARCH_OPTS=$(printf '%s\n' "${fzf_history_search_opts[@]}")
 
   local selected num
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
   selected=( $(fc -rl 1 | awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' |
-    FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS-} ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER}" fzf) )
+    FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS-} ${FZF_HISTORY_SEARCH_OPTS-} --query=${(qqq)LBUFFER}" fzf) )
   local ret=$?
   if [ -n "$selected" ]; then
     num=$selected[1]
