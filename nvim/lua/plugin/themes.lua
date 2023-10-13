@@ -43,9 +43,9 @@ require("transparent").setup {
   -- exclude_groups = {}, -- table: groups you don't want to clear
 }
 
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
+require('ibl').setup {
+  indent = { char = "│" },
+  -- indent = { char = "┊" },
 }
 
 -- vim: ts=2 sts=2 sw=2 et

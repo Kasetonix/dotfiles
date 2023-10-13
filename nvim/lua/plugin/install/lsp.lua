@@ -8,6 +8,7 @@ return {
   'neovim/nvim-lspconfig',    -- LSP Configuration & Plugins
   'folke/neodev.nvim',        -- support for init.lua and plugin development
   -- 'simrat39/rust-tools.nvim', -- LSP rust support made easier
+  'onsails/lspkind.nvim',     -- Adds icons to completion
 
   { 'hrsh7th/nvim-cmp',       -- Autocompletion
     dependencies = {
