@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = discord
+
+[Action]
+Description = Replacing app.asar with OpenAsar 
+Depends = coreutils
+When = PostTransaction
+Exec = /bin/cp -f /opt/discord/resources/app.asar.openasar /opt/discord/resources/app.asar
