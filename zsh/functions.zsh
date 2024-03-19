@@ -9,3 +9,10 @@ function diskspace() {
 # cd & ls at the same time 
 function cl() { cd $1 && ls }
 
+function objdumpd() {
+    unbuffer objdump -d --visualize-jumps $1 | less -R
+}
+
+function gcomp() {
+    g++ $1.cpp -o $1 && ./$1
+}
