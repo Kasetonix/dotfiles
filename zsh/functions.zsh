@@ -16,3 +16,7 @@ function objdumpd() {
 function gcomp() {
     g++ $1.cpp -o $1 && ./$1
 }
+
+function gcom() {
+    git commit -m "$(date '+[%d.%m.%Y]') $1"
+}
