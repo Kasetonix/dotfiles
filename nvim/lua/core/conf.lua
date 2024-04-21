@@ -1,7 +1,7 @@
 -- /// CONF.LUA | lua options ///
 
 vim.o.hlsearch = false -- Set highlight on search
-vim.o.sh = "fish" -- set default vim shell to fish
+vim.o.sh = "zsh" -- set default vim shell to zsh
 vim.wo.number = true -- setting line numbers
 vim.o.mouse = 'a' -- enabling mouse
 vim.o.clipboard = 'unnamedplus' -- using os clipboard
