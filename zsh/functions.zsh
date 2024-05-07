@@ -32,5 +32,6 @@ function fzcdh() {
 
 function yt-dl() {
     dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | fzf)"
-    yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --no-simulate --print "pre_process:title" -o "%(title)s.%(ext)s" --restrict-filenames --progress --extractor-args "youtube:player_client=web" -N 3 -P "$dest" "$1"
+    yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --no-simulate --print "pre_process:title" -o "%(title)s.%(ext)s" --restrict-filenames --embed-subs --parse-metadata "title:%(title)s artist:%(artist)s" --embed-metadata --progress --extractor-args "youtube:player_client=web" -N 3 -P "$dest" "$1"
+    echo "[path]: $dest"
 }
