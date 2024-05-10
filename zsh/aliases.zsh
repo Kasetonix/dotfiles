@@ -15,8 +15,11 @@ alias space='du -sh 2>/dev/null'
 alias glg='git log --oneline --graph --decorate'
 alias check-wmclass='xprop | grep "WM_CLASS(STRING)"'
 alias feh='feh --no-fehbg'
+alias glow="PAGER='bat --decorations=never --color=always' glow"
 alias defwall='feh --bg-fill /home/kasetonix/pics/walls/defwall'
 alias altwall='feh --bg-fill /home/kasetonix/pics/walls/altwall'
+alias fzcd='cd $(find . -mindepth 1 -type d \( -name ".*" -prune -o -print \) | fzf)'
+alias fzcdh='cd $(find . -mindepth 1 -type d | fzf)'
 
 # Turning confirmations on + recursive
 alias mv='mv -i'
@@ -33,4 +36,6 @@ alias lh='eza -1'
 alias lt='eza --tree'
 
 # cat / less -> bat
-alias bat="bat --theme OneHalfDark"
+alias bat="bat --theme OneHalfDark --color=always"
+
+
