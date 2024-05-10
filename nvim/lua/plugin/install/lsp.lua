@@ -9,6 +9,12 @@ return {
   'folke/neodev.nvim',        -- support for init.lua and plugin development
   -- 'simrat39/rust-tools.nvim', -- LSP rust support made easier
   'onsails/lspkind.nvim',     -- Adds icons to completion
+  'SmiteshP/nvim-navic',      -- show code context in statusline
+  { 'SmiteshP/nvim-navbuddy', -- symbol navigation popup
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim"
+  }},
 
   { 'hrsh7th/nvim-cmp',       -- Autocompletion
     dependencies = {

@@ -1,10 +1,23 @@
 -- /// LSP.LUA | plugins responsible for LSP support ///
 
 -- /// MASON ///
-require('mason').setup {}
+require("mason").setup{
+  ui = {
+    border = "rounded";
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
+    }
+  };
+}
+
 require('mason-lspconfig').setup {}
 
-local lspconfig = require 'lspconfig' -- makes writeing the config easier
+local lspconfig = require("lspconfig") -- makes writing the config easier
+local navic = require("nvim-navic")
+local navbuddy = require("nvim-navbuddy")
+local nb_actions = require("nvim-navbuddy.actions")
 
 -- /// ON_ATTACH ///
 local on_attach = function(_, bufnr)
@@ -26,6 +39,12 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   lspmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+
+  -- navic/navbuddy setup
+  if _.server_capabilities.documentSymbolProvider then
+      navic.attach(_, bufnr)
+      navbuddy.attach(_, bufnr)
+  end
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -134,5 +153,62 @@ cmp.setup {
 }
 
 luasnip.config.setup {}
+
+-- /// navic ///
+navic.setup {
+  lsp = { auto_attach = true, },
+  separator = "  ",
+  click = true,
+}
+
+navbuddy.setup {
+  window = {
+    border = "rounded",
+    sections = {
+      left = { size = "20%", border = nil, },
+      mid = { size = "40%", border = nil, },
+      right = { border = nil, preview = "leaf", }
+    },
+  },
+
+  node_markers = {
+    icons = {
+      leaf = " →",
+      leaf_selected = " →",
+      branch = " ",
+    },
+  },
+
+  use_default_mappings = false,
+  mappings = {
+    ["<esc>"] = nb_actions.close(),
+    ["q"] = nb_actions.close(),
+    ["<enter>"] = nb_actions.select(),
+
+    -- Movement
+    ["<Down>"] = nb_actions.next_sibling(),
+    ["<Up>"] = nb_actions.previous_sibling(),
+    ["<Left>"] = nb_actions.parent(),
+    ["<Right>"] = nb_actions.children(),
+    ["0"] = nb_actions.root(),
+
+    ["p"] = nb_actions.toggle_preview(),
+
+    -- Actions
+    ["y"] = nb_actions.yank_name(),        -- Yank the name to system clipboard "+
+    ["Y"] = nb_actions.yank_scope(),       -- Yank the scope to system clipboard "+
+    ["r"] = nb_actions.rename(),           -- Rename currently focused symbol
+    ["d"] = nb_actions.delete(),           -- Delete scope
+    ["gc"] = nb_actions.comment(),          -- Comment out current scope
+    ["t"] = nb_actions.telescope(),         -- Fuzzy finder at current level.
+
+    ["?"] = nb_actions.help(),            -- Open mappings help window
+  },
+
+  source_buffer = {
+    follow_node = true,    -- Keep the current node in focus on the source buffer
+    highlight = true,      -- Highlight the currently focused node
+  },
+}
 
 -- vim: ts=2 sts=2 sw=2 et
