@@ -1,7 +1,7 @@
 -- /// LSP.LUA | plugins responsible for LSP support ///
 
 -- /// MASON ///
-require("mason").setup{
+require("mason").setup {
   ui = {
     border = "rounded";
     icons = {
@@ -13,6 +13,7 @@ require("mason").setup{
 }
 
 require('mason-lspconfig').setup {}
+require('lazydev').setup {}
 
 local lspconfig = require("lspconfig") -- makes writing the config easier
 local navic = require("nvim-navic")
@@ -42,9 +43,11 @@ local on_attach = function(_, bufnr)
 
   -- navic/navbuddy setup
   if _.server_capabilities.documentSymbolProvider then
-      navic.attach(_, bufnr)
-      navbuddy.attach(_, bufnr)
+    navic.attach(_, bufnr)
+    navbuddy.attach(_, bufnr)
+    vim.keymap.set('n', "<leader>n", vim.cmd.Navbuddy, { desc = "Open navbuddy" })
   end
+
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -157,7 +160,7 @@ luasnip.config.setup {}
 -- /// navic ///
 navic.setup {
   lsp = { auto_attach = true, },
-  separator = "  ",
+  separator = " => ",
   click = true,
 }
 

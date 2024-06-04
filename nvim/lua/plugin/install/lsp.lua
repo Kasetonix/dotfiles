@@ -6,15 +6,10 @@ return {
   'williamboman/mason-lspconfig.nvim',
 
   'neovim/nvim-lspconfig',    -- LSP Configuration & Plugins
-  'folke/neodev.nvim',        -- support for init.lua and plugin development
-  -- 'simrat39/rust-tools.nvim', -- LSP rust support made easier
+  'folke/lazydev.nvim',       -- LuaLS and nvim config support
   'onsails/lspkind.nvim',     -- Adds icons to completion
   'SmiteshP/nvim-navic',      -- show code context in statusline
-  { 'SmiteshP/nvim-navbuddy', -- symbol navigation popup
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "MunifTanjim/nui.nvim"
-  }},
+  'SmiteshP/nvim-navbuddy',   -- symbol navigation popup
 
   { 'hrsh7th/nvim-cmp',       -- Autocompletion
     dependencies = {
