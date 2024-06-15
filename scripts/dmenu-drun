@@ -1,0 +1,190 @@
+#!/usr/bin/env python
+# Ref: https://specifications.freedesktop.org/desktop-entry-spec
+import os
+import argparse
+import shutil
+from subprocess import run, PIPE
+
+categories = [
+    "AudioVideo",
+    "Audio",
+    "Video",
+    "Development",
+    "Education",
+    "Game",
+    "Graphics",
+    "Network",
+    "Office",
+    "Science",
+    "Settings",
+    "System",
+    "Utility",
+]
+
+
+def get_args():
+    parser = argparse.ArgumentParser(
+            description='Use dmenu to launch desktop applications',
+            epilog='Note: Other than the options described here, all the dmenu '
+            'options can be passed to dmenu_drun as well, especially if the '
+            'dmenu arguments have spaces. "-d" option is only recommended to '
+            'specify dmenu alternatives like rofi.')
+    parser.add_argument('-c', '--categories', action='store_true',
+                        help='Show main category names')
+    parser.add_argument('-C', '--all-categories', action='store_true',
+                        help='Show all category names')
+    parser.add_argument('-d', '--dmenu', metavar='dmenu_cmd',
+                        default='dmenu -i -l 10 -S',
+                        help='Customize dmenu command, default is %(default)s')
+    parser.add_argument('-E', '--ignore-de', action='store_true',
+                        help='Show all apps despite desktop environments')
+    parser.add_argument('-g', '--generic-name', action='store_true',
+                        help='Show generic name for apps')
+    parser.add_argument('-k', '--keywords', action='store_true',
+                        help='Show keywords')
+    parser.add_argument('-N', '--dry-run', action='store_true',
+                        help='Do not run app, output to stdout')
+    parser.add_argument('-t', '--terminal', metavar='terminal',
+                        default='st',
+                        help='Terminal emulator to use, default is %(default)s')
+    parser.add_argument('-x', '--executable', action='store_true',
+                        help='Show executable name')
+    parser.add_argument('-X', '--fullcmd', action='store_true',
+                        help='Show command line')
+    return parser.parse_known_args()
+
+
+def ini_parse(inifile):
+    content = {}
+    section = None
+
+    for line in open(inifile):
+        line = line.strip()
+        if len(line) > 2 and line[0] == '[' and line[-1] == ']':
+            section = line[1:-1]
+            content[section] = {}
+        elif line.find("=") >= 0 and section:
+            key, sep, value = line.partition("=")
+            content[section][key.strip()] = value.strip()
+
+    return content
+
+
+def get_apps():
+    XDG_DATA_HOME = os.path.join(os.getenv("HOME"), ".local", "share")
+    XDG_DATA_HOME = os.getenv("XDG_DATA_HOME", XDG_DATA_HOME)
+    XDG_DATA_DIRS = os.getenv("XDG_DATA_DIRS", "/usr/share:/usr/local/share")
+    XDG_DATA_DIRS = XDG_DATA_DIRS.split(":")
+
+    apps = {}
+    for data_dir in [XDG_DATA_HOME, *XDG_DATA_DIRS]:
+        app_dir = os.path.join(data_dir, 'applications')
+        if not os.path.exists(app_dir) or not os.path.isdir(app_dir):
+            continue
+
+        # Desktop entry files can be in nested directories
+        for root, dirs, files in os.walk(app_dir):
+            for name in files:
+                if not name.endswith('.desktop'):
+                    continue
+
+                app = os.path.join(root, name)
+                app_id = os.path.relpath(app, app_dir).replace('/', '-')
+
+                # Apps with the same id, choose the first
+                if apps.get(app_id) is None:
+                    apps[app_id] = app
+
+    return apps.values()
+
+
+def if_show(entry):
+    if entry.get('Exec') is None:
+        return False
+    if entry.get('Type') != "Application":
+        return False
+    if entry.get('NoDisplay') == 'true' or entry.get('Hidden') == 'true':
+        return False
+    if entry.get('TryExec') and shutil.which(entry.get('TryExec')) is None:
+        return False
+    if not args.ignore_de:
+        NotShowIn = entry.get('NotShowIn')
+        if NotShowIn and len(set(NotShowIn.split(';')).intersection(current_desktops)) > 0:
+            return False
+        OnlyShowIn = entry.get('OnlyShowIn')
+        if OnlyShowIn and len(set(OnlyShowIn.split(';')).intersection(current_desktops)) == 0:
+            return False
+    return True
+
+
+def add_entry(entry):
+    Exec = entry.get('Exec')
+    Icon = entry.get('Icon')
+    Name = entry.get('Name')
+    Path = entry.get('Path')
+    Keys = entry.get('Keywords')
+    Terminal = entry.get('Terminal') == 'true'
+    GenericName = entry.get('GenericName')
+    Categories = entry.get('Categories')
+
+    line = Name
+    if GenericName and args.generic_name:
+        line += f" ({GenericName})"
+    if Categories:
+        if args.all_categories:
+            line += f" @{Categories}"
+        elif args.categories:
+            category = [c for c in Categories.split(';') if c in categories][0]
+            line += f" @{category}"
+    if Exec:
+        exe = Exec.split()[0].split('/')[-1]
+        cmd = Exec.replace('%f', '') \
+                  .replace('%F', '') \
+                  .replace('%u', '') \
+                  .replace('%U', '') \
+                  .replace('%c', Name) \
+                  .replace('%k', Path if Path else '')
+        if Icon:
+            cmd = cmd.replace('%i', f"--icon {Icon}")
+        if Terminal:
+            cmd = f"{args.terminal} -e {cmd}"
+
+        if args.fullcmd:
+            line += f" ${cmd}"
+        elif args.executable:
+            line += f" ${exe}"
+    if Keys and args.keywords:
+        line += f" #{Keys}"
+    if Icon and args.dmenu.startswith("rofi"):
+        line += f"\0icon\x1f{Icon}"
+
+    return {line: cmd}
+
+
+if __name__ == '__main__':
+    current_desktops = os.getenv('XDG_CURRENT_DESKTOP')
+    if current_desktops:
+        current_desktops = set(current_desktops.split(':'))
+    else:
+        current_desktops = set()
+
+    args, dmenu_args = get_args()
+    dmenu_cmd = args.dmenu.split()
+    dmenu_cmd.extend(dmenu_args)
+    #dmenu_cmd.extend('-p "➜ "')
+
+    cmds = {}
+    for app in get_apps():
+        entry = ini_parse(app)['Desktop Entry']
+        if if_show(entry):
+            cmds.update(add_entry(entry))
+    lines = '\n'.join(sorted(cmds.keys()))
+
+    result = run(dmenu_cmd, input=lines, stdout=PIPE, encoding='utf-8')
+    if result.returncode == 0:
+        command = cmds[result.stdout[:-1]]
+
+        if args.dry_run:
+            print(command)
+        elif result.stdout != '':
+            run(command, shell=True)

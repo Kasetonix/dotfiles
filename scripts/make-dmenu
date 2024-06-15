@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ $(pwd) != "/home/kasetonix/.dmenu" ]; then
+	PRVDIR=$(pwd)
+	cd /home/kasetonix/.dmenu/
+fi
+
+cp config.def.h config.h
+doas make clean install
+doas rm dmenu stest *.o
+cd $PRVDIR
