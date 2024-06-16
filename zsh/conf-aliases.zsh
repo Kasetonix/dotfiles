@@ -3,6 +3,7 @@
 # alias conf-i3='cd ~/.config/i3/ && $EDITOR ~/.config/i3/config'
 # alias conf-hypr='cd ~/.config/hypr/ && $EDITOR ~/.config/hypr/hypr.conf'
 alias conf-dwm='cd ~/.dwm/ && $EDITOR ~/.dwm/config.def.h'
+alias conf-dmenu='cd ~/.dmenu/ && $EDITOR ~/.dmenu/config.def.h'
 alias conf-st='cd ~/.st/ && $EDITOR ~/.st/config.def.h'
 # alias conf-alacritty='cd ~/.config/alacritty/ && $EDITOR ~/.config/alacritty/'
 # alias conf-kitty='cd ~/.config/kitty/ && $EDITOR ~/.config/kitty/kitty.conf'

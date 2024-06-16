@@ -2,7 +2,7 @@
 EDITOR="nvim"
 VISUAL="nvim"
 RANGER_LOAD_DEFAULT_RC="false"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#55595f"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
 
 # FZF default options
 fzf_default_opts+=(
