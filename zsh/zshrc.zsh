@@ -30,11 +30,9 @@ source "$ZDOTDIR/source-functions.zsh"
 autoload -U colors && colors
 setopt PROMPT_SUBST
 source-plugin-local "short-pwd.zsh" # Sourcing the function for shortening the pwd
-PS1='%{$fg_bold[green]%}$(short-pwd) %(!.%{$fg_bold[red]%}.%{$fg_bold[cyan]%})➜ %{$reset_color%}%{$fg_bold[white]%}'
-# PS1='%{$fg_bold[green]%}$(short-pwd) %(!.%{$fg_bold[red]%}.%{$fg_bold[cyan]%}) %{$reset_color%}%{$fg_bold[white]%}'
-
-PS2='%{$fg_bold[cyan]%}$(short-pwd-len) ➜ %{$reset_color%}%{$fg_bold[white]%}'
-# PS2='%{$fg_bold[cyan]%}$(short-pwd-len)  %{$reset_color%}%{$fg_bold[white]%}'
+# PS1='%{$fg_bold[green]%}$(short-pwd) %(?.%{$fg_bold[cyan]%}.%{$fg_bold[red]%})➜ %{$reset_color%}%{$fg_bold[white]%}'
+PS1='%{$fg_bold[green]%}$(short-pwd) %(!.%{$fg_bold[yellow]%}.%{$fg_bold[cyan]%})%(?..%{$fg_bold[red]%})%(!.*.➜) %{$reset_color%}%{$fg_bold[white]%}'
+PS2='$(short-pwd-len) %(!.%{$fg_bold[yellow]%}.%{$fg_bold[cyan]%})%(!.*.➜) %{$reset_color%}%{$fg_bold[white]%}'
 preexec() { printf "\e[0m"; } # resetting the formatting before the command executes
 
 # Sourcing configs

@@ -63,7 +63,8 @@
 
 @-moz-document url-prefix(about:){
     body                                { background-color: var(--bg-dark) !important; }
-    body,html                           { overflow-y: auto !important; font-family: JetBrainsMono Nerd Font !important; }
+    /* body,html                           { overflow-y: auto !important; font-family: JetBrainsMono Nerd Font !important; } */
+    body,html                           { overflow-y: auto !important; font-family: Victor Mono !important; font-weight: 600 !important; }
     .selector                           { background-color: var(--bg-light) !important; border: var(--bg-light) !important; }
     .rich-icon, .tile, .top-site-icon   { background-color: var(--bg-light) !important; }
     .section input:checked+.slider      { --newtab-primary-action-background: var(--bg-dark) !important; }

@@ -294,14 +294,17 @@ tooltip {
     -moz-appearance: none !important;
     background:#262b32 !important;
     color: #abb2bf !important;
-    font-family: JetBrainsMono Nerd Font !important;
+    /* font-family: JetBrainsMono Nerd Font !important; */
+    font-family: Victor Mono !important;
+    font-weight: 600 !important;
 }
 
 /* font change on the bar */
 * {
-    font-family: JetBrains Mono Nerd Font !important;
+    /* font-family: JetBrains Mono Nerd Font !important; */
+    font-family: Victor Mono !important;
     font-size:   10pt !important;
-    font-weight: regular !important;
+    font-weight: 600 !important;
 }
 
 /* Remove items from image context menu */
