@@ -11,7 +11,7 @@ fzf_default_opts+=(
     "--height=50%"
     "--multi"
     "--prompt='> '"
-    "--pointer='▶'"
-    "--marker='✓'"
-    "--color='hl:cyan,hl+:blue,bg+:black,pointer:cyan,marker:red,gutter:black'"
+    "--pointer='➜ '"
+    "--marker=''"
+    "--color='hl:cyan,hl+:blue,bg+:-1,pointer:cyan,marker:red,gutter:-1'"
 ) export FZF_DEFAULT_OPTS=$(printf '%s\n' "${fzf_default_opts[@]}")
