@@ -1,5 +1,0 @@
-# Unmasking firebird (a requirement for libreoffice with database support)
-dev-db/firebird
-
-# exa -> eza
-sys-apps/eza

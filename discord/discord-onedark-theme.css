@@ -2,7 +2,6 @@
  * @name discordrecolor
  * @description Allows you to customize Discord's native Color Scheme.
  * @author DevilBro
- * @invite Jx3TjNS
  * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Themes/DiscordRecolor/
  * @BDEditor DiscordRecolor
 */
@@ -20,8 +19,8 @@
   --textdark: 153,160,171;
   --textdarker: 136,142,152;
   --textdarkest: 119,124,133;
-  --font: JetBrainsMono Nerd Font;
-  --font-code: JetBrainsMono Nerd Font;
+  --font: Victor Mono SemiBold;
+  --font-code: Victor Mono SemiBold;
   --backgroundaccent: 49,52,63;
   --backgroundprimary: 39,41,50;
   --backgroundsecondary: 34,36,44;
