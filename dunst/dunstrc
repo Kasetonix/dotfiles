@@ -19,12 +19,14 @@
     horizontal_padding = 10
     text_icon_padding = 10
     frame_width = 3
-    frame_color = "#56b6c2"
+    # frame_color = "#56b6c2"
+    frame_color = "#abb2bf"
     separator_color = frame
     sort = yes
 
     # /// Text ///
-    font = JetBrains Mono Nerd Font 12
+    # font = JetBrains Mono Nerd Font 12
+    font = Victor Mono SemiBold 14
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
