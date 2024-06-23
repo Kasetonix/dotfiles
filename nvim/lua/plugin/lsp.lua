@@ -48,7 +48,6 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', "<leader>n", vim.cmd.Navbuddy, { desc = "Open navbuddy" })
   end
 
-
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -65,35 +64,38 @@ lspconfig.lua_ls.setup { -- Lua
   capabilities = capabilities,
   settings = {
     Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {
-          'vim',
-          'require'
-        },
-      },
+      telemetry = { enable = false, },
+      diagnostics = { globals = { 'vim', 'require' } },
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
         checkThirdParty = false,
       },
-
-      telemetry = { enable = false, },
     },
   },
 }
 
 -- /// C/C++ ///
-lspconfig.clangd.setup { -- C/C++
+lspconfig.clangd.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
 -- /// RUST ///
-lspconfig.rust_analyzer.setup { -- rust
+lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+-- /// Python ///
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- Removing underlines
+vim.lsp.handlers["textDocument/publishDiaagnostics"] =
+  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { underline = false } )
 
 -- /// NVIM-CMP | LUASNIP ///
 local cmp = require('cmp')

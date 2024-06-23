@@ -3,7 +3,6 @@
 -- Colorscheme
 vim.cmd.colorscheme 'onedark'
 
-
 -- lualine - status line
 require('lualine').setup {
   options = {
@@ -59,9 +58,26 @@ require("transparent").setup {
   -- exclude_groups = {}, -- table: groups you don't want to clear
 }
 
+-- ibl -- adds indent lines
 require('ibl').setup {
   indent = { char = "│" },
   -- indent = { char = "┊" },
 }
+
+-- dressing - changes the look of subwindows
+require("dressing").setup({
+  input = {
+    default_prompt = "➜ ",
+    trim_prompt = true,
+
+    title_pos = "center",
+    border = "rounded",
+    relative = "cursor",
+
+    prefer_width = 0.3,
+    max_width = { 80, 0.6 },
+    min_width = { 20, 0.15 },
+  },
+})
 
 -- vim: ts=2 sts=2 sw=2 et
