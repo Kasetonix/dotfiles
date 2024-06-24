@@ -7,7 +7,7 @@ case "$action" in
     "Shutdown") doas poweroff;;
     "Reboot") doas reboot;;
     "Exit dwm") pkill dwm;;
-    "Reconfigure") /home/kasetonix/.dwm/autostart.sh;;
+    "Reconfigure") pkill autostart.sh && /home/kasetonix/.dwm/autostart.sh;;
     "Cancel") exit 0;;
     *) exit 1;;
 esac
