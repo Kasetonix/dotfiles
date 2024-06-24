@@ -15,9 +15,6 @@
 /*  Removes flash before loading pages  */
 :root { --tabpanel-background-color: var(--toolbar-field-background-color) !important; }
 
-/*  Tab border radius  */
-:root { --tab-border-radius: 3px !important; }
-
 /*  Oneline hack  */
 :root { --navbarWidth: 450pt; --animationSpeed: .15s }
 
