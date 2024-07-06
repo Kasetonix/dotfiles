@@ -15,8 +15,14 @@
 /*  Removes flash before loading pages  */
 :root { --tabpanel-background-color: var(--toolbar-field-background-color) !important; }
 
+/*  Tab border radius  */
+:root { --tab-border-radius: 3px !important; }
+
 /*  Oneline hack  */
 :root { --navbarWidth: 450pt; --animationSpeed: .15s }
+
+/* Removes the titlebar buttons (minimize, maximize, close) */
+.titlebar-buttonbox-container { display: none }
 
 /* Next two sections are for turning the oneline hack 
  * back off when the window is narrow enough */
