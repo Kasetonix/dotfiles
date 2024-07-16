@@ -1,4 +1,4 @@
-# Function for checking the disk usage of the main disk
+#tFunction for checking the disk usage of the main disk
 function diskspace() {
 	echo "TOTAL >$(df -h / --output=size | tail -n 1)"
 	echo "USED  >$(df -h / --output=used | tail -n 1)"
@@ -43,4 +43,40 @@ function dlv() {
         "$1"
 
     echo "[path]: $dest"
+}
+
+function onedarkify {
+    lut="$HOME/pics/onedark-lut.png"
+    input=$1
+    input_extension="${input##*.}"
+    output_filepath="${input%.*}"
+    output="$output_filepath-onedark.$input_extension"
+
+    lutgen apply $input --hald-clut $lut -o $output
+}
+
+function flash-iso {
+    echo "ISO file: $(basename $1)"
+    echo "Device:   $2"
+
+    # checking for existance of $1 (iso file)
+    if [[ ! -f "$1" ]]; then
+        echo "Given iso file doesn't exist"
+        return 1
+    fi
+
+    # checking for existance of $2 (device)
+    if [[ ! -f "$2" ]]; then
+        echo "Given device doesn't exist"
+        return 1
+    fi
+
+    # prompt
+    read "reply?If you wish to continue enter y: "
+    if [[ "$reply" =~ ^[Yy]$ ]]; then
+        dd if="$1" | doas dd of="$2" bs=4M conv=fdatasync
+        echo "[DONE]"
+    else
+        echo "Aborted"
+    fi
 }
