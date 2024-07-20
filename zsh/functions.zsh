@@ -16,8 +16,8 @@ function humanize_filesize {
 
 # prints disk usage on btrfs filesystem
 function diskspace {
-    total=$(btrfs filesystem df --raw / | sed '/Data/!d; s/^.*total\=//; s/,.*$//; s/iB//g')
-    used=$(btrfs filesystem df --raw / | sed '/Data/!d; s/^.*used\=//; s/iB//g')
+    total=$(btrfs filesystem df --raw / | sed '/Data/!d; s/^.*total\=//; s/,.*$//')
+    used=$(btrfs filesystem df --raw / | sed '/Data/!d; s/^.*used\=//')
     free=$(($total - $used))
     used_percent=$(( ($used * 100) / $total))
 
