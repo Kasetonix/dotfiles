@@ -2,7 +2,7 @@
 function humanize_filesize {
     size=$(echo $1 | sed 's/[^0-9.]//g')
     
-    if [ -z $size ]; then; echo "No number was given"; return 1; fi
+    [ -z $size ] && echo "No number was given"; return 1
 
     for unit in B KiB MiB GiB TiB PiB EiB ZiB; do
         if (( $size < 1024.0 )); then;
@@ -48,9 +48,7 @@ function gcom {
 # downloads a video from yt using yt-dlp
 function dlv {
     dest=$2
-    if [ -z $dest ]; then;
-        dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
-    fi
+    [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
 
     yt-dlp \
         --extractor-args "youtube:player_client=web" \
@@ -82,15 +80,17 @@ function flash-iso {
     echo "ISO file: $(basename $1)"
     echo "Device:   $2"
 
-    # checking for existance of $1 (iso file)
-    if [[ ! -f "$1" ]]; then
+    unset drive_ok
+    lsblk | sed '/part/d' | grep -q "$(echo "$2" | sed 's/\/dev\///g')" && drive_ok=true
+
+    # checking for existance of $1 (iso file) and $2 (device)
+    if [[ ! -f $1 ]]; then
         echo "Given iso file doesn't exist"
         return 1
     fi
 
-    # checking for existance of $2 (device)
-    if [[ ! -f "$2" ]]; then
-        echo "Given device doesn't exist"
+    if [[ $drive_ok != true ]]; then
+        echo "Given drive isn't connected"
         return 1
     fi
 
