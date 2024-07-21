@@ -2,7 +2,10 @@
 function humanize_filesize {
     size=$(echo $1 | sed 's/[^0-9.]//g')
     
-    [ -z $size ] && echo "No number was given"; return 1
+    if [ -z $size ]; then; 
+        echo "No number was given"
+        return 1
+    fi
 
     for unit in B KiB MiB GiB TiB PiB EiB ZiB; do
         if (( $size < 1024.0 )); then;
