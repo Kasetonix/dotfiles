@@ -9,7 +9,7 @@ function humanize_filesize {
 
     for unit in B KiB MiB GiB TiB PiB EiB ZiB; do
         if (( $size < 1024.0 )); then;
-            size=$(echo $size | sed 's/\..*//g')
+            size=$(echo $size | sed 's/\..*//g') # stripping of decimal ext
             echo "$size $unit"
             return 0
         fi
@@ -54,17 +54,32 @@ function dlv {
     [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
 
     yt-dlp \
-        --extractor-args "youtube:player_client=web" \
         --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
         --concurrent-fragments 3 \
         --parse-metadata "title:%(title)s artist:%(artist)s" --embed-metadata --embed-subs \
         --no-simulate --print "pre_process:title" \
         --output "%(title)s.%(ext)s" --restrict-filenames \
-        --progress \
+        --progress --no-warnings\
         --paths "$dest" \
         "$1"
 
     echo "[path]: $dest"
+}
+
+# downloads a list of videos, reading links from a file
+function dlvlist() {
+    link_list_file=$1
+    if [ ! -f $link_list_file ]; then
+        echo "The link list file doesn't exist"
+        return 1
+    fi
+
+    dest=$2
+    [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
+
+    for link in $(cat $link_list_file); do
+        dlv "$link" "$dest"
+    done
 }
 
 # creates a onedark version of a picture

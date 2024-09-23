@@ -18,8 +18,8 @@ alias feh='feh --no-fehbg'
 alias glow="PAGER='bat --decorations=never --color=always' glow"
 alias defwall='feh --bg-fill /home/kasetonix/pics/walls/defwall'
 alias altwall='feh --bg-fill /home/kasetonix/pics/walls/altwall'
-alias fzcd='cd $(find . -mindepth 1 -type d \( -name ".*" -prune -o -print \) | fzf)'
-alias fzcdh='cd $(find . -mindepth 1 -type d | fzf)'
+alias fzcd='cd "$(find . -mindepth 1 -type d \( -name ".*" -prune -o -print \) | fzf)"'
+alias fzcdh='cd "$(find . -mindepth 1 -type d | fzf)"'
 
 # Turning confirmations on + recursive
 alias mv='mv -i'

@@ -20,7 +20,7 @@ path+=("/usr/local/bin")
 path+=("/usr/local/lib")
 path+=("/usr/sbin")
 path+=("$HOME/.local/bin")
-path+=("$HOME/.scripts")
+path+=("$HOME/.local/bin/scripts")
 export PATH
 
 # Sourcing functions for sourcing files more easily
