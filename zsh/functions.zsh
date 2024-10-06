@@ -49,21 +49,53 @@ function gcom {
 }
 
 # downloads a video from yt using yt-dlp
-function dlv {
-    dest=$2
-    [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
+function ytdlp {
+    link="$1"
+    dest="$2"
 
     yt-dlp \
         --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
-        --concurrent-fragments 3 \
-        --parse-metadata "title:%(title)s artist:%(artist)s" --embed-metadata --embed-subs \
+        --concurrent-fragments 4 \
+        --parse-metadata "title:%(title)s artist:%(artist)s" --embed-metadata \
+        --embed-subs --sub-langs "en.*,ja,-live_chat" \
         --no-simulate --print "pre_process:title" \
         --output "%(title)s.%(ext)s" --restrict-filenames \
-        --progress --no-warnings\
+        --no-warnings \
         --paths "$dest" \
-        "$1"
+        "$link"
+}
 
-    echo "[path]: $dest"
+function ytdlp-get-filename {
+    link="$1"
+
+    yt-dlp \
+        --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
+        --print "filename" \
+        --output "%(title)s.%(ext)s" --restrict-filenames \
+        --no-warnings \
+        "$link"
+}
+
+# user friendly ytdlp() wrapper
+function dlv {
+    link="$1"
+    filename="$2"
+    dest="$3"
+
+    # if destination is unset spawn an fzf instance to choose it
+    [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
+
+    ytdlp "$link" "$dest"
+
+    # if a filename is given change the fetched original filename to a new one
+    if [ ! -z $filename ]; then
+        orig_file="$dest/$(ytdlp-get-filename "$link")"
+        file="$dest/$filename"
+        mv "$orig_file" "$file"
+        echo "[FILE]: $file"
+    else
+        echo "[FILE DESTINATION]: $dest"
+    fi
 }
 
 # downloads a list of videos, reading links from a file
@@ -77,9 +109,25 @@ function dlvlist() {
     dest=$2
     [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
 
-    for link in $(cat $link_list_file); do
-        dlv "$link" "$dest"
-    done
+
+    # reads whole lines from the link list file
+    while IFS= read -r line; do
+        # get the data from file
+        link="$(echo $line | awk '{print $1}')"
+        filename="$(echo $line | awk '{print $2}')"
+
+        # download the file
+        ytdlp "$link" "$dest"
+
+        # if a filename is given fetch what the original filename is and change it to a new one
+        if [ ! -z $filename ]; then
+            orig_file="$dest/$(ytdlp-get-filename "$link")"
+            file="$dest/$filename"
+            mv "$orig_file" "$file"
+        fi
+    done < $link_list_file 
+
+    echo "[FILES LOCATION]: $dest"
 }
 
 # creates a onedark version of a picture
