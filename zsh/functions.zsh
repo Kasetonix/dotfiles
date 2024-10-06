@@ -60,7 +60,7 @@ function ytdlp {
         --embed-subs --sub-langs "en.*,ja,-live_chat" \
         --no-simulate --print "pre_process:title" \
         --output "%(title)s.%(ext)s" --restrict-filenames \
-        --no-warnings \
+        --no-warnings --progress \
         --paths "$dest" \
         "$link"
 }
