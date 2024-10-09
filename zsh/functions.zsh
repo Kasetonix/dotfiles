@@ -84,6 +84,7 @@ function dlv {
 
     # if destination is unset spawn an fzf instance to choose it
     [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
+    [ -z $dest ] && dest=$PWD
 
     ytdlp "$link" "$dest"
 
@@ -108,6 +109,7 @@ function dlvlist() {
 
     dest=$2
     [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
+    [ -z $dest ] && dest=$PWD
 
 
     # reads whole lines from the link list file
