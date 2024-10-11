@@ -1,1 +1,1 @@
-maim -u -B -s "/home/kasetonix/maim-$(date '+%H.%M.%S').png"
+maim -u -B -o -s "/home/kasetonix/maim-$(date '+%H.%M.%S').png"
