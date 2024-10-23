@@ -54,7 +54,7 @@ function ytdlp {
     dest="$2"
 
     yt-dlp \
-        --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
+        --format "bestvideo[ext=mp4][height=1080]+bestaudio[ext=m4a]/best[ext=mp4][height=1080]/best" \
         --concurrent-fragments 4 \
         --parse-metadata "title:%(title)s artist:%(artist)s" --embed-metadata \
         --embed-subs --sub-langs "en.*,ja,-live_chat" \
@@ -69,7 +69,7 @@ function ytdlp-get-filename {
     link="$1"
 
     yt-dlp \
-        --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
+        --format "bestvideo[ext=mp4][height=1080]+bestaudio[ext=m4a]/best[ext=mp4][height=1080]/best" \
         --print "filename" \
         --output "%(title)s.%(ext)s" --restrict-filenames \
         --no-warnings \
