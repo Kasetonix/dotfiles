@@ -66,6 +66,11 @@ function ytdlp {
         "$link"
 }
 
+# get youtube link from file
+function gytlff {
+     ffprobe "$1" 2>&1 | sed '/comment/!d;s/^\s*comment\s*\:\s//'
+}
+
 function ytdlp-get-filename {
     link="$1"
 
@@ -75,6 +80,32 @@ function ytdlp-get-filename {
         --output "%(title)s.%(ext)s" --restrict-filenames \
         --no-warnings \
         "$link"
+}
+
+# create dlvlist from dir
+function cdfd {
+    link_list_file="$1"
+    dir="$2"
+
+    [ -z $dir ] && dir="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
+    [ -z $dir ] && dir=$PWD
+
+    # regex for matching youtube links (with the yt-dlp format)
+    yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=...........$"
+
+    # For each file in the given dir extracts the yt link from metadata
+    # (it's embedded if the file has been downloaded by dlv) and puts it alongside
+    # the file name into the dlvlist file
+    # If the file doesn't have the link in the metadata it's skipped
+    for file in $dir/*; do
+        if [ -f $file ]; then
+            link="$(gytlff $file)"
+            if [[ "$link" =~  "$yt_regex" ]]; then
+                filename="$(echo $file | sed 's/^.*\///')"
+                echo "${link} ${filename}" >> $link_list_file
+            fi
+        fi
+    done
 }
 
 # user friendly ytdlp() wrapper
@@ -102,7 +133,7 @@ function dlv {
 
 # downloads a list of videos, reading links from a file
 function dlvlist() {
-    link_list_file=$1
+    link_list_file="$1"
     if [ ! -f $link_list_file ]; then
         echo "The link list file doesn't exist"
         return 1
