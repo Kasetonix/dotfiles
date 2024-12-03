@@ -42,18 +42,30 @@ function cdfd {
     [ -z $dir ] && dir=$PWD
 
     # regex for matching youtube links (with the yt-dlp format)
-    yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=...........$"
+    yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
+
+    # number of files
+    total_files="$(/bin/ls -Ap1 $dir | sed '/\//d' | wc -l)"
+    iterator="$((1))"
 
     # For each file in the given dir extracts the yt link from metadata
     # (it's embedded if the file has been downloaded by dlv) and puts it alongside
     # the file name into the dlvlist file
     # If the file doesn't have the link in the metadata it's skipped
+    echo ""
     for file in $dir/*; do
         if [ -f $file ]; then
             link="$(gytlff $file)"
-            if [[ "$link" =~  "$yt_regex" ]]; then
+            if [[ "$link" =~ $yt_regex ]]; then
                 filename="$(echo $file | sed 's/^.*\///')"
                 echo "${link} ${filename}" >> $link_list_file
+
+                # printing the iterator
+                iterator="$(($iterator + 1))"
+                echo -ne "\x1b[1A\x1b[2K"
+                echo "$iterator / $total_files"
+            else
+                total_files="$(($total_files - 1))"
             fi
         fi
     done
