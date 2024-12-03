@@ -13,6 +13,8 @@ alias emerge="emerge --ask --quiet"
 alias untar='tar -xf'
 alias space='du -sh 2>/dev/null'
 alias glg='git log --oneline --graph --decorate'
+alias ga='git add -A'
+alias gs='git status'
 alias check-wmclass='xprop | grep "WM_CLASS(STRING)"'
 alias feh='feh --no-fehbg'
 alias glow="PAGER='bat --decorations=never --color=always' glow"

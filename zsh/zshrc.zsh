@@ -39,6 +39,7 @@ preexec() { printf "\e[0m"; } # resetting the formatting before the command exec
 source-file "aliases.zsh"
 source-file "conf-aliases.zsh"
 source-file "functions.zsh"
+source-file "yt-dlp.zsh"
 source-file "completion.zsh"
 
 # Sourcing git plugins 
