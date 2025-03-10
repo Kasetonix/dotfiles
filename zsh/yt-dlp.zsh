@@ -26,7 +26,7 @@ function ytdlp-get-filename {
     link="$1"
 
     yt-dlp \
-        --format "bestvideo[ext=mp4][height>=1080]+bestaudio[ext=m4a]/best[ext=mp4][height>=1080]/best[ext=mp4]/best" \
+        --format "bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]/best[ext=mp4][height<=?1080]/best[ext=mp4]/best" \
         --print "filename" \
         --output "%(title)s.%(ext)s" --restrict-filenames \
         --no-warnings \
@@ -62,7 +62,7 @@ function cdfd {
 
                 # printing the iterator
                 iterator="$(($iterator + 1))"
-                echo -ne "\x1b[1A\x1b[2K"
+                echo -ne "\x1b[1A"
                 echo "$iterator / $total_files"
             else
                 total_files="$(($total_files - 1))"
