@@ -1,7 +1,9 @@
 #!/bin/sh
-if [ $(pwd) != "/home/kasetonix/.st" ]; then
-	PRVDIR=$(pwd)
-	cd /home/kasetonix/.st
+st_path="$HOME/.config/st"
+
+if [ $PWD != $st_path ]; then
+	PRVDIR=$PWD
+	cd $st_path
 fi
 
 cp config.def.h config.h

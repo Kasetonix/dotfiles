@@ -1,7 +1,9 @@
 #!/bin/sh
-if [ $(pwd) != "/home/kasetonix/.dwm" ]; then
-	PRVDIR=$(pwd)
-	cd /home/kasetonix/.dwm/
+dwm_path="$HOME/.config/dwm"
+
+if [ $PWD != $dwm_path ]; then
+	PRVDIR=$PWD
+	cd $dwm_path
 fi
 
 cp config.def.h config.h

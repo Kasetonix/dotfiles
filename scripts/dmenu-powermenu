@@ -1,10 +1,10 @@
 #!/bin/sh
 
-options="Shutdown\nReboot\nExit dwm\nReconfigure\nCancel"
+options="Poweroff\nReboot\nExit dwm\nReconfigure\nCancel"
 action="$(echo -e $options | dmenu -noi -p "System Menu: ")"
 
 case "$action" in
-    "Shutdown") doas poweroff;;
+    "Poweroff") doas poweroff;;
     "Reboot") doas reboot;;
     "Exit dwm") pkill dwm;;
     "Reconfigure") pkill autostart.sh && /home/kasetonix/.dwm/autostart.sh;;

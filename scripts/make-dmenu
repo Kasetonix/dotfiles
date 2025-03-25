@@ -1,7 +1,9 @@
 #!/bin/sh
-if [ $(pwd) != "/home/kasetonix/.dmenu" ]; then
-	PRVDIR=$(pwd)
-	cd /home/kasetonix/.dmenu/
+dmenu_path="$HOME/.config/dmenu"
+
+if [ $PWD != $dmenu_path ]; then
+	PRVDIR=$PWD
+	cd $dmenu_path
 fi
 
 cp config.def.h config.h
