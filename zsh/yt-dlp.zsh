@@ -45,6 +45,7 @@ function cdfd {
     yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
 
     # number of files
+    touch "$link_list_file"
     total_files="$(/bin/ls -Ap1 $dir | sed '/\//d' | wc -l)"
     iterator="$((1))"
 
@@ -61,9 +62,9 @@ function cdfd {
                 echo "${link} ${filename}" >> $link_list_file
 
                 # printing the iterator
-                iterator="$(($iterator + 1))"
                 echo -ne "\x1b[1A"
-                echo "$iterator / $total_files"
+                echo "$((($iterator*100)/$total_files))%  <|>  $iterator / $total_files "
+                iterator="$(($iterator + 1))"
             else
                 total_files="$(($total_files - 1))"
             fi
