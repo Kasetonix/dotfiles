@@ -1,4 +1,4 @@
-# downloads a video from yt using yt-dlp
+: downloads a video from yt using yt-dlp
 function ytdlp {
     link="$1"
     dest="$2"
@@ -18,7 +18,7 @@ function ytdlp {
 
 # gets youtube link from file
 function gytlff {
-     ffprobe "$1" 2>&1 | sed '/comment/!d;s/^\s*comment\s*\:\s//'
+     ffprobe "$1" 2>&1 | sed '/^\s*comment/!d;s/^\s*comment\s*\:\s*//'
 }
 
 # gets the default filename of downloaded video

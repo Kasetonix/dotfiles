@@ -33,7 +33,7 @@ alias rm='rm -ir'
 alias ln='ln -i'
 
 # ls -> eza
-alias eza='eza --icons --color=always --group-directories-first'
+alias eza='eza --icons --group-directories-first'
 alias ls='eza'
 alias ll='eza -la'
 alias la='eza -a'
