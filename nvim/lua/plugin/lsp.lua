@@ -93,9 +93,12 @@ lspconfig.pyright.setup {
   capabilities = capabilities,
 }
 
--- Removing underlines
+-- General diagnostics handler
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { underline = false } )
+  vim.lsp.diagnostic.on_publish_diagnostics
+
+-- Removing underlines
+vim.diagnostic.config({virtual_text = true, underline = false})
 
 -- /// NVIM-CMP | LUASNIP ///
 local cmp = require('cmp')
