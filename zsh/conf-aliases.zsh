@@ -14,7 +14,7 @@ alias conf-yazi='cd $HOME/.config/yazi/ && $EDITOR $HOME/.config/yazi/'
 
 alias conf-scripts='cd $HOME/.local/bin/scripts'
 
-FPROFILE='kasetonix'
-alias conf-firefox='cd $HOME/.mozilla/firefox/$FPROFILE/chrome && $EDITOR $HOME/.mozilla/firefox/$FPROFILE/chrome'
+LWPROFILE='kasetonix'
+alias conf-librewolf='cd $HOME/.librewolf/$LWPROFILE/chrome && $EDITOR $HOME/.librewolf/$LWPROFILE/chrome'
 
 alias catpat='echo "$fg_bold[yellow]$(cat $HOME/docs/gitpat)"'
