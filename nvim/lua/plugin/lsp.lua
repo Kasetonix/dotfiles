@@ -58,10 +58,15 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- /// LUA ///
-lspconfig.lua_ls.setup { -- Lua
+-- /// General ///
+vim.lsp.config('*', {
   on_attach = on_attach,
-  capabilities = capabilities,
+  capabilities = capabilities
+})
+
+-- /// Lua ///
+vim.lsp.enable('lua_ls')
+vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       telemetry = { enable = false, },
@@ -73,25 +78,25 @@ lspconfig.lua_ls.setup { -- Lua
       },
     },
   },
-}
+})
 
 -- /// C/C++ ///
-lspconfig.clangd.setup {
+vim.lsp.config('clangd', {
   on_attach = on_attach,
-  capabilities = capabilities,
-}
+  capabilities = capabilities
+})
 
--- /// RUST ///
-lspconfig.rust_analyzer.setup {
+-- /// Rust ///
+vim.lsp.config('rust_analyzer', {
   on_attach = on_attach,
-  capabilities = capabilities,
-}
+  capabilities = capabilities
+})
 
 -- /// Python ///
-lspconfig.pyright.setup {
+vim.lsp.config('pyright', {
   on_attach = on_attach,
-  capabilities = capabilities,
-}
+  capabilities = capabilities
+})
 
 -- General diagnostics handler
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
