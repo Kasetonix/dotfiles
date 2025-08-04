@@ -1,4 +1,4 @@
-: downloads a video from yt using yt-dlp
+# downloads a video from yt using yt-dlp
 function ytdlp {
     link="$1"
     dest="$2"
@@ -45,7 +45,6 @@ function cdfd {
     yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
 
     # number of files
-    touch "$link_list_file"
     total_files="$(/bin/ls -Ap1 $dir | sed '/\//d' | wc -l)"
     iterator="$((1))"
 

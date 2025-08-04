@@ -10,7 +10,8 @@ alias conf-picom='cd $HOME/.config/ && $EDITOR $HOME/.config/picom.conf'
 alias conf-dunst='cd $HOME/.config/dunst/ && $EDITOR $HOME/.config/dunst/dunstrc'
 alias conf-ncspot='cd $HOME/.config/ncspot/ && $EDITOR $HOME/.config/ncspot/config.toml'
 alias conf-ranger='cd $HOME/.config/ranger/ && $EDITOR $HOME/.config/ranger/'
-alias conf-yazi='cd $HOME/.config/yazi/ && $EDITOR $HOME/.config/yazi/'
+alias conf-git='cd $HOME/.config/git/ && $EDITOR $HOME/.config/git/config'
+alias conf-zathura='cd $HOME/.config/zathura/ && $EDITOR $HOME/.config/zathura/zathurarc'
 
 alias conf-scripts='cd $HOME/.local/bin/scripts'
 

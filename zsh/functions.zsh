@@ -44,7 +44,7 @@ function gcomp {
 }
 
 # commits to git with a given message prepended with a date
-function gcom {
+function gc {
     git commit -m "$(date '+[%d.%m.%Y]') $1"
 }
 
@@ -91,4 +91,13 @@ function flash-iso {
 # creates a tar archive using multithreading
 function tgza {
     tar -cf - "$1" | pv | pigz > "$1.tar.gz"
+}
+
+function clip {
+    echo -n "$1" | xclip -selection clipboard
+}
+
+PAT="/home/kasetonix/docs/gitpat"
+function clippat {
+    clip "$(cat $PAT)"
 }

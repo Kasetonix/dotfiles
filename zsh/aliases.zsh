@@ -9,22 +9,26 @@ alias tfetch="neofetch --source /home/kasetonix/.config/neofetch/trans.ascii --g
 alias atfetch="neofetch --source /home/kasetonix/.config/neofetch/arch_trans.ascii --gap -20" # :3
 alias mount="doas mount -o dmask=000,fmask=111"
 alias umount="doas umount"
-alias emerge="emerge --ask --quiet"
 
 # functionality
 alias untar='tar -xf'
 alias space='du -sh 2>/dev/null'
-alias glg='git log --oneline --graph --decorate'
-alias ga='git add -A'
-alias gs='git status'
 alias check-wmclass='xprop | grep "WM_CLASS(STRING)"'
-alias feh='feh --no-fehbg'
 alias glow="PAGER='bat --decorations=never --color=always' glow"
+alias feh="feh --scale-down"
 alias defwall='feh --bg-fill /home/kasetonix/pics/walls/defwall'
 alias altwall='feh --bg-fill /home/kasetonix/pics/walls/altwall'
 alias fzcd='cd "$(find . -mindepth 1 -type d \( -name ".*" -prune -o -print \) | fzf)"'
 alias fzcdh='cd "$(find . -mindepth 1 -type d | fzf)"'
 alias up='echo "$fg_bold[green] $reset_color$(checkupdates | wc -l)"'
+
+# git (some of them taken from codingjerk@github)
+alias ga='git add -A'
+alias gs='git status'
+alias gp='git push'
+alias gu='git pull'
+alias gcl='git clone'
+alias gl="git log --all --graph --pretty=format:'%C(yellow)%h %C(white)| %C(cyan)%an %C(white)| %C(magenta)%ar %C(auto)%D%n%s%n'"
 
 # Turning confirmations on + recursive
 alias mv='mv -i'
@@ -41,6 +45,4 @@ alias lh='eza -1'
 alias lt='eza --tree'
 
 # cat / less -> bat
-alias bat="bat --theme OneHalfDark --color=always"
-
-
+alias bat="bat --theme OneHalfDark"

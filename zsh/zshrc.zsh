@@ -21,6 +21,7 @@ path+=("/usr/local/lib")
 path+=("/usr/sbin")
 path+=("$HOME/.local/bin")
 path+=("$HOME/.local/bin/scripts")
+path+=("$HOME/.cargo/bin")
 export PATH
 
 # Sourcing functions for sourcing files more easily
