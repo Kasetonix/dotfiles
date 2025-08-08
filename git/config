@@ -1,0 +1,23 @@
+# General
+[init]
+	defaultBranch = master
+
+[user]
+    name = kasetonix 
+    email = kasetonix@gmail.com
+
+[core]
+    compression = 6
+
+# git clone
+# github shorthand
+[url "https://github.com/"]
+    insteadOf = "gh:"
+
+# my own repos shorthand
+[url "https://github.com/Kasetonix/"]
+    insteadOf = "k:"
+
+# codeberg shorthand 
+[url "https://codeberg.org/"]
+    insteadOf = "cb:"
