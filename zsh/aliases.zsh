@@ -43,6 +43,3 @@ alias ll='eza -la'
 alias la='eza -a'
 alias lh='eza -1'
 alias lt='eza --tree'
-
-# cat / less -> bat
-alias bat="bat --theme OneHalfDark"

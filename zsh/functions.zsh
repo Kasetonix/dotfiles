@@ -19,10 +19,10 @@ function humanize_filesize {
 
 # prints disk usage on btrfs filesystem
 function diskspace {
-    total=$(btrfs filesystem df --raw / | sed '/Data/!d; s/^.*total\=//; s/,.*$//')
-    used=$(btrfs filesystem df --raw / | sed '/Data/!d; s/^.*used\=//')
-    free=$(($total - $used))
-    used_percent=$(( ($used * 100) / $total))
+    total=$(btrfs filesystem usage --raw 2>/dev/null / | sed '/Device size:/!d; s/^\s*Device size:\s*//')
+    free=$(btrfs filesystem usage --raw 2>/dev/null / | sed '/Free (estimated):/!d; s/^\s*Free (estimated):\s*//; s/\s.*$//')
+    used=$(($total - $free))
+    used_percent=$((($used * 100) / $total))
 
     echo "USED ==> $(humanize_filesize $used)"
     echo "FREE ==> $(humanize_filesize $free)"

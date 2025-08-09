@@ -2,7 +2,7 @@
 EDITOR="nvim"
 VISUAL="nvim"
 RANGER_LOAD_DEFAULT_RC="false"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#444b6a"
 
 # FZF default options
 fzf_default_opts+=(
@@ -10,7 +10,7 @@ fzf_default_opts+=(
     "--border=rounded"
     "--height=50%"
     "--multi"
-    "--prompt='> '"
+    "--prompt='⊳ '"
     "--pointer='➜ '"
     "--marker=''"
     "--color='hl:cyan,hl+:blue,bg+:-1,pointer:cyan,marker:red,gutter:-1'"
