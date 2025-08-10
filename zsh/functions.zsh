@@ -49,12 +49,22 @@ function gc {
 }
 
 # creates a onedark version of a picture
-function onedarkify {
+function img-apply-onedark {
     lut="$HOME/pics/onedark-lut.png"
     input=$1
     input_extension=$(echo $input | sed 's/^.*\.//g')
     output_filepath=$(echo $input | sed 's/\.[^.]*$//g')
     output="$output_filepath-onedark.$input_extension"
+
+    lutgen apply $input --hald-clut $lut -o $output
+}
+
+function img-apply-tokyo-night {
+    lut="$HOME/pics/tns-lut.png"
+    input=$1
+    input_extension=$(echo $input | sed 's/^.*\.//g')
+    output_filepath=$(echo $input | sed 's/\.[^.]*$//g')
+    output="$output_filepath-tns.$input_extension"
 
     lutgen apply $input --hald-clut $lut -o $output
 }
