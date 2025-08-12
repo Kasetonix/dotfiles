@@ -14,10 +14,8 @@ alias umount="doas umount"
 alias untar='tar -xf'
 alias space='du -sh 2>/dev/null'
 alias check-wmclass='xprop | grep "WM_CLASS(STRING)"'
-alias glow="PAGER='bat --decorations=never --color=always' glow"
+alias glow="PAGER='bat --decorations=never --color=always' glow -pa"
 alias feh="feh --scale-down"
-alias defwall='feh --bg-fill /home/kasetonix/pics/walls/defwall'
-alias altwall='feh --bg-fill /home/kasetonix/pics/walls/altwall'
 alias fzcd='cd "$(find . -mindepth 1 -type d \( -name ".*" -prune -o -print \) | fzf)"'
 alias fzcdh='cd "$(find . -mindepth 1 -type d | fzf)"'
 alias up='echo "$fg_bold[green] $reset_color$(checkupdates | wc -l)"'
