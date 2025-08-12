@@ -107,7 +107,10 @@ function clip {
     echo -n "$1" | xclip -selection clipboard
 }
 
-PAT="/home/kasetonix/docs/gitpat"
-function clippat {
-    clip "$(cat $PAT)"
+function wall {
+    swww img "$1" -t grow --transition-duration 2 --transition-fps 60;
+}
+
+function launch {
+    nohup "$@" 2>&1 >/dev/null &
 }
