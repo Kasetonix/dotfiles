@@ -56,4 +56,7 @@ source-plugin "zsh-users/zsh-history-substring-search" # history search using a 
 source-plugin "hlissner/zsh-autopair" # Autoclosing brackets
 
 # Sourcing local plugins
-source-plugin-local "fzf-history-search.zsh" # searching history or files
+# source-plugin-local "fzf-history-search.zsh" # searching history or files
+
+# fzf integration
+source <(fzf --zsh)
