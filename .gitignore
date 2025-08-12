@@ -14,6 +14,5 @@ zsh/.compinit-dump
 zsh/.zcalc_history
 zsh/.zsh-history
 
-# Ignore the binary files in statusbar
-scripts/statusbar-rs/Cargo.lock
-scripts/statusbar-rs/target
+# Ignore the conf aliases (different from system to system)
+zsh/conf-aliases.zsh
