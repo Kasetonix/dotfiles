@@ -4,7 +4,6 @@ VISUAL="nvim"
 RANGER_LOAD_DEFAULT_RC="false"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#444b6a"
 
-# FZF default options
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
     --highlight-line \
     --info=inline \
@@ -47,5 +46,3 @@ export FZF_CTRL_T_OPTS="
 export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'tree -C {}'"
-
-
