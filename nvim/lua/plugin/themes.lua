@@ -1,7 +1,7 @@
 -- /// THEMES.LUA | plugins responsible for theming ///
 
 -- Colorscheme
-vim.cmd.colorscheme 'onedark'
+vim.cmd.colorscheme 'tokyonight-storm'
 
 -- lualine - status line
 require('lualine').setup {

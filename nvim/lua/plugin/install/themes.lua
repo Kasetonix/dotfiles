@@ -2,6 +2,7 @@
 
 return {
   { 'navarasu/onedark.nvim', priority = 1000, }, -- OneDark theme
+  { 'folke/tokyonight.nvim', priority = 1000, }, -- TokyoNight theme
   'nvim-lualine/lualine.nvim',                   -- lualine - statusline
   'lukas-reineke/indent-blankline.nvim',         -- Add indentation guides even on blank lines
   'xiyaowong/transparent.nvim',                  -- transparent background
