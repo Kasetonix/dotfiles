@@ -103,9 +103,9 @@ function tgza {
     tar -cf - "$1" | pv | pigz > "$1.tar.gz"
 }
 
-function clip {
-    echo -n "$1" | xclip -selection clipboard
-}
+# function clip {
+#     echo -n "$1" | xclip -selection clipboard
+# }
 
 function wall {
     swww img "$1" -t grow --transition-duration 2 --transition-fps 60;
@@ -113,4 +113,5 @@ function wall {
 
 function launch {
     nohup "$@" 2>&1 >/dev/null &
+    sleep 0.1
 }
