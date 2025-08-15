@@ -170,7 +170,7 @@ luasnip.config.setup {}
 -- /// navic ///
 navic.setup {
   lsp = { auto_attach = true, },
-  separator = " => ",
+  separator = " → ",
   click = true,
 }
 
@@ -188,7 +188,7 @@ navbuddy.setup {
     icons = {
       leaf = " →",
       leaf_selected = " →",
-      branch = " ",
+      branch = " ",
     },
   },
 
@@ -208,14 +208,42 @@ navbuddy.setup {
     ["p"] = nb_actions.toggle_preview(),
 
     -- Actions
-    ["y"] = nb_actions.yank_name(),        -- Yank the name to system clipboard "+
-    ["Y"] = nb_actions.yank_scope(),       -- Yank the scope to system clipboard "+
-    ["r"] = nb_actions.rename(),           -- Rename currently focused symbol
-    ["d"] = nb_actions.delete(),           -- Delete scope
-    ["gc"] = nb_actions.comment(),          -- Comment out current scope
-    ["t"] = nb_actions.telescope(),         -- Fuzzy finder at current level.
+    ["y"] = nb_actions.yank_name(),  -- Yank the name to system clipboard "+
+    ["Y"] = nb_actions.yank_scope(), -- Yank the scope to system clipboard "+
+    ["r"] = nb_actions.rename(),     -- Rename currently focused symbol
+    ["d"] = nb_actions.delete(),     -- Delete scope
+    ["gc"] = nb_actions.comment(),   -- Comment out current scope
+    ["t"] = nb_actions.telescope(),  -- Fuzzy finder at current level.
 
-    ["?"] = nb_actions.help(),            -- Open mappings help window
+    ["?"] = nb_actions.help(),       -- Open mappings help window
+  },
+  icons = {
+    File          = "󰈙 ",
+    Module        = " ",
+    Namespace     = "󰌗 ",
+    Package       = " ",
+    Class         = "󰌗 ",
+    Method        = "󰆧 ",
+    Property      = " ",
+    Field         = " ",
+    Constructor   = " ",
+    Enum          = "󰕘 ",
+    Interface     = "󰕘 ",
+    Function      = "󰊕 ",
+    Variable      = "󰆧 ",
+    Constant      = "󰏿 ",
+    String        = "ℓ ",
+    Number        = "󰎠 ",
+    Boolean       = "◩ ",
+    Array         = "󰅪 ",
+    Object        = "󰅩 ",
+    Key           = "󰌋 ",
+    Null          = "󰟢 ",
+    EnumMember    = " ",
+    Struct        = "󰌗 ",
+    Event         = " ",
+    Operator      = "󰆕 ",
+    TypeParameter = "󰊄 ",
   },
 
   source_buffer = {
