@@ -115,3 +115,16 @@ function launch {
     nohup "$@" 2>&1 >/dev/null &
     sleep 0.1
 }
+
+# Function opening an file chosen from videos directory via fzf in mpv
+function vid {
+    echo "$(find ~/vids -type f | sed 's/\/home\/kasetonix\/vids\///' | sort)" | fzf | read choice
+    if [ -n "$choice" ]; then
+        echo "$fg_bold[magenta] $(echo $choice | sed 's/^.*\///g')$reset_color"
+        mpv "$HOME/vids/$choice" | sed -E "/^( Artist:| Comment:| Date:| Title:)/!d"
+    fi
+}
+
+function launch-vid { vid; zle reset-prompt }
+zle     -N             launch-vid
+bindkey -M emacs '\ev' launch-vid 
