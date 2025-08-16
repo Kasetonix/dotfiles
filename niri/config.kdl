@@ -1,0 +1,314 @@
+// Check the wiki for a full description of the configuration:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+
+input {
+    keyboard { 
+        xkb { layout "pl"; }; 
+        repeat-delay 400
+        repeat-rate 30
+    }
+    focus-follows-mouse max-scroll-amount="95%"
+
+    trackpoint {
+        accel-speed 0.5
+        accel-profile "flat"
+        scroll-method "on-button-down"
+        scroll-button 274
+    }
+
+    mouse {
+        accel-speed -0.3
+        accel-profile "flat"
+    }
+
+    touchpad {
+        off
+        tap
+        dwt
+        dwtp
+        drag true 
+        natural-scroll
+        accel-speed 0.4
+        accel-profile "adaptive"
+        scroll-method "two-finger"
+        scroll-factor 0.9
+    }
+}
+
+gestures { hot-corners { off; }; };
+
+hotkey-overlay { 
+    skip-at-startup
+}
+
+output "eDP-1" {
+    mode "1920x1080@60.008"
+    scale 1.25
+    transform "normal"
+    position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@74.973"
+    scale 1
+}
+
+// PCSS
+output "DP-4" {
+    mode "3840x2160@60.000"
+    scale 2
+    position x=-192 y=-1080
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 16
+}
+
+overview {
+    zoom 0.5
+    workspace-shadow {
+        off
+    }
+}
+
+clipboard { disable-primary; }
+
+layout {
+    gaps 16
+    center-focused-column "never"
+    default-column-width { proportion 0.5; }
+    background-color "transparent"
+
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.83333
+    }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    // `draw-border-with-background`.
+    focus-ring { off; };
+
+    border {
+        width 4
+        active-color "#9aa5ce"
+        inactive-color "#565f89"
+        urgent-color "#ff9e64"
+        // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+}
+
+// spawn-at-startup "swww-daemon";
+spawn-at-startup "xwayland-satellite" "-hidpi"
+spawn-at-startup "sh" "-c" "sleep 2; rm /home/kasetonix/ly-session.log"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+
+environment {
+    DISPLAY ":0"
+    EDITOR "nvim"
+    XDG_CONFIG_HOME "/home/kasetonix/.config"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+prefer-no-csd
+screenshot-path "~/pics/screens/screen-%d.%m-%H-%M-%S.png"
+
+animations {
+    slowdown 0.9 
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+}
+
+window-rule {
+    draw-border-with-background false
+}
+
+window-rule {
+    match title="btop"
+    match app-id=r#"librewolf$"#
+    match app-id="vesktop"
+    match app-id="mpv"
+    default-column-width { proportion 0.66667; }
+}
+
+window-rule {
+    match title="nmtui"
+    open-floating true
+}
+
+layer-rule {
+    match namespace="swww-daemon"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^launcher$"
+    shadow {
+        on
+        spread 2
+        softness 5
+        offset x=0 y=0
+        color "#0004"
+        draw-behind-window true
+    }
+    geometry-corner-radius 12
+}
+
+layer-rule {
+    match namespace="notifications"
+    shadow {
+        on
+        spread -1
+        softness 5
+        offset x=-5 y=5
+        color "#0004"
+        draw-behind-window true
+    }
+    geometry-corner-radius 12
+}
+
+// Example: enable rounded corners for all windows.
+window-rule {
+    geometry-corner-radius 6
+    clip-to-geometry true
+}
+
+binds {
+    Mod+Return      { spawn "alacritty"; }
+    Mod+Slash       { spawn "fuzzel"; }
+    Mod+Alt+Slash   { spawn "alacritty" "-e" "ranger"; }
+    Mod+N           { spawn "alacritty" "-T" "nmtui" "-e" "nmtui-connect"; }
+
+    // Media
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%+ && $HOME/.local/bin/scripts/wp-vol-notif"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%- && $HOME/.local/bin/scripts/wp-vol-notif"; }
+    XF86AudioMute         allow-when-locked=true { spawn "sh" "-c" "wpctl set-mute @DEFAULT_SINK@ toggle"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn "sh" "-c" "wpctl set-mute @DEFAULT_SOURCE@ toggle"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
+
+    // Wallpapers
+    Mod+B       { spawn "swww" "img" "/home/kasetonix/pics/walls/defwall" "-t" "grow" "--transition-duration" "2" "--transition-fps" "60" "--transition-pos" "top"; }
+    Mod+Shift+B { spawn "swww" "img" "/home/kasetonix/pics/walls/altwall" "-t" "grow" "--transition-duration" "2" "--transition-fps" "60" "--transition-pos" "top"; }
+
+    Mod+Space repeat=false { toggle-overview; }
+
+    Mod+Q { close-window; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-or-workspace-down; }
+    Mod+Up    { focus-window-or-workspace-up; }
+    Mod+Right { focus-column-right; }
+
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Down  { move-window-down-or-to-workspace-down; }
+    Mod+Shift+Up    { move-window-up-or-to-workspace-up; }
+    Mod+Shift+Right { move-column-right; }
+
+    // Mod+comma { focus-column-first; }
+    // Mod+period  { focus-column-last; }
+    // Mod+Ctrl+comma { move-column-to-first; }
+    // Mod+Ctrl+period  { move-column-to-last; }
+
+    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+Ctrl+Down  { focus-monitor-down; }
+    Mod+Ctrl+Up    { focus-monitor-up; }
+    Mod+Ctrl+Right { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+
+    // And you can also move a whole workspace to another monitor:
+    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+    // ...
+
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+
+    // You can bind mouse wheel scroll ticks using the following syntax.
+    // These binds will change direction based on the natural-scroll setting.
+    //
+    // To avoid scrolling through workspaces really fast, you can use
+    // the cooldown-ms property. The bind will be rate-limited to this value.
+    // You can set a cooldown on any bind, but it's most useful for the wheel.
+    Mod+WheelScrollDown  cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp    cooldown-ms=150 { focus-workspace-up; }
+    Mod+WheelScrollRight cooldown-ms=150 { focus-column-right; }
+    Mod+WheelScrollLeft  cooldown-ms=150 { focus-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Mod+Shift+WheelScrollDown cooldown-ms=150 { focus-column-right; }
+    Mod+Shift+WheelScrollUp   cooldown-ms=150 { focus-column-left; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // Switches focus between the current and the previous workspace.
+    Mod+Tab { focus-workspace-previous; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    Mod+C { center-column; }
+
+    Mod+Comma  { set-column-width "-16.667%"; }
+    Mod+Period { set-column-width "+16.667%"; }
+
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    Mod+W { toggle-column-tabbed-display; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    Mod+Shift+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Ctrl+Alt+Delete { quit; }
+
+    Mod+Shift+P { power-off-monitors; }
+}
