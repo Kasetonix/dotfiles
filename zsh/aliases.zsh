@@ -5,8 +5,8 @@ alias mpv='mpv --no-audio-display'
 alias df='df -h' # human-readable
 alias print-ip='ip -br -4 -c addr'
 alias fetch="neofetch"
-alias tfetch="neofetch --source /home/kasetonix/.config/neofetch/trans.ascii --gap -20"
-alias atfetch="neofetch --source /home/kasetonix/.config/neofetch/arch_trans.ascii --gap -20"
+alias tfetch="neofetch --source /home/kasetonix/.config/neofetch/trans.ascii --gap -20" # :3
+alias atfetch="neofetch --source /home/kasetonix/.config/neofetch/arch_trans.ascii --gap -20" # :3
 alias mount="doas mount -o dmask=000,fmask=111"
 alias umount="doas umount"
 
@@ -20,13 +20,14 @@ alias defwall='feh --bg-fill /home/kasetonix/pics/walls/defwall'
 alias altwall='feh --bg-fill /home/kasetonix/pics/walls/altwall'
 alias fzcd='cd "$(find . -mindepth 1 -type d \( -name ".*" -prune -o -print \) | fzf)"'
 alias fzcdh='cd "$(find . -mindepth 1 -type d | fzf)"'
-alias up='echo "$fg_bold[green] $reset_color$(checkupdates | wc -l)"'
+alias up='echo "$fg_bold[green] $reset_color$(checkupdates | wc -l)"'
 
 # git (some of them taken from codingjerk@github)
 alias ga='git add -A'
 alias gs='git status'
 alias gp='git push'
 alias gu='git pull'
+alias gr='git restore --staged'
 alias gcl='git clone'
 alias gl="git log --all --graph --pretty=format:'%C(yellow)%h %C(white)| %C(cyan)%an %C(white)| %C(magenta)%ar %C(auto)%D%n%s%n'"
 
