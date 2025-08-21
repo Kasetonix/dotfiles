@@ -7,8 +7,8 @@ alias print-ip='ip -br -4 -c addr'
 alias fetch="neofetch"
 alias tfetch="neofetch --source /home/kasetonix/.config/neofetch/trans.ascii --gap -20" # :3
 alias atfetch="neofetch --source /home/kasetonix/.config/neofetch/arch_trans.ascii --gap -20" # :3
-alias mount="doas mount -o dmask=000,fmask=111"
-alias umount="doas umount"
+alias mount="sudo mount -o dmask=000,fmask=111"
+alias umount="sudo umount"
 
 # functionality
 alias untar='tar -xf'
@@ -18,8 +18,8 @@ alias glow="PAGER='bat --decorations=never --color=always' glow -pa"
 alias feh="feh --scale-down"
 alias defwall='feh --bg-fill /home/kasetonix/pics/walls/defwall'
 alias altwall='feh --bg-fill /home/kasetonix/pics/walls/altwall'
-alias fzcd='cd "$(find . -mindepth 1 -type d \( -name ".*" -prune -o -print \) | fzf)"'
-alias fzcdh='cd "$(find . -mindepth 1 -type d | fzf)"'
+alias fzcd='cd "$(fd . --min-depth 1 -td | fzf)"'
+alias fzcdh='cd "$(fd . --min-depth 1 -td -u | fzf)"'
 alias up='echo "$fg_bold[green] $reset_color$(checkupdates | wc -l)"'
 
 # git (some of them taken from codingjerk@github)

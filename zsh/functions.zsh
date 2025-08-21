@@ -118,7 +118,7 @@ function launch {
 
 # Function opening an file chosen from videos directory via fzf in mpv
 function vid {
-    echo "$(find ~/vids -type f | sed 's/\/home\/kasetonix\/vids\///' | sort)" | fzf | read choice
+    echo "$(fd . ~/vids -tf | sed 's/\/home\/kasetonix\/vids\///' | sort)" | fzf | read choice
     if [ -n "$choice" ]; then
         echo "$fg_bold[magenta] $(echo $choice | sed 's/^.*\///g')$reset_color"
         mpv "$HOME/vids/$choice" | sed -E "/^( Artist:| Comment:| Date:| Title:)/!d"
