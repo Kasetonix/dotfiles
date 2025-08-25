@@ -45,6 +45,6 @@ export FZF_CTRL_T_OPTS="
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
-  --preview 'tree -C {}'"
+  --preview 'tree -C -L1 {}'"
 
 
