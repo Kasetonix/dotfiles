@@ -9,8 +9,7 @@ function humanize_filesize {
 
     for unit in B KiB MiB GiB TiB PiB EiB ZiB; do
         if (( $size < 1024.0 )); then;
-            size=$(echo $size | sed 's/\..*//g') # stripping of decimal ext
-            echo "$size $unit"
+            echo "$(printf "%.2f" $size) $unit"
             return 0
         fi
         size=$(($size / 1024.0))
@@ -71,30 +70,36 @@ function img-apply-tokyo-night {
 
 # flashes an iso onto a flash drive
 function flash-iso {
-    echo "ISO file: $(basename $1)"
-    echo "Device:   $2"
+    iso_file=$1
+    device=$2
 
-    unset drive_ok
-    lsblk | sed '/part/d' | grep -q "$(echo "$2" | sed 's/\/dev\///g')" && drive_ok=true
+    # checking for existance of iso file and device
+    if [[ -v $iso_file && -v $device ]]; then
+        if [[ ! -f $iso_file ]]; then
+            echo "Given iso file doesn't exist"
+            return 1
+        fi
 
-    # checking for existance of $1 (iso file) and $2 (device)
-    if [[ ! -f $1 ]]; then
-        echo "Given iso file doesn't exist"
-        return 1
+        lsblk -nd -o NAME | grep -q "$(echo "$device" | sed 's/\/dev\///g')" && device_ok=true
+        if [[ $device_ok != true ]]; then
+            echo "Given drive isn't connected"
+            return 1
+        fi
     fi
 
-    if [[ $drive_ok != true ]]; then
-        echo "Given drive isn't connected"
-        return 1
-    fi
+    [ -z $iso_file ] && echo "$(fd '\.iso$' ~ -tf | sort)" | sed "s/$(echo "$HOME" | sed 's/\//\\\//g')\///" | fzf --border-label=" ISO file selection " --border-label-pos=3 | read iso_file
+    [ -z $device ] && lsblk -nd -o NAME,SIZE | fzf --border-label=" Device selection " --border-label-pos=3 | awk '{print $1}' | read device 
+    echo "$device" | grep -q "/dev/" || device="/dev/$device"
+
+    echo "ISO file: $(basename $iso_file 2>/dev/null)"
+    echo "Device:   $device"
 
     # prompt
     read "reply?If you wish to continue enter y: "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
-        dd if="$1" | doas dd of="$2" bs=4M conv=fdatasync
-        echo "[DONE]"
+        sudo dd iflag=fullblock if="$iso_file" | pv -s "$(humanize_filesize $(du -b $iso_file) | sed 's/iB//g;s/\s//')" | sudo dd bs=4M conv=fsync of="$device" && echo "[DONE]" || echo "[FAILED]"
     else
-        echo "Aborted"
+        echo "[ABORTED]"
     fi
 }
 
