@@ -37,8 +37,8 @@ function cdfd {
     link_list_file="$1"
     dir="$2"
 
-    [ -z $dir ] && dir="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
-    [ -z $dir ] && dir=$PWD
+    [ -z $dir ] && dir="$(fd . --mindepth 1 -td | sed 's/\/$//' | sort | fzf)"
+    [ -z $dir ] && dir="."
 
     # regex for matching youtube links (with the yt-dlp format)
     yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
@@ -83,8 +83,8 @@ function dlv {
     dest="$3"
 
     # if destination is unset spawn an fzf instance to choose it
-    [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
-    [ -z $dest ] && dest=$PWD
+    [ -z $dest ] && dest="$(fd . --mindepth 1 -td | sed 's/\/$//' | sort | fzf)"
+    [ -z $dest ] && dest="."
 
     ytdlp "$link" "$dest"
 
@@ -108,8 +108,8 @@ function dlvlist {
     fi
 
     dest=$2
-    [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
-    [ -z $dest ] && dest=$PWD
+    [ -z $dest ] && dest="$(fd . --mindepth 1 -td | sort | fzf)"
+    [ -z $dest ] && dest="."
 
     # prepare a list of existing videos as not to download the same video twice
     existing_links=""
