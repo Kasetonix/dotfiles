@@ -47,31 +47,34 @@ function gc {
     git commit -m "$(date '+[%d.%m.%Y]') $1"
 }
 
-# creates a onedark version of a picture
-function img-apply-onedark {
-    lut="$HOME/pics/onedark-lut.png"
-    input=$1
-    input_extension=$(echo $input | sed 's/^.*\.//g')
-    output_filepath=$(echo $input | sed 's/\.[^.]*$//g')
-    output="$output_filepath-onedark.$input_extension"
-
-    lutgen apply $input --hald-clut $lut -o $output
+# Prepares a given filepath for sed substitution
+function spp {
+    echo $1 | sed 's/\//\\\//g'
 }
 
-function img-apply-tokyo-night {
-    lut="$HOME/pics/tns-lut.png"
-    input=$1
-    input_extension=$(echo $input | sed 's/^.*\.//g')
-    output_filepath=$(echo $input | sed 's/\.[^.]*$//g')
-    output="$output_filepath-tns.$input_extension"
+function lg {
+    input="$1"
+    lutspath="$HOME/pics/luts"
 
-    lutgen apply $input --hald-clut $lut -o $output
+    if [[ -z $input ]]; then;
+        echo "No input file given."
+        return 1;
+    fi
+
+    fd 'lut.png$' ~/pics/luts/ | sed "s/$(spp $lutspath)\///" | fzf | read lut
+    lutpath="$lutspath/$lut"
+
+    input_ext="$(echo $input | sed 's/^.*\.//g')"
+    input_noext="$PWD/$(echo $input | sed 's/\.[^.]*$//g')"
+    output="$input_noext-$(echo $lut | sed 's/-lut\.png//').$input_ext"
+
+    lutgen apply $input --hald-clut $lutpath -o $output
 }
 
 # flashes an iso onto a flash drive
 function flash-iso {
-    iso_file=$1
-    device=$2
+    iso_file="$1"
+    device="$2"
 
     # checking for existance of iso file and device
     if [[ -v $iso_file && -v $device ]]; then
