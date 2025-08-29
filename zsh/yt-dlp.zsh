@@ -111,6 +111,13 @@ function dlvlist {
     [ -z $dest ] && dest="$(find . -mindepth 1 -type d \( -name '.*' -prune -o -print \) | sort | fzf)"
     [ -z $dest ] && dest=$PWD
 
+    # prepare a list of existing videos as not to download the same video twice
+    existing_links=""
+    while read file; do
+        link="$(gytlff $file)"
+        [ -z $link ] || existing_links="$existing_links$link\n"
+    done < <(ls -1 $dest/*.mp4)
+    existing_links="$(echo "$existing_links" | head -n -1)"
 
     # reads whole lines from the link list file
     while IFS= read -r line; do
@@ -118,7 +125,18 @@ function dlvlist {
         link="$(echo $line | awk '{print $1}')"
         filename="$(echo $line | awk '{print $2}')"
 
+        # checking if the function is about to download a duplicate
+        unset duplicate
+        while read cached_link; do
+            if [ "$link" = "$cached_link" ]; then
+                duplicate=true
+                break
+            fi
+        done <<< "$existing_links"
+        [ -z $duplicate ] || continue 
+
         # download the file
+        run=true
         ytdlp "$link" "$dest"
 
         # if a filename is given fetch what the original filename is and change it to a new one
@@ -129,5 +147,5 @@ function dlvlist {
         fi
     done < $link_list_file 
 
-    echo "[FILES LOCATION]: $dest"
+    [ -z $run ] && echo "[NOTHING TO DOWNLOAD]" || echo "[FILES LOCATION]: $dest"
 }
