@@ -52,6 +52,7 @@ function spp {
     echo $1 | sed 's/\//\\\//g'
 }
 
+# Applies a chosen LUT to an image file using lutgen
 function lg {
     input="$1"
     lutspath="$HOME/pics/luts"
@@ -66,7 +67,8 @@ function lg {
 
     input_ext="$(echo $input | sed 's/^.*\.//g')"
     input_noext="$PWD/$(echo $input | sed 's/\.[^.]*$//g')"
-    output="$input_noext-$(echo $lut | sed 's/-lut\.png//').$input_ext"
+    lut_name="$(echo $lut | sed 's/-lut\.png//')"
+    output="$input_noext-$lut_name.$input_ext"
 
     lutgen apply $input --hald-clut $lutpath -o $output
 }
@@ -90,8 +92,8 @@ function flash-iso {
         fi
     fi
 
-    [ -z $iso_file ] && echo "$(fd '\.iso$' ~ -tf | sort)" | sed "s/$(echo "$HOME" | sed 's/\//\\\//g')\///" | fzf --border-label=" ISO file selection " --border-label-pos=3 | read iso_file
-    [ -z $device ] && lsblk -nd -o NAME,SIZE | fzf --border-label=" Device selection " --border-label-pos=3 | awk '{print $1}' | read device 
+    [ -z $iso_file ] && echo "$(fd '\.iso$' ~ -tf | sort)" | sed "s/$(spp $HOME)\///" | fzf --border-label=" ISO file selection " --border-label-pos=3 | read iso_file || return 1
+    [ -z $device ] && lsblk -nd -o NAME,SIZE | fzf --border-label=" Device selection " --border-label-pos=3 | awk '{print $1}' | read device || return 1 
     echo "$device" | grep -q "/dev/" || device="/dev/$device"
 
     echo "ISO file: $(basename $iso_file 2>/dev/null)"
@@ -111,14 +113,17 @@ function tgza {
     tar -cf - "$1" | pv | pigz > "$1.tar.gz"
 }
 
+# Copies to clipboard on xorg
 # function clip {
 #     echo -n "$1" | xclip -selection clipboard
 # }
 
+# Sets a wallpaper on wayland using swww
 function wall {
     swww img "$1" -t grow --transition-duration 2 --transition-fps 60;
 }
 
+# Launches a command as a detached process from the shell
 function launch {
     nohup "$@" 2>&1 >/dev/null &
     sleep 0.1
