@@ -110,8 +110,9 @@ function flash-iso {
 
 # creates a tar archive using multithreading
 function tgza {
-    tar -cf - "$1" | pv | pigz > "$1.tar.gz"
+    tar -cf - "$1" | pv -s "$(humanize_filesize $(du -b $1 | tail -n1) | sed 's/iB//g;s/\s//')" | pigz > "$1.tar.gz"
 }
+
 
 # Copies to clipboard on xorg
 # function clip {
