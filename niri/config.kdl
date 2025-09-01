@@ -77,7 +77,7 @@ clipboard { disable-primary; }
 layout {
     gaps 16
     center-focused-column "never"
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.66667; }
     background-color "transparent"
 
 
@@ -102,8 +102,6 @@ layout {
         active-color "#9aa5ce"
         inactive-color "#565f89"
         urgent-color "#ff9e64"
-        // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 }
 
@@ -135,11 +133,20 @@ window-rule {
 }
 
 window-rule {
-    match title="btop"
-    match app-id=r#"librewolf$"#
+    match title="Alacritty"
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
     match app-id="vesktop"
-    match app-id="mpv"
-    default-column-width { proportion 0.66667; }
+    match app-id="gimp"
+    default-column-width { proportion 0.83333; }
+}
+
+
+window-rule {
+    match title="Vencord QuickCSS Editor"
+    default-column-width { proportion 0.5; }
 }
 
 window-rule {
