@@ -41,6 +41,20 @@ hotkey-overlay {
     skip-at-startup
 }
 
+// PCSS
+output "DP-4" {
+    mode "3840x2160@60.000"
+    scale 2
+    position x=-192 y=-1080
+}
+
+// PCSS #2
+output "HDMI-A-1" {
+    mode "3840x2160@60.000"
+    scale 1.5
+    position x=-512 y=-1440
+}
+
 output "eDP-1" {
     mode "1920x1080@60.008"
     scale 1.25
@@ -51,13 +65,6 @@ output "eDP-1" {
 output "HDMI-A-1" {
     mode "1920x1080@74.973"
     scale 1
-}
-
-// PCSS
-output "DP-4" {
-    mode "3840x2160@60.000"
-    scale 2
-    position x=-192 y=-1080
 }
 
 cursor {
@@ -106,19 +113,11 @@ layout {
 }
 
 // spawn-at-startup "swww-daemon";
-spawn-at-startup "xwayland-satellite" "-hidpi"
 spawn-at-startup "sh" "-c" "sleep 2; rm /home/kasetonix/ly-session.log"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
-environment {
-    DISPLAY ":0"
-    EDITOR "nvim"
-    XDG_CONFIG_HOME "/home/kasetonix/.config"
-    ELECTRON_OZONE_PLATFORM_HINT "auto"
-}
-
 prefer-no-csd
-screenshot-path "~/pics/screens/screen-%d.%m-%H-%M-%S.png"
+screenshot-path "~/pics/screens/screen-%Y.%m.%d-%H-%M-%S.png"
 
 animations {
     slowdown 0.9 
@@ -301,8 +300,8 @@ binds {
 
     Mod+C { center-column; }
 
-    Mod+Comma  { set-column-width "-16.667%"; }
-    Mod+Period { set-column-width "+16.667%"; }
+    Mod+Comma  { set-column-width "-8.3335%"; }
+    Mod+Period { set-column-width "+8.3335%"; }
 
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
