@@ -41,20 +41,6 @@ hotkey-overlay {
     skip-at-startup
 }
 
-// PCSS
-output "DP-4" {
-    mode "3840x2160@60.000"
-    scale 2
-    position x=-192 y=-1080
-}
-
-// PCSS #2
-output "HDMI-A-1" {
-    mode "3840x2160@60.000"
-    scale 1.5
-    position x=-512 y=-1440
-}
-
 output "eDP-1" {
     mode "1920x1080@60.008"
     scale 1.25
@@ -132,7 +118,8 @@ window-rule {
 }
 
 window-rule {
-    match title="Alacritty"
+    match app-id="Alacritty"
+    match title="Vencord QuickCSS Editor"
     default-column-width { proportion 0.5; }
 }
 
@@ -140,12 +127,6 @@ window-rule {
     match app-id="vesktop"
     match app-id="gimp"
     default-column-width { proportion 0.83333; }
-}
-
-
-window-rule {
-    match title="Vencord QuickCSS Editor"
-    default-column-width { proportion 0.5; }
 }
 
 window-rule {
@@ -292,9 +273,9 @@ binds {
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
+    Mod+Shift+F { reset-window-height; }
     Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+Alt+F { fullscreen-window; }
 
     Mod+Ctrl+F { expand-column-to-available-width; }
 
