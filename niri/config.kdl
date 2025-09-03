@@ -48,6 +48,12 @@ output "eDP-1" {
     position x=0 y=0
 }
 
+output "Dell Inc. DELL P2721Q FM6WTK3" {
+    mode "3840x2160@60.000"
+    scale 2
+    position x=-192 y=-1080
+}
+
 output "HDMI-A-1" {
     mode "1920x1080@74.973"
     scale 1
@@ -121,6 +127,11 @@ window-rule {
     match app-id="Alacritty"
     match title="Vencord QuickCSS Editor"
     default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match title="btop"
+    default-column-width { proportion 0.66667; }
 }
 
 window-rule {
