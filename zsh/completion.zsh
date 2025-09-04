@@ -7,4 +7,3 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 autoload -Uz compinit
 compinit -d "$ZDOTDIR/.compinit-dump"
 _comp_options+=(globdots) # include hidden files
-eval "$(register-python-argcomplete pipx)" # pipx completion
