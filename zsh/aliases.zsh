@@ -4,9 +4,9 @@ alias mkdir='mkdir -pv'
 alias mpv='mpv --no-audio-display'
 alias df='df -h' # human-readable
 alias print-ip='ip -br -4 -c addr'
-alias fetch="neofetch"
-alias tfetch="neofetch --source /home/kasetonix/.config/neofetch/trans.ascii --gap -20" # :3
-alias atfetch="neofetch --source /home/kasetonix/.config/neofetch/arch_trans.ascii --gap -20" # :3
+alias fetch="fastfetch"
+alias tfetch="fastfetch --logo-type file --logo ~/.config/fastfetch/trans.ascii"
+alias atfetch="fastfetch --logo-type file --logo ~/.config/fastfetch/arch_trans.ascii"
 alias mount="sudo mount -o dmask=000,fmask=111"
 alias umount="sudo umount"
 
