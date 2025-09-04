@@ -37,8 +37,8 @@ require("todo-comments").setup {
     TODO = { icon = " ", color = "info" },
     HACK = { icon = " ", color = "warning" },
     WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-    PERF = { icon = " ", color = "warning", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-    NOTE = { icon = " ", color = "info", alt = { "INFO" } },
+    PERF = { icon = " ", color = "warning", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+    NOTE = { icon = " ", color = "info", alt = { "INFO" } },
   },
 
   gui_style = { fg = "NONE", bg = "BOLD", }, -- style for highlighting
