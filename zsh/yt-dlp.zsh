@@ -32,50 +32,6 @@ function ytdlp-get-filename {
         "$link"
 }
 
-# creates dlvlist from directory of media files
-function cdfd {
-    link_list_file="$1"
-    dir="$2"
-
-    [ -z $dir ] && dir="$(fd . --mindepth 1 -td | sed 's/\/$//' | sort | fzf)"
-    [ -z $dir ] && dir="."
-
-    # regex for matching youtube links (with the yt-dlp format)
-    yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
-
-    # number of files
-    total_files="$(/bin/ls -Ap1 $dir | sed '/\//d' | wc -l)"
-    iterator="$((1))"
-
-    # For each file in the given dir extracts the yt link from metadata
-    # (it's embedded if the file has been downloaded by dlv) and puts it alongside
-    # the file name into the dlvlist file
-    # If the file doesn't have the link in the metadata it's skipped
-    echo ""
-    for file in $dir/*; do
-        if [ -f $file ]; then
-            link="$(gytlff $file)"
-            if [[ "$link" =~ $yt_regex ]]; then
-                filename="$(echo $file | sed 's/^.*\///')"
-                echo "${link} ${filename}" >> $link_list_file
-
-                # printing the iterator
-                echo -ne "\x1b[1A"
-                echo "$((($iterator*100)/$total_files))%  <|>  $iterator / $total_files "
-                iterator="$(($iterator + 1))"
-            else
-                total_files="$(($total_files - 1))"
-            fi
-        fi
-    done
-
-    # If the file isn't created
-    if [ ! -f $link_list_file ]; then
-        echo "No compatible files in the directory"
-        return 1
-    fi
-}
-
 # user friendly ytdlp() wrapper
 function dlv {
     link="$1"
@@ -83,8 +39,8 @@ function dlv {
     dest="$3"
 
     # if destination is unset spawn an fzf instance to choose it
-    [ -z $dest ] && dest="$(fd . --mindepth 1 -td | sed 's/\/$//' | sort | fzf)"
-    [ -z $dest ] && dest="."
+    [ -z $dest ] && echo ".\n$(fd . --mindepth 1 -td | sed 's/\/$//' | sort)" | fzf | read dest
+    [ -z $dest ] && return 1
 
     ytdlp "$link" "$dest"
 
@@ -148,4 +104,48 @@ function dlvlist {
     done < $link_list_file 
 
     [ -z $run ] && echo "[NOTHING TO DOWNLOAD]" || echo "[FILES LOCATION]: $dest"
+}
+
+# creates dlvlist from directory of media files
+function cdfd {
+    link_list_file="$1"
+    dir="$2"
+
+    [ -z $dir ] && dir="$(fd . --mindepth 1 -td | sed 's/\/$//' | sort | fzf)"
+    [ -z $dir ] && dir="."
+
+    # regex for matching youtube links (with the yt-dlp format)
+    yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
+
+    # number of files
+    total_files="$(/bin/ls -Ap1 $dir | sed '/\//d' | wc -l)"
+    iterator="$((1))"
+
+    # For each file in the given dir extracts the yt link from metadata
+    # (it's embedded if the file has been downloaded by dlv) and puts it alongside
+    # the file name into the dlvlist file
+    # If the file doesn't have the link in the metadata it's skipped
+    echo ""
+    for file in $dir/*; do
+        if [ -f $file ]; then
+            link="$(gytlff $file)"
+            if [[ "$link" =~ $yt_regex ]]; then
+                filename="$(echo $file | sed 's/^.*\///')"
+                echo "${link} ${filename}" >> $link_list_file
+
+                # printing the iterator
+                echo -ne "\x1b[1A"
+                echo "$((($iterator*100)/$total_files))%  <|>  $iterator / $total_files "
+                iterator="$(($iterator + 1))"
+            else
+                total_files="$(($total_files - 1))"
+            fi
+        fi
+    done
+
+    # If the file isn't created
+    if [ ! -f $link_list_file ]; then
+        echo "No compatible files in the directory"
+        return 1
+    fi
 }
