@@ -24,6 +24,14 @@
 /* Removes the titlebar buttons (minimize, maximize, close) */
 .titlebar-buttonbox-container { display: none }
 
+/* Removes rounded corners */
+:root {
+    --toolbarbutton-border-radius: 0px !important;
+    --tab-border-radius: 0px !important;
+    --arrowpanel-border-radius: 0px !important;
+    --arrowpanel-menuitem-border-radius: 0px !important;
+}
+
 /* Next two sections are for turning the oneline hack 
  * back off when the window is narrow enough */
 @media screen and (min-width:1000px) {
@@ -295,17 +303,17 @@
 
 tooltip { 
     -moz-appearance: none !important;
-    background:#262b32 !important;
-    color: #abb2bf !important;
-    /* font-family: JetBrainsMono Nerd Font !important; */
-    font-family: Victor Mono !important;
+    background:#24283b !important;
+    color: #c0caf5 !important;
+    font-family: JetBrainsMono Nerd Font !important;
+    /* font-family: Victor Mono !important; */
     font-weight: 600 !important;
 }
 
 /* font change on the bar */
 * {
-    /* font-family: JetBrains Mono Nerd Font !important; */
-    font-family: Victor Mono !important;
+    font-family: JetBrains Mono Nerd Font !important;
+    /* font-family: Victor Mono !important; */
     font-size:   10pt !important;
     font-weight: 600 !important;
 }

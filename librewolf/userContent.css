@@ -4,23 +4,23 @@
  * Modified by u/Kasetonix
 */
 
-:root:-moz-window-inactive{--bgcolor: #262b32;}
+:root:-moz-window-inactive{--bgcolor: #24283b;}
 
 :root {
-    --bg-dark:  #262b32;
-    --bg-light: #31343f;
-    --fg:       #abb2bf;
-    --accent:   #56b6c2;
+    --bg-dark:  #24283b;
+    --bg-light: #32344a;
+    --fg:       #c0caf5;
+    --accent:   #2ac3de;
 
-    --bgcolor: #262b32;
-    --bbcolor: #31343f;
-    --stcolor: #31343f;
-    --prcolor: #262b32;
-    --hpcolor: #56b6c2;
-    --ndcolor: #31343f;
-    --tpcolor: #abb2bf;
-    --tscolor: #abb2bf;
-    --ttcolor: #abb2bf;
+    --bgcolor: #24283b;
+    --bbcolor: #32344a;
+    --stcolor: #32344a;
+    --prcolor: #24283b;
+    --hpcolor: #2ac3de;
+    --ndcolor: #32344a;
+    --tpcolor: #c0caf5;
+    --tscolor: #c0caf5;
+    --ttcolor: #c0caf5;
 
     --in-content-page-background: var(--bg-dark) !important;
     --in-content-box-background: var(--bg-light) !important;
@@ -63,8 +63,8 @@
 
 @-moz-document url-prefix(about:){
     body                                { background-color: var(--bg-dark) !important; }
-    /* body,html                           { overflow-y: auto !important; font-family: JetBrainsMono Nerd Font !important; } */
-    body,html                           { overflow-y: auto !important; font-family: Victor Mono !important; font-weight: 600 !important; }
+    body,html                           { overflow-y: auto !important; font-family: JetBrainsMono Nerd Font !important; }
+    /* body,html                           { overflow-y: auto !important; font-family: Victor Mono !important; font-weight: 600 !important; } */
     .selector                           { background-color: var(--bg-light) !important; border: var(--bg-light) !important; }
     .rich-icon, .tile, .top-site-icon   { background-color: var(--bg-light) !important; }
     .section input:checked+.slider      { --newtab-primary-action-background: var(--bg-dark) !important; }
@@ -158,23 +158,24 @@ url("about:newtab") {
     .search-wrapper .search-handoff-button { display: none !important; }
     .wordmark { display: none !important; }
     .personalize-button { display: none !important; }
-    body { background: #262b32 !important; }
+    body { background: #24283b !important; }
 
-    .logo {
+    /* .logo {
         background: url("logo.png") no-repeat center center !important;
 	    width: 750px !important;
 	    height: 600px !important;
-    }
+    } */
 
 
     /* Setup with only background and blur */
     /* html { filter: blur(5px) !important; } */
-    /* body {  */
-    /*     background: url("bg.png") !important; */
-    /*     background-size: cover !important; */
-    /* } */
+    body { 
+        background: url("bg.png") !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
 
-    /* .search-wrapper .logo-and-wordmark { display: none !important; } */
+    .search-wrapper .logo-and-wordmark { display: none !important; }
 }
 
 @-moz-document url("about:privatebrowsing") {
@@ -185,22 +186,23 @@ url("about:newtab") {
     .outer-wrapper        { display: none !important; }
     .info                 { display: none !important; }
 
-    .logo {
-        background: url("logo.png") no-repeat center center !important;
-	    height: 600px !important;
-	    width: 750px !important;
-    }
+    /* .logo { */
+    /*     background: url("logo.png") no-repeat center center !important; */
+	   /*  height: 600px !important; */
+	   /*  width: 750px !important; */
+    /* } */
 
     /* Setup with only background and blur */
-    /* .logo-and-wordmark    { display: none !important; } */
-    /* .logo                 { display: none !important; } */
-    /* body {  */
-    /*     filter: blur(5px) !important; */
-    /*     background: url("bg.png") !important;  */
-    /*     background-size: cover !important; */
-    /* } */
+    .logo-and-wordmark    { display: none !important; }
+    .logo                 { display: none !important; }
+    body { 
+        filter: blur(5px) !important;
+        background: url("bg.png") !important; 
+        background-size: cover !important;
+        background-position: center !important;
+    }
 }
 
 @-moz-document url("about:blank") {
-    :root { --in-content-page-background: #262b32 !important; }
+    :root { --in-content-page-background: #24283b !important; }
 }
