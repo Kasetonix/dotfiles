@@ -7,18 +7,18 @@
         "separator": " » "
     },
     "modules": [
+        // {
+        //     "type": "host",
+        //     "format": "{1}",
+        //     "key": " ",
+        //     "keyColor": "35"
+        // },
         {
-            "type": "host",
-            "format": "{1}",
-            "key": " ",
+            "type": "os",
+            "format": "{2}",
+            "key": " ",
             "keyColor": "35"
         },
-        // {
-        //     "type": "os",
-        //     "format": "{2}",
-        //     "key": "",
-        //     "keyColor": "36"
-        // },
         {
             "type": "kernel",
             "format": "{2}",
