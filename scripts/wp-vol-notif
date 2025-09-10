@@ -1,8 +1,7 @@
-#!/bin/sh
+#!/bin/zsh
 
 # Get the volume level and convert it to a percentage
-volume=$(wpctl get-volume @DEFAULT_SINK@)
-volume=$(echo "$volume" | awk '{print $2}')
-volume=$(echo "( $volume * 100 ) / 1" | bc)
+volume="$(wpctl get-volume @DEFAULT_SINK@ | awk '{print $2}')"
+volume="$(($volume * 100))"
 
 notify-send -t 1000 -a 'wp-vol' -h int:value:$volume "wp-vol-notif"
