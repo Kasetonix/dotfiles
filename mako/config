@@ -1,0 +1,45 @@
+# GLOBAL CONFIGURATION
+max-history=0
+sort=-time
+
+# BINDING
+on-button-left=invoke-default-action
+on-button-right=dismiss
+
+# STYLE
+font=JetBrainsMono NF 12
+
+background-color=#24283b
+text-color=#a9b1d6
+border-color=#a9b1d6
+progress-color=#a9b1d6
+
+width=448
+height=200
+margin=8,8,0,0
+border-size=4
+border-radius=12
+max-icon-size=64
+padding=8
+default-timeout=10000
+group-by=app-name,app-icon
+
+[summary="wp-vol-notif"]
+layer=overlay
+history=0
+anchor=top-right
+margin=8,8,0,0
+group-by=app-name
+# Hide the group-index
+format=<b> </b>\n
+height=46
+width=186
+background-color=#1a1b26
+text-color=#a9b1d6
+border-color=#24283b
+progress-color=#a9b1d6
+border-size=8
+
+[summary="wp-vol-notif" group-index=0]
+# Only show last notification
+invisible=0
