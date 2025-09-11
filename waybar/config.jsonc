@@ -129,7 +129,7 @@
     "format-time": "{H}:{m}",
     "tooltip": true,
     "tooltip-format": "{capacity}% | {time}",
-    "tooltip-format-full": "{capacity}%",
+    "tooltip-format-full": "",
     "tooltip-format-plugged": "{capacity}%"
 },
 
@@ -139,9 +139,7 @@
     "tooltip-format": "Power profile: {profile}",
     "format-icons": {
         "performance": "",
-        // "balanced": "",
-        "balanced": "⚖",
-        // "balanced": "",
+        "balanced": "",
         "power-saver": ""
     }
 },
@@ -187,7 +185,7 @@
 
 "custom/exit": {
     "format": "",
-    "on-click": "niri msg action quit",
+    "on-click": "niri msg action quit --skip-confirmation",
     "tooltip": false,
     "on-scroll-up": "",
     "on-scroll-down": ""
