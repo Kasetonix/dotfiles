@@ -48,14 +48,21 @@ output "eDP-1" {
     position x=0 y=0
 }
 
+// PCSS #1
+output "Dell Inc. DELL P2721Q FS5WTK3" {
+    mode "3840x2160@60.000"
+    scale 1.75
+    position x=-329 y=-1235
+}
+
+// PCSS #2
 output "Dell Inc. DELL P2721Q FM6WTK3" {
     mode "3840x2160@60.000"
-    scale 2
-    position x=-192 y=-1080
+    scale 1.75
+    position x=-329 y=-1235
 }
 
 output "HDMI-A-1" {
-    mode "1920x1080@74.973"
     scale 1
 }
 
@@ -304,9 +311,10 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    Mod+Shift+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    // Mod+Shift+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     Ctrl+Alt+Delete { quit; }
 
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Escape { spawn "alacritty" "-T" "btop" "-e" "btop"; }
+    Mod+M { power-off-monitors; }
 }
