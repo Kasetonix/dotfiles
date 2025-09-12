@@ -19,7 +19,9 @@
     "network",
     "pulseaudio",
     "backlight",
-    "group/group-battery",
+    "power-profiles-daemon",
+    "battery",
+    // "group/group-battery",
     "group/group-powermenu"
 ],
 

@@ -43,7 +43,9 @@ window#waybar {
 #network:hover,
 #pulseaudio:hover,
 #backlight:hover,
-#group-battery:hover,
+#power-profiles-daemon:hover,
+#battery:hover,
+/* #group-battery:hover, */
 #group-powermenu:hover 
 { background: @bg-hover; }
 
@@ -71,7 +73,9 @@ window#waybar {
 #network,
 #pulseaudio,
 #backlight,
-#group-battery,
+#power-profiles-daemon,
+#battery,
+/* #group-battery, */
 #group-powermenu
 {
     padding: 1px 12px;
@@ -89,10 +93,10 @@ window#waybar {
 #battery.warning  { color: @orange; }
 #battery.critical { color: @red; }
 
+/* #power-profiles-daemon, */
 #custom-exit,
 #custom-reboot,
-#custom-poweroff,
-#power-profiles-daemon
+#custom-poweroff
 {
     padding-right: 10px;
     transition: background-color 150ms ease-in-out;
