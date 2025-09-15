@@ -140,9 +140,12 @@
     "tooltip": false,
     "tooltip-format": "Power profile: {profile}",
     "format-icons": {
-        "performance": "",
-        "balanced": "",
+        "performance": "⚡",
+        // "balanced": "☕",
+        // "balanced": "",
+        "balanced": "",
         "power-saver": ""
+
     }
 },
 
