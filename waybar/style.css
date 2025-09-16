@@ -24,7 +24,7 @@
 @define-color arch-blue #1793d1;
 
 * {
-    font-family: Symbols Nerd Font, JetBrainsMono NF;
+    font-family: Symbols Nerd Font, JetBrainsMono Nerd Font Mono;
     font-size: 12px;
     font-weight: bolder;
 }
@@ -46,8 +46,11 @@ window#waybar {
 #power-profiles-daemon:hover,
 #battery:hover,
 /* #group-battery:hover, */
-#group-powermenu:hover 
-{ background: @bg-hover; }
+#group-powermenu:hover { 
+    background: @bg-hover; 
+    box-shadow: none;
+    border-color: transparent;
+}
 
 #workspaces button.focused { background: @fg; }
 #workspaces button.urgent  { color: @fg-urgent; }
@@ -82,7 +85,7 @@ window#waybar {
     color: @fg;
     background: @module-bg;
     border-radius: 12px;
-    transition: background-color 150ms ease-in-out;
+    transition: 150ms ease-in-out;
 }
 
 #workspaces button {
