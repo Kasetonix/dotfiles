@@ -134,7 +134,7 @@ function vid {
     echo "$(fd . ~/vids -tf | sed 's/\/home\/kasetonix\/vids\///' | sort)" | fzf | read choice
     if [ -n "$choice" ]; then
         echo "$fg_bold[magenta] $(echo $choice | sed 's/^.*\///g')$reset_color"
-        mpv "$HOME/vids/$choice" | sed -E "/^( Artist:| Comment:| Date:| Title:)/!d"
+        mpv --loop=inf "$HOME/vids/$choice" 2>/dev/null | sed -E "/^( Artist:| Comment:| Date:| Title:)/!d"
     fi
 }
 
