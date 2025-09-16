@@ -140,7 +140,7 @@
     "tooltip": false,
     "tooltip-format": "Power profile: {profile}",
     "format-icons": {
-        "performance": "⚡",
+        "performance": "",
         // "balanced": "☕",
         // "balanced": "",
         "balanced": "",
