@@ -2,7 +2,7 @@
 # Remove the ; to change parameters.
 
 [general]
-framerate = 60
+framerate = 180
 
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
 # new as of 0.6.0 autosens of low values (dynamic range)
@@ -33,8 +33,8 @@ bar_spacing = 1
 # the bandwidth of the visualizer.
 # Note: there is a minimum total bandwidth of 43Mhz x number of bars.
 # Cava will automatically increase the higher cutoff if a too low band is specified.
-lower_cutoff_freq = 40
-higher_cutoff_freq = 16000
+lower_cutoff_freq = 50
+higher_cutoff_freq = 10000
 
 # Seconds with no input before cava goes to sleep mode. Cava will not perform FFT or drawing and
 # only check for input once per second. Cava will wake up once input is detected. 0 = disable.
