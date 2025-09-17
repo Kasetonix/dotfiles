@@ -20,7 +20,7 @@ function source-plugin() {
 }
 
 function source-plugin-local() {
-    [ -f "$ZDOTDIR/.plugins-local/$1" ] && source "$ZDOTDIR/.plugins-local/$1"
+    [ -f "$ZDOTDIR/local-plugins/$1" ] && source "$ZDOTDIR/local-plugins/$1"
 }
 
 function source-completion() {
