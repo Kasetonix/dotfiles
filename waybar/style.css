@@ -36,6 +36,7 @@ window#waybar {
 #workspaces button { background: @module-bg; } 
 
 #workspaces button:hover,
+#custom-spotify:hover,
 #cpu:hover,
 #load:hover,
 #clock:hover,
@@ -69,6 +70,7 @@ window#waybar {
 .modules-right { margin-right: 8px; }
 
 #workspaces button,
+#custom-spotify,
 #cpu,
 #load,
 #clock,

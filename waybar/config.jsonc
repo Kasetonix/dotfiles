@@ -6,7 +6,8 @@
 
 // Choose the order of the modules
 "modules-left": [
-    "niri/workspaces"
+    "niri/workspaces",
+    "custom/spotify"
 ],
 
 "modules-center": [
@@ -40,21 +41,21 @@
     "format": "  {load1:0.1f}%",
     "interval": 1,
     "tooltip": false,
-    "on-click": "alacritty -T 'btop' -e 'btop'"
+    "on-click": "alacritty -T 'btop' -o 'font.size=11.5' -e 'btop'"
 },
 
 "cpu": {
     "format": "  {usage}%",
     "interval": 1,
     "tooltip": false,
-    "on-click": "alacritty -T 'btop' -e 'btop'"
+    "on-click": "alacritty -T 'btop' -o 'font.size=11.5' -e 'btop'"
 },
 
 "memory": {
     "format": "{used:0.1f}G ",
     "interval": 1,
     "tooltip": false,
-    "on-click": "alacritty -T 'btop' -e 'btop'"
+    "on-click": "alacritty -T 'btop' -o 'font.size=11.5' -e 'btop'"
 },
 
 "clock": {
@@ -140,7 +141,7 @@
     "tooltip": false,
     "tooltip-format": "Power profile: {profile}",
     "format-icons": {
-        "performance": "",
+        "performance": "⚡",
         // "balanced": "☕",
         // "balanced": "",
         "balanced": "",
@@ -164,6 +165,20 @@
 },
 
 /// CUSTOM MODULES ///
+"custom/spotify": {
+    "format": "    {text}",
+    "max-length": 40,
+    "interval": 1,
+    "tooltip": false,
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "killall spotify",
+    "smooth-scrolling-threshold": 1,
+    "on-scroll-up" : "playerctl -p spotify next",
+    "on-scroll-down" : "playerctl -p spotify previous",
+    "exec": "[ $(playerctl -p spotify status) = 'Paused' ] && echo -n '  ' || echo -n '  '; playerctl -p spotify metadata xesam:title",
+    "exec-if": "pgrep spotify"
+},
+
 "custom/powermenu": {
     "format": "󰣇",
     "on-click": "",
