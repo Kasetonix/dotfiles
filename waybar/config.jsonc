@@ -167,7 +167,6 @@
 /// CUSTOM MODULES ///
 "custom/spotify": {
     "format": "    {text}",
-    "max-length": 40,
     "interval": 1,
     "tooltip": false,
     "on-click": "playerctl -p spotify play-pause",
@@ -175,7 +174,7 @@
     "smooth-scrolling-threshold": 1,
     "on-scroll-up" : "playerctl -p spotify next",
     "on-scroll-down" : "playerctl -p spotify previous",
-    "exec": "[ $(playerctl -p spotify status) = 'Paused' ] && echo -n '  ' || echo -n '  '; playerctl -p spotify metadata xesam:title",
+    "exec": "$XDG_CONFIG_DIR/waybar/spotify.sh 32",
     "exec-if": "pgrep spotify"
 },
 
