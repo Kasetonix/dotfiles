@@ -21,7 +21,8 @@
 @define-color fg-hover      @white;
 @define-color fg-urgent     @orange;
 
-@define-color arch-blue #1793d1;
+@define-color arch  #1793d1;
+@define-color heart @red;
 
 * {
     font-family: Symbols Nerd Font, JetBrainsMono Nerd Font Mono;
@@ -109,7 +110,8 @@ window#waybar {
 }
 
 #group-powermenu {
-    color: @arch-blue;
+    /* color: @arch; */
+    color: @heart
 }
 
 tooltip {

@@ -166,7 +166,7 @@
 
 /// CUSTOM MODULES ///
 "custom/spotify": {
-    "format": "    {text}",
+    "format": "{text}  ",
     "interval": 1,
     "tooltip": false,
     "on-click": "playerctl -p spotify play-pause",
@@ -179,7 +179,8 @@
 },
 
 "custom/powermenu": {
-    "format": "󰣇",
+    // "format": "󰣇",
+    "format": "",
     "on-click": "",
     "tooltip": false,
     "on-scroll-up": "", // Prevents crashes on scroll
