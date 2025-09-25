@@ -41,7 +41,7 @@ function dlv {
     # if destination is unset spawn an fzf instance to choose it
     [ -z $dest ] && echo ".\n$(fd . --mindepth 1 -td | sed 's/\/$//' | sort)" | fzf | read dest
     [ -z $dest ] && return 1
-
+ 
     ytdlp "$link" "$dest"
 
     # if a filename is given change the fetched original filename to a new one
@@ -58,22 +58,19 @@ function dlv {
 # downloads a list of videos, reading links from a file
 function dlvlist {
     link_list_file="$1"
-    if [ ! -f $link_list_file ]; then
-        echo "The link list file doesn't exist"
-        return 1
-    fi
+    [ -f $link_list_file ] || echo "The link list file doesn't exist" && return 1
 
     dest=$2
-    [ -z $dest ] && dest="$(fd . --mindepth 1 -td | sort | fzf)"
+    [ -z $dest ] && dest="$(fd . --mindepth 1 -td | sed 's/\/$//' | sort | fzf)"
     [ -z $dest ] && dest="."
 
     # prepare a list of existing videos as not to download the same video twice
-    existing_links=""
-    while read file; do
-        link="$(gytlff $file)"
-        [ -z $link ] || existing_links="$existing_links$link\n"
-    done < <(ls -1 $dest/*.mp4)
-    existing_links="$(echo "$existing_links" | head -n -1)"
+    if $(fd 'mp4' $dest -q); then
+        while read file; do
+            link="$(gytlff $file)"
+            [ -z $link ] || existing_links="$existing_links$link\n"
+        done < <(ls -1 $dest/*.mp4)
+    fi
 
     # reads whole lines from the link list file
     while IFS= read -r line; do
@@ -84,10 +81,7 @@ function dlvlist {
         # checking if the function is about to download a duplicate
         unset duplicate
         while read cached_link; do
-            if [ "$link" = "$cached_link" ]; then
-                duplicate=true
-                break
-            fi
+            [ "$link" = "$cached_link" ] && duplicate=true && break
         done <<< "$existing_links"
         [ -z $duplicate ] || continue 
 
@@ -114,11 +108,14 @@ function cdfd {
     [ -z $dir ] && dir="$(fd . --mindepth 1 -td | sed 's/\/$//' | sort | fzf)"
     [ -z $dir ] && dir="."
 
+    # Check for existance of list file
+    [ -f "$link_list_file" ] && rm "$link_list_file"
+
     # regex for matching youtube links (with the yt-dlp format)
     yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
 
     # number of files
-    total_files="$(/bin/ls -Ap1 $dir | sed '/\//d' | wc -l)"
+    total_files="$(ls -Ap1 $dir | sed '/\//d' | wc -l)"
     iterator="$((1))"
 
     # For each file in the given dir extracts the yt link from metadata
@@ -127,25 +124,23 @@ function cdfd {
     # If the file doesn't have the link in the metadata it's skipped
     echo ""
     for file in $dir/*; do
-        if [ -f $file ]; then
-            link="$(gytlff $file)"
-            if [[ "$link" =~ $yt_regex ]]; then
-                filename="$(echo $file | sed 's/^.*\///')"
-                echo "${link} ${filename}" >> $link_list_file
+        [ -f $file ] || continue # only regular files pass 
 
-                # printing the iterator
-                echo -ne "\x1b[1A"
-                echo "$((($iterator*100)/$total_files))%  <|>  $iterator / $total_files "
-                iterator="$(($iterator + 1))"
-            else
-                total_files="$(($total_files - 1))"
-            fi
+        link="$(gytlff $file)"
+        if [[ "$link" =~ $yt_regex ]]; then
+            filename="$(echo $file | sed 's/^.*\///')"
+            echo "${link} ${filename}" >> $link_list_file
+        else
+            total_files="$(($total_files - 1))"
+            iterator="$(($iterator - 1))"
         fi
+
+        # printing the iterator
+        echo -ne "\x1b[1A"
+        echo "$((($iterator*100)/$total_files))%  <|>  $iterator / $total_files"
+        iterator="$(($iterator + 1))"
     done
 
     # If the file isn't created
-    if [ ! -f $link_list_file ]; then
-        echo "No compatible files in the directory"
-        return 1
-    fi
+    [ -f $link_list_file ] || echo "No compatible files in the directory" && return 1
 }
