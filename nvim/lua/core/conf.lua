@@ -5,6 +5,7 @@ vim.o.sh = "zsh" -- set default vim shell to zsh
 vim.wo.number = true -- setting line numbers
 vim.o.mouse = 'a' -- enabling mouse
 vim.o.clipboard = 'unnamedplus' -- using os clipboard
+vim.g.clipboard = 'wl-copy'
 vim.o.breakindent = true -- enabling break indent
 vim.o.undofile = true -- saving undo history
 vim.wo.signcolumn = 'yes' -- turning on the signcolumn
@@ -39,7 +40,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
   group = highlight_group,
   pattern = '*',
