@@ -172,10 +172,9 @@
     "on-click": "playerctl -p spotify play-pause",
     "on-click-right": "niri msg action focus-window --id $(niri msg windows | sed '/[Window|App] ID/!d' | grep -B1 'Spotify' | sed 's/[^0-9]//g')",
     "smooth-scrolling-threshold": 1,
-    "on-scroll-up" : "playerctl -p spotify next",
-    "on-scroll-down" : "playerctl -p spotify previous",
-    "exec": "$XDG_CONFIG_DIR/waybar/spotify.sh 32",
-    "exec-if": "pgrep spotify"
+    "on-scroll-up" : "playerctl -p spotify previous",
+    "on-scroll-down" : "playerctl -p spotify next",
+    "exec": "$XDG_CONFIG_DIR/waybar/spotify.sh 32"
 },
 
 "custom/powermenu": {
