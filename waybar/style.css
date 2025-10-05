@@ -43,6 +43,7 @@ window#waybar {
 #clock:hover,
 #memory:hover,
 #network:hover,
+#bluetooth:hover,
 #pulseaudio:hover,
 #backlight:hover,
 #power-profiles-daemon:hover,
@@ -77,6 +78,7 @@ window#waybar {
 #clock,
 #memory,
 #network,
+#bluetooth,
 #pulseaudio,
 #backlight,
 #power-profiles-daemon,
@@ -110,8 +112,8 @@ window#waybar {
 }
 
 #group-powermenu {
-    /* color: @arch; */
-    color: @heart;
+    color: @arch;
+    /* color: @heart */
 }
 
 tooltip {

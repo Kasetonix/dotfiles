@@ -163,6 +163,7 @@ window-rule {
 
 window-rule {
     match title="nmtui"
+    match title="bluetui"
     open-floating true
 }
 
@@ -208,6 +209,7 @@ binds {
     Mod+Slash       { spawn "fuzzel"; }
     Mod+Alt+Slash   { spawn "alacritty" "-e" "ranger"; }
     Mod+N           { spawn "alacritty" "-T" "nmtui" "-e" "nmtui-connect"; }
+    Mod+Shift+N     { spawn "alacritty" "-T" "bluetui" "-e" "bluetui-connect"; }
 
     // Media
     XF86AudioRaiseVolume  allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%+ && $HOME/.local/bin/scripts/wp-vol-notif"; }
@@ -319,8 +321,8 @@ binds {
     Mod+Shift+Comma  { set-window-height "-8.3335%"; }
     Mod+Shift+Period { set-window-height "+8.3335%"; }
 
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+V       { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+V { toggle-window-floating; }
 
     Mod+W { toggle-column-tabbed-display; }
 
