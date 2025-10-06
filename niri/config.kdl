@@ -41,43 +41,16 @@ hotkey-overlay {
     skip-at-startup
 }
 
-output "eDP-1" {
-    mode "1920x1080@60.008"
-    scale 1.25
+output "AU Optronics 0xAF90 Unknown" {
+    scale 1.1
     transform "normal"
     position x=0 y=0
 }
 
-// PCSS #1
-output "Dell Inc. DELL P2721Q FS5WTK3" {
-    mode "3840x2160@60.000"
-    scale 1.75
-    position x=-329 y=-1235
-}
-
-// PCSS #2
-output "Dell Inc. DELL P2721Q FM6WTK3" {
-    mode "3840x2160@60.000"
-    scale 1.75
-    position x=-329 y=-1235
-}
-
-// PCSS #3
-output "Dell Inc. DELL P2721Q FNCWTK3" {
-    mode "3840x2160@60.000"
-    scale 1.75
-    position x=-329 y=-1235
-}
-
-// Tata / Telewizor
-output "Samsung Electric Company SAMSUNG 0x01000E00" {
-    mode "3840x2160@60.000"
-    scale 2
-    position x=0 y=-1080
-}
-
-output "HDMI-A-1" {
+output "PNP(AOC) 24G2W1G5 0x00001EEF" {
+    mode "1920x1080@74.973"
     scale 1
+    position x=1745 y=0
 }
 
 cursor {
@@ -209,7 +182,7 @@ binds {
     Mod+Slash       { spawn "fuzzel"; }
     Mod+Alt+Slash   { spawn "alacritty" "-e" "ranger"; }
     Mod+N           { spawn "alacritty" "-T" "nmtui" "-e" "nmtui-connect"; }
-    Mod+Shift+N     { spawn "alacritty" "-T" "bluetui" "-e" "bluetui-connect"; }
+    Mod+Shift+N     { spawn "alacritty" "-T" "bluetui" "-e" "bluetui"; }
 
     // Media
     XF86AudioRaiseVolume  allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%+ && $HOME/.local/bin/scripts/wp-vol-notif"; }
