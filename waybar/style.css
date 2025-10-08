@@ -112,8 +112,8 @@ window#waybar {
 }
 
 #group-powermenu {
-    color: @arch;
-    /* color: @heart */
+    /* color: @arch; */
+    color: @heart
 }
 
 tooltip {

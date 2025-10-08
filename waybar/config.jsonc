@@ -100,7 +100,7 @@
     "tooltip": true,
     "tooltip-format": "{volume}%",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "pavucontrol",
+    "on-click-right": "[ $(pgrep pavucontrol) ] && niri msg action focus-window --id $(niri msg windows | sed '/[Window|App] ID/!d' | grep -B1 'org.pulseaudio.pavucontrol' | sed 's/[^0-9]//g') || pavucontrol",
     "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%+ && $HOME/.local/bin/scripts/wp-vol-notif",
     "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%- && $HOME/.local/bin/scripts/wp-vol-notif"
 },
