@@ -43,7 +43,6 @@ hotkey-overlay {
 
 output "AU Optronics 0xAF90 Unknown" {
     scale 1.1
-    transform "normal"
     position x=0 y=0
 }
 
@@ -51,6 +50,11 @@ output "PNP(AOC) 24G2W1G5 0x00001EEF" {
     mode "1920x1080@74.973"
     scale 1
     position x=1745 y=0
+}
+
+output "GIGA-BYTE TECHNOLOGY CO., LTD. GS27QA 0x01010101" {
+    mode "2560x1440@179.999"
+    scale 1.25
 }
 
 cursor {
@@ -72,7 +76,7 @@ layout {
     center-focused-column "never"
     default-column-width { proportion 0.66667; }
     background-color "transparent"
-
+    always-center-single-column
 
     preset-column-widths {
         proportion 0.33333
@@ -183,6 +187,7 @@ binds {
     Mod+Alt+Slash   { spawn "alacritty" "-e" "ranger"; }
     Mod+N           { spawn "alacritty" "-T" "nmtui" "-e" "nmtui-connect"; }
     Mod+Shift+N     { spawn "alacritty" "-T" "bluetui" "-e" "bluetui"; }
+    Mod+O           { spawn "sh" "-c" "$HOME/.local/bin/scripts/change-sink.zsh"; }
 
     // Media
     XF86AudioRaiseVolume  allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%+ && $HOME/.local/bin/scripts/wp-vol-notif"; }

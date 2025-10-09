@@ -86,7 +86,8 @@
 },
 
 "bluetooth": {
-    "format": "",
+    // "format": "",
+    "format": "",
     "format-connected": "󰂱",
     "tooltip-format": "{device_alias}",
     "on-click-right": "alacritty -T 'bluetui' -e 'bluetui'"
@@ -100,7 +101,8 @@
     "tooltip": true,
     "tooltip-format": "{volume}%",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "[ $(pgrep pavucontrol) ] && niri msg action focus-window --id $(niri msg windows | sed '/[Window|App] ID/!d' | grep -B1 'org.pulseaudio.pavucontrol' | sed 's/[^0-9]//g') || pavucontrol",
+    // "on-click-right": "[ $(pgrep pavucontrol) ] && niri msg action focus-window --id $(niri msg windows | sed '/[Window|App] ID/!d' | grep -B1 'org.pulseaudio.pavucontrol' | sed 's/[^0-9]//g') || pavucontrol",
+    "on-click-right": "$HOME/.local/bin/scripts/change-sink.zsh",
     "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%+ && $HOME/.local/bin/scripts/wp-vol-notif",
     "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%- && $HOME/.local/bin/scripts/wp-vol-notif"
 },
@@ -182,7 +184,7 @@
     "smooth-scrolling-threshold": 1,
     "on-scroll-up" : "playerctl -p spotify previous",
     "on-scroll-down" : "playerctl -p spotify next",
-    "exec": "$XDG_CONFIG_DIR/waybar/spotify.sh 32"
+    "exec": "$HOME/.local/bin/scripts/spotify.sh 32"
 },
 
 "custom/powermenu": {
