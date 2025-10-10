@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-node_names="$(pactl list sinks | sed '/node.name/!d; s/^\s*node\.name = //; s/"//g')"
-card_names="$(pactl list sinks | sed '/alsa.card_name/!d; s/^\s*alsa\.card_name = //; s/"//g; s/^/ /')"
+node_names="$(pactl list sinks | sed '/node\.name/!d; s/^\s*node\.name = //; s/"//g')"
+card_names="$(pactl list sinks | sed '/\(alsa\.card_name\|media\.name\)/!d; s/^\s*\(alsa\.card_name\|media\.name\) = //; s/"//g; s/^/ /')"
 sink_num="$(echo $node_names | wc -l)"
 max_len="0"
 
