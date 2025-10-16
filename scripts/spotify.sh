@@ -1,8 +1,13 @@
 #!/bin/sh
+[ "$(pgrep -xc spotify)" -gt "0" ] || exit 1
+
 lim=$1
 [ -z lim ] || lim="32"
-[ $(pgrep spotify) ] && exit 1
-[ $(playerctl -p spotify status) = 'Paused' ] && status='' || status=''
+
 title="$(playerctl -p spotify metadata xesam:title)"
+[ "${#title}" -eq "0" ] && exit 1 
 [ "${#title}" -gt "$lim" ] && title="$(echo ${title:0:$((lim-1))}…)"
-echo "$status   ⟨$title⟩"
+
+[ "$(playerctl -p spotify status)" = 'Playing' ] && status='' || status=''
+
+echo "$status   ⟨$title⟩  "

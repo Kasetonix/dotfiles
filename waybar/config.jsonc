@@ -176,7 +176,7 @@
 
 /// CUSTOM MODULES ///
 "custom/spotify": {
-    "format": "{text}  ",
+    "format": "{text}",
     "interval": 1,
     "tooltip": false,
     "on-click": "playerctl -p spotify play-pause",
