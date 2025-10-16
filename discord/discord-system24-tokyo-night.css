@@ -102,6 +102,7 @@ body {
     --active: hsla(229, 22%, 41%, 0.267); /* channels and buttons when clicked or selected */
     --active-2: hsla(229, 22%, 41%, 0.333); /* extra state for transparent buttons */
     --message-hover: hsla(229, 0%, 0%, 0.1); /* messages when hovered */
+    /*--background-base-lower: var(--bg-4);*/
 
     /* accent colors */
     --accent-1: var(--blue-1); /* links and other accent text */
@@ -160,3 +161,6 @@ body {
     --purple-5: hsl(261, 55%, 61%);
 }
 
+.root_bfe55a {
+    background-color: var(--bg-4);
+}

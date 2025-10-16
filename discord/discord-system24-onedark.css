@@ -15,8 +15,8 @@
 
 body {
     /* font, change to '' for default discord font */
-    --font: 'Victor Mono SemiBold';
-    --code-font: 'Victor Mono SemiBold'; /* change to '' for default discord font */
+    --font: 'JetBrainsMono NF SemiBold'; /* change to '' for default discord font */
+    --code-font: 'JetBrainsMono NF SemiBold'; /* change to '' for default discord font */
     font-weight: 300; /* text font weight. 300 is light, 400 is normal. DOES NOT AFFECT BOLD TEXT */
     letter-spacing: -0.05ch; /* decreases letter spacing for better readability. recommended on monospace fonts.*/
 
@@ -87,21 +87,22 @@ body {
 
     /* text colors */
     --text-0: var(--bg-3); /* text on colored elements */
-    --text-1: hsl(220, 13%, 82%); /* other normally white text */
-    --text-2: hsl(218, 13%, 76%); /* headings and important text */
-    --text-3: hsl(219, 14%, 71%); /* normal text */
-    --text-4: hsl(217, 10%, 64%); /* icon buttons and channels */
-    --text-5: hsl(218, 7%, 56%); /* muted channels/chats and timestamps */
+    --text-1: hsl(229, 73%, 95%); /* other normally white text */
+    --text-2: #c0caf5; /* headings and important text */
+    --text-3: #a9b1d6; /* normal text */
+    --text-4: hsl(229, 21%, 54%); /* icon buttons and channels */
+    --text-5: #414868; /* muted channels/chats and timestamps */
 
     /* background and dark colors */
-    --bg-1: hsl(229, 12%, 17%); /* dark buttons when clicked */
-    --bg-2: hsl(225, 12%, 13%); /* dark buttons */
-    --bg-3: hsl(227, 13%, 22%); /* spacing, secondary elements */
-    --bg-4: hsl(228, 13%, 15%); /* main background color */
-    --hover: hsla(228, 12%, 41%, 0.125); /* channels and buttons when hovered */
-    --active: hsla(228, 12%, 41%, 0.267); /* channels and buttons when clicked or selected */
-    --active-2: hsla(228, 12%, 41%, 0.333); /* extra state for transparent buttons */
-    --message-hover: hsla(228, 0%, 0%, 0.1); /* messages when hovered */
+    --bg-1: hsl(230, 25%, 25%); /* dark buttons when clicked */
+    --bg-2: hsl(230, 24%, 19%); /* dark buttons */
+    --bg-3: #32344a; /* spacing, secondary elements */
+    --bg-4: #24283b; /* main background color */
+    --hover: hsla(229, 22%, 41%, 0.125); /* channels and buttons when hovered */
+    --active: hsla(229, 22%, 41%, 0.267); /* channels and buttons when clicked or selected */
+    --active-2: hsla(229, 22%, 41%, 0.333); /* extra state for transparent buttons */
+    --message-hover: hsla(229, 0%, 0%, 0.1); /* messages when hovered */
+    --background-base-lower: var(--bg-4);
 
     /* accent colors */
     --accent-1: var(--blue-1); /* links and other accent text */
@@ -129,34 +130,34 @@ body {
     --button-border: hsl(225, 0%, 0%, 0); /* neutral border color of buttons */
 
     /* base colors */
-    --red-1: hsl(355, 85%, 77%);
-    --red-2: hsl(355, 75%, 71%);
-    --red-3: hsl(355, 65%, 65%);
-    --red-4: hsl(355, 55%, 59%);
-    --red-5: hsl(355, 45%, 53%);
+    --red-1: hsl(349, 99%, 78%);
+    --red-2: hsl(349, 89%, 72%);
+    --red-3: hsl(349, 79%, 66%);
+    --red-4: hsl(349, 69%, 60%);
+    --red-5: hsl(349, 59%, 54%);
 
-    --green-1: hsl(95, 48%, 74%);
-    --green-2: hsl(95, 43%, 68%);
-    --green-3: hsl(95, 38%, 62%);
-    --green-4: hsl(95, 33%, 56%);
-    --green-5: hsl(95, 28%, 50%);
+    --green-1: hsl(89, 56%, 67%);
+    --green-2: hsl(89, 51%, 61%);
+    --green-3: hsl(89, 46%, 56%);
+    --green-4: hsl(89, 41%, 51%);
+    --green-5: hsl(89, 36%, 46%);
 
-    --blue-1: hsl(207, 100%, 78%);
-    --blue-2: hsl(207, 92%, 72%);
-    --blue-3: hsl(207, 82%, 66%);
-    --blue-4: hsl(207, 72%, 60%);
-    --blue-5: hsl(207, 62%, 54%);
+    --blue-1: hsl(221, 99%, 78%);
+    --blue-2: hsl(221, 89%, 72%);
+    --blue-3: hsl(221, 79%, 66%);
+    --blue-4: hsl(221, 69%, 60%);
+    --blue-5: hsl(221, 59%, 54%);
 
-    --yellow-1: hsl(39, 71%, 82%);
-    --yellow-2: hsl(39, 66%, 74%);
-    --yellow-3: hsl(39, 61%, 69%);
-    --yellow-4: hsl(39, 56%, 64%);
-    --yellow-5: hsl(39, 51%, 59%);
+    --yellow-1: hsl(36, 71%, 72%);
+    --yellow-2: hsl(36, 66%, 64%);
+    --yellow-3: hsl(36, 61%, 59%);
+    --yellow-4: hsl(36, 56%, 54%);
+    --yellow-5: hsl(36, 51%, 49%);
 
-    --purple-1: hsl(286, 80%, 79%);
-    --purple-2: hsl(286, 70%, 73%);
-    --purple-3: hsl(286, 60%, 67%);
-    --purple-4: hsl(286, 50%, 61%);
-    --purple-5: hsl(286, 40%, 55%);
+    --purple-1: hsl(261, 95%, 85%);
+    --purple-2: hsl(261, 85%, 79%);
+    --purple-3: hsl(261, 75%, 73%);
+    --purple-4: hsl(261, 65%, 67%);
+    --purple-5: hsl(261, 55%, 61%);
 }
 
