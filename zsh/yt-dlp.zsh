@@ -20,6 +20,11 @@ function gytlff {
      ffprobe "$1" 2>&1 | sed '/^\s*comment/!d;s/^\s*comment\s*\:\s*//'
 }
 
+# gets youtube video id from link
+function gytid {
+    echo "$1" | sed 's/^.*\?v=//;s/\&.*$//'
+}
+
 # gets the default filename of downloaded video
 function ytdlp-get-filename {
     link="$1"
@@ -58,32 +63,36 @@ function dlv {
 # downloads a list of videos, reading links from a file
 function dlvlist {
     link_list_file="$1"
-    [ -f $link_list_file ] || {echo "The link list file doesn't exist" && return 1}
+    [ -f $link_list_file ] || { echo "The link list file doesn't exist"; return 1 }
 
     dest=$2
-    [ -z $dest ] && dest="$(fd . --mindepth 1 -td | sed 's/\/$//' | sort | fzf)"
-    [ -z $dest ] && dest="."
+    [ -z $dest ] && echo ".\n$(fd . --mindepth 1 -td | sed 's/\/$//' | sort)" | fzf | read dest
+    [ -z $dest ] && return 1
+    echo "$dest"
 
     # prepare a list of existing videos as not to download the same video twice
     if $(fd 'mp4' $dest -q); then
         while read file; do
             link="$(gytlff $file)"
             [ -z $link ] || existing_links="$existing_links$link\n"
+            unset link
         done < <(ls -1 $dest/*.mp4)
     fi
 
+
     # reads whole lines from the link list file
-    while IFS= read -r line; do
+    while read -r line; do
         # get the data from file
         link="$(echo $line | awk '{print $1}')"
         filename="$(echo $line | awk '{print $2}')"
 
         # checking if the function is about to download a duplicate
         unset duplicate
-        while read cached_link; do
-            [ "$link" = "$cached_link" ] && duplicate=true && break
-        done <<< "$existing_links"
-        [ -z $duplicate ] || continue 
+        echo "$existing_links" | while read -r cached_link; do
+            [ "$link" = "$cached_link" ] && { duplicate=true; break }
+        done
+        # Removing the duplicate 
+        [ -z $duplicate ] || { existing_links=$(echo "$existing_links" | sed "/$(gytid $cached_link)/d"); continue } 
 
         # download the file
         run=true
@@ -95,7 +104,8 @@ function dlvlist {
             file="$dest/$filename"
             mv "$orig_file" "$file"
         fi
-    done < $link_list_file 
+    done < $link_list_file
+
 
     [ -z $run ] && echo "[NOTHING TO DOWNLOAD]" || echo "[FILES LOCATION]: $dest"
 }
@@ -105,8 +115,8 @@ function cdfd {
     link_list_file="$1"
     dir="$2"
 
-    [ -z $dir ] && dir="$(fd . --mindepth 1 -td | sed 's/\/$//' | sort | fzf)"
-    [ -z $dir ] && dir="."
+    [ -z $dir ] && echo ".\n$(fd . --mindepth 1 -td | sed 's/\/$//' | sort)" | fzf | read dir
+    [ -z $dir ] && return 1
 
     # Check for existance of list file
     [ -f "$link_list_file" ] && rm "$link_list_file"
@@ -115,7 +125,7 @@ function cdfd {
     yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
 
     # number of files
-    total_files="$(ls -Ap1 $dir | sed '/\//d' | wc -l)"
+    total_files="$(ls -A $dir | sed '/\//d' | wc -l)"
     iterator="$((1))"
 
     # For each file in the given dir extracts the yt link from metadata
@@ -142,5 +152,5 @@ function cdfd {
     done
 
     # If the file isn't created
-    [ -f $link_list_file ] || echo "No compatible files in the directory" && return 1
+    [ -f $link_list_file ] || { echo "No compatible files in the directory"; return 1 }
 }
