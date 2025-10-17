@@ -68,15 +68,14 @@ function dlvlist {
     dest=$2
     [ -z $dest ] && echo ".\n$(fd . --mindepth 1 -td | sed 's/\/$//' | sort)" | fzf | read dest
     [ -z $dest ] && return 1
-    echo "$dest"
 
     # prepare a list of existing videos as not to download the same video twice
-    if $(fd 'mp4' $dest -q); then
+    if $(fd '.*\.mp4$' $dest -q -d1); then
         while read file; do
             link="$(gytlff $file)"
             [ -z $link ] || existing_links="$existing_links$link\n"
             unset link
-        done < <(ls -1 $dest/*.mp4)
+        done < <(/bin/ls -1 $dest/*.mp4)
     fi
 
 
@@ -125,7 +124,7 @@ function cdfd {
     yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
 
     # number of files
-    total_files="$(ls -A $dir | sed '/\//d' | wc -l)"
+    total_files="$(/bin/ls -A $dir | sed '/\//d' | wc -l)"
     iterator="$((1))"
 
     # For each file in the given dir extracts the yt link from metadata
