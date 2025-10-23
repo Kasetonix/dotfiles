@@ -129,6 +129,12 @@ function launch {
     sleep 0.1
 }
 
+# Function for hashing a string using SHA-1 algorithm 
+function sha {
+    [ -z "$1" ] && { echo -n "> "; read string } || string="$1"
+    echo "$string" | shasum | sed 's/\s.*$//'
+}
+
 # Function opening an file chosen from videos directory via fzf in mpv
 function vid {
     echo "$(fd . ~/vids -tf | sed 's/\/home\/kasetonix\/vids\///' | sort)" | fzf | read choice
