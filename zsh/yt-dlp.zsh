@@ -62,10 +62,11 @@ function dlv {
 
 # downloads a list of videos, reading links from a file
 function dlvlist {
+    unset existing_links run
     link_list_file="$1"
     [ -f $link_list_file ] || { echo "The link list file doesn't exist"; return 1 }
 
-    dest=$2
+    dest="$2"
     [ -z $dest ] && echo ".\n$(fd . --mindepth 1 -td | sed 's/\/$//' | sort)" | fzf | read dest
     [ -z $dest ] && return 1
 
