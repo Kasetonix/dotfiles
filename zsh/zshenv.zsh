@@ -3,6 +3,7 @@ EDITOR="nvim"
 VISUAL="nvim"
 RANGER_LOAD_DEFAULT_RC="false"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#444b6a"
+GUTTER="#24283b"
 
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
     --highlight-line \
@@ -20,7 +21,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
     --color=border:bright-black \
     --color=fg+:bright-white \
     --color=fg:white \
-    --color=gutter:-1 \
+    --color=gutter:$GUTTER \
     --color=header:yellow \
     --color=hl+:cyan \
     --color=hl:cyan \
