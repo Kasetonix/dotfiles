@@ -34,7 +34,7 @@
 
 /* Next two sections are for turning the oneline hack 
  * back off when the window is narrow enough */
-@media screen and (min-width:1000px) {
+@media screen and (min-width:1536px) {
     #TabsToolbar, #nav-bar { transition: var(--animationSpeed) !important; } 
     #TabsToolbar { margin-left: var(--navbarWidth) !important; } 
 
