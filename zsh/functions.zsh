@@ -29,28 +29,6 @@ function diskspace {
     echo "USED% => $used_percent%"
 }
 
-# cd & ls at the same time 
-function cl { cd $1 && ls }
-
-# dissasembles a binary file
-function objdumpd {
-    unbuffer objdump -d --visualize-jumps $1 | less -R
-}
-
-# compiles and run a cpp program
-function gcomp {
-    g++ $1.cpp -o $1 && ./$1
-}
-
-# commits to git with a given message prepended with a date
-function gc {
-    git commit -m "$(date '+[%d.%m.%Y]') $1"
-}
-
-# Prepares a given filepath for sed substitution
-function spp {
-    echo $1 | sed 's/\//\\\//g'
-}
 
 # Applies a chosen LUT to an image file using lutgen
 function lg {
@@ -108,32 +86,16 @@ function flash-iso {
     fi
 }
 
-# creates a tar archive using multithreading
-function tgza {
-    tar -cf - "$1" | pv | pigz > "$1.tar.gz"
-}
-
-# Copies to clipboard on xorg
-# function clip {
-#     echo -n "$1" | xclip -selection clipboard
-# }
-
-# Sets a wallpaper on wayland using swww
-function wall {
-    swww img "$1" -t grow --transition-duration 2 --transition-fps 60;
-}
-
-# Launches a command as a detached process from the shell
-function launch {
-    nohup "$@" 2>&1 >/dev/null &
-    sleep 0.1
-}
-
 # Function for hashing a string using SHA-1 algorithm 
 function sha {
     [ -z "$1" ] && { echo -n "> "; read string } || string="$1"
     echo "$string" | shasum | sed 's/\s.*$//'
 }
+
+# creates a compressed tar archive using xz
+function cctar {
+    tar cfv "$(basename $1).tar" "$1" && xz -9v -T"$(($(nproc)-1))" "$(basename $1).tar"
+} 
 
 # Function opening an file chosen from videos directory via fzf in mpv
 function vid {
@@ -147,3 +109,32 @@ function vid {
 function launch-vid { vid; zle reset-prompt }
 zle     -N             launch-vid
 bindkey -M emacs '\ev' launch-vid 
+
+# oneliners
+# dissasembles a binary file
+function objdumpd { unbuffer objdump -d --visualize-jumps $1 | less -R }
+
+# compiles and runs a c or cpp program
+function cppr { g++ $1.cpp -o $1 && ./$1 }
+function cr { g++ $1.c -o $1 && ./$1 }
+
+# commits to git with a given message prepended with a date
+function gc { git commit -m "$(date '+[%d.%m.%Y]') $1" }
+
+# Prepares a given filepath for sed substitution
+function spp { echo $1 | sed 's/\//\\\//g' }
+
+# creates a compressed tar archive using pigz
+# function cctar { tar cf - "$1" | pv -s "$(du -bs $1 | awk '{print $1}')" | pigz -9 > "$1.tar.gz" }
+
+# creates a tar archive
+function ctar { tar cfv "$(basename $1).tar" "$1" }
+
+# Copies to clipboard on xorg
+# function clip { echo -n "$1" | xclip -selection clipboard }
+
+# Sets a wallpaper on wayland using swww
+function wall { swww img "$1" -t grow --transition-duration 2 --transition-fps 60; }
+
+# Launches a command as a detached process from the shell
+function launch { nohup "$@" 2>&1 >/dev/null &; sleep 0.1 }
