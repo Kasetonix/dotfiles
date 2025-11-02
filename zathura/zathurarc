@@ -1,0 +1,44 @@
+set default-bg "#24283b"
+set default-fg "#c0caf5"
+
+set statusbar-bg "#32344a"
+set statusbar-fg "#c0caf5"
+set statusbar-basename true
+
+set inputbar-bg "#24283b"
+set inputbar-fg "#c0caf5"
+
+set index-bg "#24283b"
+set index-fg "#c0caf5"
+set index-active-bg "#9ece6a"
+set index-active-fg "#a9b1d6"
+
+set completion-bg "#24283b"
+set completion-fg "#c0caf5"
+set completion-group-bg "#24283b"
+set completion-group-fg "#2ac3de"
+set completion-highlight-bg "#9ece6a"
+set completion-highlight-fg "#a9b1d6"
+
+set notification-bg "#24283b"
+set notification-fg "#c0caf5"
+set notification-error-bg "#f7768e"
+set notification-error-fg "#a9b1d6"
+set notification-warning-bg "#f7768e"
+set notification-warning-fg "#a9b1d6"
+
+set highlight-color "rgba(158, 206, 106, 0.33)"
+set highlight-active-color "rgba(42, 195, 222, 0.33)"
+# map <A-n> set nohlsearch
+
+set recolor-lightcolor "#24283b"
+set recolor-darkcolor "#c0caf5"
+set recolor-keephue "true"
+set recolor "true"
+map i recolor
+
+set render-loading-bg "#24283b"
+set render-loading-fg "#c0caf5"
+
+set selection-clipboard clipboard
+set window-title-home-tilde true
