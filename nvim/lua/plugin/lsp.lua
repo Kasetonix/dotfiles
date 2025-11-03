@@ -66,7 +66,7 @@ vim.lsp.config('*', {
 
 -- /// Lua ///
 vim.lsp.enable('lua_ls')
-vim.lsp.config('lua_ls', {
+vim.lsp.config['lua_ls'] = {
   settings = {
     Lua = {
       telemetry = { enable = false, },
@@ -78,25 +78,30 @@ vim.lsp.config('lua_ls', {
       },
     },
   },
-})
+}
 
 -- /// C/C++ ///
-vim.lsp.config('clangd', {
+vim.lsp.config['clangd'] = {
   on_attach = on_attach,
   capabilities = capabilities
-})
+}
 
 -- /// Rust ///
-vim.lsp.config('rust_analyzer', {
+vim.lsp.config['rust_analyzer'] = {
   on_attach = on_attach,
   capabilities = capabilities
-})
+}
 
 -- /// Python ///
-vim.lsp.config('pyright', {
+vim.lsp.config['pyright'] = {
   on_attach = on_attach,
   capabilities = capabilities
-})
+}
+
+vim.lsp.config['tinymist'] = {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
 
 -- General diagnostics handler
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
