@@ -115,8 +115,8 @@ bindkey -M emacs '\ev' launch-vid
 function objdumpd { unbuffer objdump -d --visualize-jumps $1 | less -R }
 
 # compiles and runs a c or cpp program
-function cppr { g++ $1.cpp -o $1 && ./$1 }
-function cr { gcc $1.c -o $1 && ./$1 }
+function cr   { gcc $1.c -o $@ && ./$1 }
+function cppr { g++ $1.cpp -o $@ && ./$1 }
 
 # commits to git with a given message prepended with a date
 function gc { git commit -m "$(date '+[%d.%m.%Y]') $1" }
