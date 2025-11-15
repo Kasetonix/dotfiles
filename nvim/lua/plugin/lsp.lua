@@ -103,15 +103,6 @@ vim.lsp.config['tinymist'] = {
   capabilities = capabilities
 }
 
--- /// NVIM-DAP ///
-local mason_dap = require("mason-nvim-dap")
-local dap = require("dap")
-local dapui = require("dapui")
-local dap_virt_text = require("nvim-dap-virtual-text")
-
-mason_dap.setup()
--- dap.configurations
-
 -- General diagnostics handler
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.diagnostic.on_publish_diagnostics
