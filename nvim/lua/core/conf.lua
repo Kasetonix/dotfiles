@@ -1,5 +1,4 @@
 -- /// CONF.LUA | lua options ///
-
 vim.o.hlsearch = false -- Set highlight on search
 vim.o.sh = "zsh" -- set default vim shell to zsh
 vim.wo.number = true -- setting line numbers
@@ -29,12 +28,6 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.expandtab = true
-
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Highlighting when yanking
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
