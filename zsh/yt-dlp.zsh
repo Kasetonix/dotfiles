@@ -125,7 +125,7 @@ function cdfd {
     yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
 
     # number of files
-    total_files="$(/bin/ls -A $dir | sed '/\//d' | wc -l)"
+    total_files="$(fd --search-path=$dir -tf -d1 | wc -l)"
     iterator="$((1))"
 
     # For each file in the given dir extracts the yt link from metadata
