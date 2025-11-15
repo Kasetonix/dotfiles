@@ -3,19 +3,18 @@
 -- /// MASON ///
 require("mason").setup {
   ui = {
-    border = "rounded";
+    border = "rounded",
     icons = {
       package_installed = "✓",
       package_pending = "➜",
       package_uninstalled = "✗"
     }
-  };
+  },
 }
 
 require('mason-lspconfig').setup {}
 require('lazydev').setup {}
 
-local lspconfig = require("lspconfig") -- makes writing the config easier
 local navic = require("nvim-navic")
 local navbuddy = require("nvim-navbuddy")
 local nb_actions = require("nvim-navbuddy.actions")
@@ -98,22 +97,58 @@ vim.lsp.config['pyright'] = {
   capabilities = capabilities
 }
 
+-- /// Typst ///
 vim.lsp.config['tinymist'] = {
   on_attach = on_attach,
   capabilities = capabilities
 }
 
+-- /// NVIM-DAP ///
+local mason_dap = require("mason-nvim-dap")
+local dap = require("dap")
+local dapui = require("dapui")
+local dap_virt_text = require("nvim-dap-virtual-text")
+
+mason_dap.setup()
+-- dap.configurations
+
 -- General diagnostics handler
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.diagnostic.on_publish_diagnostics
+    vim.lsp.diagnostic.on_publish_diagnostics
 
 -- Removing underlines
-vim.diagnostic.config({virtual_text = true, underline = false})
+vim.diagnostic.config({ virtual_text = true, underline = false })
 
 -- /// NVIM-CMP | LUASNIP ///
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-local lspkind = require('lspkind')
+local kind_icons = {
+  Text = "󰉿",
+  Method = "󰆧",
+  Function = "󰊕",
+  Constructor = "",
+  Field = "󰜢",
+  Variable = "󰀫",
+  Class = "󰠱",
+  Interface = "",
+  Module = "",
+  Property = "󰜢",
+  Unit = "󰑭",
+  Value = "󰎠",
+  Enum = "",
+  Keyword = "󰌋",
+  Snippet = "",
+  Color = "󰏘",
+  File = "󰈙",
+  Reference = "󰈇",
+  Folder = "󰉋",
+  EnumMember = "",
+  Constant = "󰏿",
+  Struct = "󰙅",
+  Event = "",
+  Operator = "󰆕",
+  TypeParameter = "󰅲",
+}
 
 cmp.setup {
   snippet = {
@@ -151,17 +186,11 @@ cmp.setup {
   },
 
   formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol', -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
-      -- The function below will be called before any actual modifications from lspkind
-      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      before = function (entry, vim_item)
-        return vim_item
-      end
-    })
+    fields = { "kind", "abbr" },
+    format = function(_, vim_item)
+      vim_item.kind = kind_icons[vim_item.kind] or ""
+      return vim_item
+    end
   },
 
   sources = {
@@ -252,8 +281,8 @@ navbuddy.setup {
   },
 
   source_buffer = {
-    follow_node = true,    -- Keep the current node in focus on the source buffer
-    highlight = true,      -- Highlight the currently focused node
+    follow_node = true, -- Keep the current node in focus on the source buffer
+    highlight = true,   -- Highlight the currently focused node
   },
 }
 
