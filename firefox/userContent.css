@@ -4,23 +4,21 @@
  * Modified by u/Kasetonix
 */
 
-:root:-moz-window-inactive{--bgcolor: #24283b;}
-
 :root {
     --bg-dark:  #24283b;
     --bg-light: #32344a;
     --fg:       #c0caf5;
     --accent:   #2ac3de;
 
-    --bgcolor: #24283b;
-    --bbcolor: #32344a;
-    --stcolor: #32344a;
-    --prcolor: #24283b;
-    --hpcolor: #2ac3de;
-    --ndcolor: #32344a;
-    --tpcolor: #c0caf5;
-    --tscolor: #c0caf5;
-    --ttcolor: #c0caf5;
+    --bgcolor: var(--bg-dark);
+    --bbcolor: var(--bg-light);
+    --stcolor: var(--bg-light);
+    --prcolor: var(--bg-dark);
+    --hpcolor: var(--accent);
+    --ndcolor: var(--bg-light);
+    --tpcolor: var(--fg);
+    --tscolor: var(--fg);
+    --ttcolor: var(--fg);
 
     --in-content-page-background: var(--bg-dark) !important;
     --in-content-box-background: var(--bg-light) !important;
@@ -61,6 +59,8 @@
     --message-bar-text-color: var(--bg-light) !important;
 }
 
+:root:-moz-window-inactive{--bgcolor: var(--bg-dark);}
+
 @-moz-document url-prefix(about:){
     body                                { background-color: var(--bg-dark) !important; }
     body,html                           { overflow-y: auto !important; font-family: JetBrainsMono Nerd Font !important; }
@@ -100,101 +100,28 @@
 
 @-moz-document url("about:home"),
 url("about:newtab") {
-    /* Search bar setup */
-
-    /*
-    .search-wrapper .search-handoff-button {
-        font-family: JetBrainsMono Nerd Font !important 
+    .search-wrapper
+    .search-handoff-button
+    .logo-and-wordmark {
+        display: none !important; 
     }
 
-    .search-wrapper .search-handoff-button .fake-caret {
-        top: 13px !important;
-        inset-inline-start: 48px !important;
-    }
-
-    .search-wrapper .logo-and-wordmark {
-        opacity: 0.9 !important;
-        order: 1 !important;
-        margin-bottom: 0 !important;
-        flex: 1 !important;
-        flex-basis: 20% !important;
-    }
-
-    .outer-wrapper .search-wrapper {
-        padding: 0px !important;
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        align-items: center !important;
-        align-content: space-around !important;
-        gap: 20px 10px !important;
-    }
-
-    .search-wrapper .logo-and-wordmark .logo {
-        background-size: 60px !important;
-        height: 60px !important;
-        width: 60px !important;
-    }
-
-    .search-wrapper .search-inner-wrapper {
-        min-height: 42px !important;
-        order: 2 !important;
-        flex: 3 !important;
-        flex-basis: 60% !important;
-        top: 4px !important;
-    }
-
-    .info { display: none !important; }
-    #root > div { align-items: center; display: flex }
-
-    .outer-wrapper.ds-outer-wrapper-breakpoint-override.only-search.visible-logo {
-        display: flex !important; 
-        padding-top: 0px !important;
-        vertical-align: middle;
-    }
-    */
-
-    .search-wrapper .search-handoff-button { display: none !important; }
     .wordmark { display: none !important; }
     .personalize-button { display: none !important; }
-    body { background: #24283b !important; }
 
-    /* .logo {
-        background: url("logo.png") no-repeat center center !important;
-	    width: 750px !important;
-	    height: 600px !important;
-    } */
-
-
-    /* Setup with only background and blur */
-    /* html { filter: blur(5px) !important; } */
     body { 
         background: url("bg.png") !important;
         background-size: cover !important;
         background-position: center !important;
     }
-
-    .search-wrapper .logo-and-wordmark { display: none !important; }
 }
 
 @-moz-document url("about:privatebrowsing") {
     .search-inner-wrapper { display: none !important; } 
-    .wordmark             { display: none !important; }
-    .icon                 { display: none !important; }
-    .search-wrapper 
-    .outer-wrapper        { display: none !important; }
-    .info                 { display: none !important; }
-
-    /* .logo { */
-    /*     background: url("logo.png") no-repeat center center !important; */
-	   /*  height: 600px !important; */
-	   /*  width: 750px !important; */
-    /* } */
-
-    /* Setup with only background and blur */
+    .info-border          { display: none !important; }
     .logo-and-wordmark    { display: none !important; }
     .logo                 { display: none !important; }
+
     body { 
         filter: blur(5px) !important;
         background: url("bg.png") !important; 
@@ -204,5 +131,5 @@ url("about:newtab") {
 }
 
 @-moz-document url("about:blank") {
-    :root { --in-content-page-background: #24283b !important; }
+    :root { --in-content-page-background: var(--bg-dark) !important; }
 }
