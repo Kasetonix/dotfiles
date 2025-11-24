@@ -74,21 +74,22 @@ clipboard { disable-primary; }
 layout {
     gaps 16 
     center-focused-column "never"
-    default-column-width { proportion 0.66667; }
+    default-column-width { proportion 0.625; }
     background-color "transparent"
     always-center-single-column
 
     preset-column-widths {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-        proportion 0.83333
+        proportion 0.250
+        proportion 0.375
+        proportion 0.500
+        proportion 0.625
+        proportion 0.750
     }
 
     preset-window-heights {
-        proportion 0.33333
+        proportion 0.25
         proportion 0.5
-        proportion 0.66667
+        proportion 0.75
     }
 
     // `draw-border-with-background`.
@@ -124,18 +125,18 @@ window-rule {
 window-rule {
     match app-id="Alacritty"
     match title="Vencord QuickCSS Editor"
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.500; }
 }
 
 window-rule {
     match title="btop"
-    default-column-width { proportion 0.66667; }
+    default-column-width { proportion 0.625; }
 }
 
 window-rule {
     match app-id="vesktop"
     match app-id="gimp"
-    default-column-width { proportion 0.83333; }
+    default-column-width { proportion 0.750; }
 }
 
 window-rule {
@@ -293,11 +294,11 @@ binds {
 
     Mod+C { center-column; }
 
-    Mod+Comma  { set-column-width "-8.3335%"; }
-    Mod+Period { set-column-width "+8.3335%"; }
+    Mod+Comma  { set-column-width "-6.25%"; }
+    Mod+Period { set-column-width "+6.25%"; }
 
-    Mod+Shift+Comma  { set-window-height "-8.3335%"; }
-    Mod+Shift+Period { set-window-height "+8.3335%"; }
+    Mod+Shift+Comma  { set-window-height "-6.25%"; }
+    Mod+Shift+Period { set-window-height "+6.25%"; }
 
     Mod+V       { switch-focus-between-floating-and-tiling; }
     Mod+Shift+V { toggle-window-floating; }
