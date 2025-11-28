@@ -34,7 +34,7 @@ require("todo-comments").setup {
 
   keywords = { -- keywords to recognise and color
     FIX  = { icon = " ", color = "error", alt = { "BUG", "ERR", "ERROR" }, },
-    TODO = { icon = " ", color = "info" },
+    TODO = { icon = " ", color = "info" },
     HACK = { icon = " ", color = "warning" },
     WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
     PERF = { icon = " ", color = "warning", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
@@ -73,6 +73,8 @@ require("todo-comments").setup {
     pattern = [[\b(KEYWORDS):]], -- ripgrep regex
   },
 }
+
+vim.keymap.set("n", "<leader>T", vim.cmd.TodoTelescope, { desc = "Open TodoTelescope" })
 
 -- /// NVIM-TREE ///
 -- disabling netrw

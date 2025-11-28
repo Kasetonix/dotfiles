@@ -6,7 +6,7 @@ vim.cmd [[
   set splitright " Splits will go to the right
   set noswapfile " Doesn't generate swap file
   " remaps
-  nnoremap <C-l> :set nu!<CR>
+  nnoremap <silent> <C-l> :set nu!<CR>
 ]]
 
 -- vim: ts=2 sts=2 sw=2 et
