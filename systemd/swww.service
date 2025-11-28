@@ -1,0 +1,10 @@
+[Unit]
+Description=Animated wallpaper daemon for wayland
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=swww-daemon
+ExecStop=swww kill
+Restart=on-failure
