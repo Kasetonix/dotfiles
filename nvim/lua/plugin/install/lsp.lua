@@ -7,7 +7,6 @@ return {
 
   'neovim/nvim-lspconfig',    -- LSP Configuration & Plugins
   'folke/lazydev.nvim',       -- LuaLS and nvim config support
-  'onsails/lspkind.nvim',     -- Adds icons to completion
   'SmiteshP/nvim-navic',      -- show code context in statusline
   'SmiteshP/nvim-navbuddy',   -- symbol navigation popup
 
