@@ -11,11 +11,11 @@
 
 # git clone
 # github shorthand
-[url "https://github.com/"]
+[url "git@github.com:"]
     insteadOf = "gh:"
 
 # my own repos shorthand
-[url "https://github.com/Kasetonix/"]
+[url "git@github.com:Kasetonix/"]
     insteadOf = "k:"
 
 # codeberg shorthand 
