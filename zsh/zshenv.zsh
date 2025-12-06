@@ -1,10 +1,12 @@
 # Environment variables
-EDITOR="nvim"
-VISUAL="nvim"
-RANGER_LOAD_DEFAULT_RC="false"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#444b6a"
-GUTTER="#24283b"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export RANGER_LOAD_DEFAULT_RC="false"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#444b6a"
+export GROFF_NO_SGR="1"
+export MANPAGER="less -R --use-color -Dd+c -Du+g"
 
+GUTTER="#24283b"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
     --highlight-line \
     --info=inline \
