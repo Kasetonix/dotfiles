@@ -47,7 +47,7 @@ function dlv {
     [ -z $dest ] && echo ".\n$(fd . --mindepth 1 -td | sed 's/\/$//' | sort)" | fzf | read dest
     [ -z $dest ] && return 1
  
-    ytdlp "$link" "$dest"
+    ytdlp "$link" "$dest" || { echo "Failed to download the video." >&2; return 1 }
 
     # if a filename is given change the fetched original filename to a new one
     if [ ! -z $filename ]; then
@@ -125,7 +125,7 @@ function cdfd {
     yt_regex="^https\:\/\/www\.youtube\.com\/watch\?v\=.{11}$"
 
     # number of files
-    total_files="$(fd --search-path=$dir -tf -d1 | wc -l)"
+    total_files="$(/bin/ls -A $dir | sed '/\//d' | wc -l)"
     iterator="$((1))"
 
     # For each file in the given dir extracts the yt link from metadata
