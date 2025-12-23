@@ -17,6 +17,7 @@
 ],
 
 "modules-right": [
+    "custom/capslock",
     "network",
     "bluetooth",
     "pulseaudio",
@@ -175,6 +176,13 @@
 },
 
 /// CUSTOM MODULES ///
+"custom/capslock": {
+    "format": "{text}",
+    "interval": 1,
+    "tooltip": false,
+    "exec": "[ $(cat /sys/class/leds/input*::capslock/brightness | grep -m1 '[01]') = '1' ] && echo ''"
+},
+
 "custom/spotify": {
     "format": "{text}",
     "interval": 1,
