@@ -12,6 +12,7 @@ vim.o.completeopt = 'menuone,noselect' -- Better autocompletion
 vim.o.termguicolors = true -- Using terminal colors
 vim.o.wrap = true -- wrap words 
 vim.o.linebreak = true -- wrap on the end of the last word
+vim.o.winborder = "rounded" -- creates a rounded border around subwindows
 vim.loader.enable() -- optimizes loading plugins
 vim.g.c_syntax_for_h = 1 -- switches h files to have c syntax
 
