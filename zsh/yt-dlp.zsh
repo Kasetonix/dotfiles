@@ -1,10 +1,12 @@
 # downloads a video from yt using yt-dlp
+RES="1440"
 function ytdlp {
     link="$1"
     dest="$2"
 
     yt-dlp \
-        --format-sort "vcodec:h264,res,acodec:m4a" \
+        --preset-alias "mp4" \
+        --format-sort "res:$RES" \
         --concurrent-fragments 4 \
         --parse-metadata "title:%(title)s artist:%(artist)s" --embed-metadata \
         --embed-subs --sub-langs "en.*,ja,-live_chat" \
