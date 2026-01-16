@@ -5,16 +5,18 @@ function ytdlp {
     dest="$2"
 
     yt-dlp \
-        --preset-alias "mp4" \
-        --format-sort "res:$RES" \
+        --merge-output-format "mp4" --remux-video "mp4" \
+        --format-sort "vcodec:h264,lang,quality,res:${RES},fps,acodec:aac" \
         --concurrent-fragments 4 \
         --parse-metadata "title:%(title)s artist:%(artist)s" --embed-metadata \
         --embed-subs --sub-langs "en.*,ja,-live_chat" \
+        --js-runtimes node \
         --no-simulate --print "pre_process:title" \
         --output "%(title)s.%(ext)s" --restrict-filenames \
         --no-warnings --progress \
         --paths "$dest" \
         "$link"
+
 }
 
 # gets youtube link from file
@@ -46,7 +48,7 @@ function dlv {
     dest="$3"
 
     # if destination is unset spawn an fzf instance to choose it
-    [ -z $dest ] && echo ".\n$(fd . --mindepth 1 -td | sed 's/\/$//' | sort)" | fzf | read dest
+    [ -z $dest ] && echo -n ".\n$(fd . --mindepth 1 -td | sed 's/\/$//' | sort)" | fzf | read dest
     [ -z $dest ] && return 1
  
     ytdlp "$link" "$dest" || { echo "Failed to download the video." >&2; return 1 }
