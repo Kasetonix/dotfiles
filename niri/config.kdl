@@ -103,7 +103,7 @@ layout {
 }
 
 // spawn-at-startup "swww-daemon";
-spawn-at-startup "sh" "-c" "sleep 2; rm /home/kasetonix/ly-session.log"
+// spawn-at-startup "sh" "-c" "sleep 2; rm /home/kasetonix/ly-session.log"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 prefer-no-csd
@@ -119,6 +119,7 @@ animations {
 
 window-rule {
     draw-border-with-background false
+    open-maximized-to-edges false 
 }
 
 window-rule {
@@ -142,6 +143,11 @@ window-rule {
     match title="nmtui"
     match title="bluetui"
     open-floating true
+}
+
+window-rule {
+    match app-id="steam_app_2073850" // The Finals
+    open-fullscreen true
 }
 
 layer-rule {
@@ -188,6 +194,7 @@ binds {
     Mod+N           { spawn "alacritty" "-T" "nmtui" "-o" "colors.normal.blue='#24283b'" "-o" "colors.normal.red='#24283b'" "-e" "nmtui-connect"; }
     Mod+Shift+N     { spawn "alacritty" "-T" "bluetui" "-e" "bluetui"; }
     Mod+O           { spawn "sh" "-c" "$HOME/.local/bin/scripts/change-sink.zsh"; }
+    Mod+P           { spawn "playerctl" "play-pause"; }
 
     // Media
     XF86AudioRaiseVolume  allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 2%+ && $HOME/.local/bin/scripts/wp-vol-notif"; }
@@ -311,6 +318,7 @@ binds {
     // Mod+Shift+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     Ctrl+Alt+Delete { quit; }
+    Alt+Tab { spawn ""; }
 
     Mod+Escape { spawn "alacritty" "-T" "btop" "-o" "font.size=11.5" "-e" "btop"; }
     // Mod+M { power-off-monitors; }
