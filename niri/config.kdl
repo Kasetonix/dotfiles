@@ -4,8 +4,8 @@
 input {
     keyboard { 
         xkb { layout "pl"; }; 
-        repeat-delay 400
-        repeat-rate 30
+        repeat-delay 250
+        repeat-rate 40
     }
     focus-follows-mouse max-scroll-amount="95%"
 
@@ -69,7 +69,7 @@ overview {
     }
 }
 
-clipboard { disable-primary; }
+// clipboard { disable-primary; }
 
 layout {
     gaps 16 
