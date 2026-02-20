@@ -103,6 +103,12 @@ vim.lsp.config['tinymist'] = {
   capabilities = capabilities
 }
 
+-- /// Haskell ///
+vim.lsp.config['haskell-language-server'] = {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 -- General diagnostics handler
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.diagnostic.on_publish_diagnostics
