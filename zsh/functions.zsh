@@ -115,10 +115,13 @@ bindkey -M emacs '\ev' launch-vid
 function objdumpd { unbuffer objdump -d --visualize-jumps $1 | less -R }
 
 # compiles and runs a c or cpp program
-function cr     { gcc "${1}" -Wall -Wextra -Werror -std=gnu99 -o "${@//\.c/}"; "./${1//\.c/}" }
 function ccmp   { gcc "${1}" -Wall -Wextra -Werror -std=gnu99 -o "${@//\.c/}" }
-function cppr   { g++ "${1}" -Wall -Wextra -Werror -o "${@//\.cpp/}"; "./${1//\.cpp/}" }
+function cr     { ccmp "${1}"; "./${1//\.c/}" }
 function cppcmp { g++ "${1}" -Wall -Wextra -Werror -o "${@//\.cpp/}" }
+function cppr   { cppcmp "${1}"; "./${1//\.cpp/}" }
+function ghcc   { name="${1//\.hs/}"; ghc "${name}.hs"; rm -f "${name}.o" "${name}.hi" }
+function ghcr   { ghc "${1}"; "./${1//\.hs/}" }
+function ghccr  { ghcc "${1}"; "./${1//\.hs/}" }
 
 # commits to git with a given message prepended with a date
 function gc { git commit -m "$(date '+[%d.%m.%Y]') $1" }
