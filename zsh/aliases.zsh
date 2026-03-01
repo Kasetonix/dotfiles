@@ -29,6 +29,7 @@ alias gp='git push'
 alias gu='git pull'
 alias gr='git restore --staged'
 alias gcl='git clone'
+alias gd='git diff'
 alias gl="git log --all --graph --pretty=format:'%C(yellow)%h %C(white)| %C(cyan)%an %C(white)| %C(magenta)%ar %C(auto)%D%n%s%n'"
 
 # Turning confirmations on + recursive

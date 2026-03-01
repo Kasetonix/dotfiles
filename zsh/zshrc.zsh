@@ -60,3 +60,5 @@ source-plugin "hlissner/zsh-autopair" # Autoclosing brackets
 
 # fzf integration
 source <(fzf --zsh)
+
+[ -f "/home/kasetonix/.ghcup/env" ] && . "/home/kasetonix/.ghcup/env" # ghcup-env

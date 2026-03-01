@@ -114,7 +114,7 @@ bindkey -M emacs '\ev' launch-vid
 # dissasembles a binary file
 function objdumpd { unbuffer objdump -d --visualize-jumps $1 | less -R }
 
-# compiles and runs a c or cpp program
+# compiles and runs a c/cpp or haskell program
 function ccmp   { gcc "${1}" -Wall -Wextra -Werror -std=gnu99 -o "${@//\.c/}" }
 function cr     { ccmp "${1}"; "./${1//\.c/}" }
 function cppcmp { g++ "${1}" -Wall -Wextra -Werror -o "${@//\.cpp/}" }
