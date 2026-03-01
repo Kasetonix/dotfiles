@@ -42,3 +42,7 @@ set render-loading-fg "#c0caf5"
 
 set selection-clipboard clipboard
 set window-title-home-tilde true
+
+map = zoom in
+map - zoom out
+map = zoom
