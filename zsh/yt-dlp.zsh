@@ -6,7 +6,7 @@ function ytdlp {
 
     yt-dlp \
         --merge-output-format "mp4" --remux-video "mp4" \
-        --format-sort "vcodec:h264,lang,quality,res:${RES},fps,acodec:aac" \
+        --format-sort "res:${RES},fps,lang" \
         --concurrent-fragments 4 \
         --parse-metadata "title:%(title)s artist:%(artist)s" --embed-metadata \
         --embed-subs --sub-langs "en.*,ja,-live_chat" \
