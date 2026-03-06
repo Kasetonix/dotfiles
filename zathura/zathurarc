@@ -45,4 +45,4 @@ set window-title-home-tilde true
 
 map = zoom in
 map - zoom out
-map = zoom
+map + zoom
