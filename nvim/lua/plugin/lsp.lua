@@ -109,6 +109,12 @@ vim.lsp.config['haskell-language-server'] = {
   capabilities = capabilities
 }
 
+vim.lsp.config['java'] = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  vim.lsp.enable('jdtls')
+}
+
 -- General diagnostics handler
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.diagnostic.on_publish_diagnostics
@@ -200,7 +206,17 @@ luasnip.config.setup {}
 
 -- /// navic ///
 navic.setup {
-  lsp = { auto_attach = true, },
+  lsp = {
+    auto_attach = true,
+    preference = {
+      "clangd",
+      "rust_analyzer",
+      "pyright",
+      "tinymist",
+      "haskell-language-server",
+      "jdtls"
+    }
+  },
   separator = " → ",
   click = true,
 }

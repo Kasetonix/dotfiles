@@ -9,6 +9,7 @@ return {
   'folke/lazydev.nvim',       -- LuaLS and nvim config support
   'SmiteshP/nvim-navic',      -- show code context in statusline
   'SmiteshP/nvim-navbuddy',   -- symbol navigation popup
+  'nvim-java/nvim-java',      -- OOTB Java LS implementation
 
   { 'hrsh7th/nvim-cmp',       -- Autocompletion
     dependencies = {
