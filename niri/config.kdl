@@ -100,6 +100,20 @@ layout {
         inactive-color "#565f89"
         urgent-color "#ff9e64"
     }
+
+    tab-indicator {
+        on
+        hide-when-single-tab
+        position "left"
+        gap 3
+        width 4
+        corner-radius 2
+    }
+
+    insert-hint {
+        on
+        color "#7dcfffaa"
+    }
 }
 
 // spawn-at-startup "swww-daemon";
