@@ -1,0 +1,18 @@
+{
+    "workbench.colorTheme": "Tokyo Night Storm",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "window.controlsStyle": "hidden",
+    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono'",
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.location": "hidden",
+    "window.confirmSaveUntitledWorkspace": false,
+    "notebook.output.scrolling": true,
+    "jupyter.askForKernelRestart": false,
+    "workbench.navigationControl.enabled": false,
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    "security.workspace.trust.untrustedFiles": "open"
+}
