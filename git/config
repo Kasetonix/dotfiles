@@ -21,3 +21,7 @@
 # codeberg shorthand 
 [url "https://codeberg.org/"]
     insteadOf = "cb:"
+
+# WMI gitea
+[url "git@git.wmi.amu.edu.pl:s506693/"]
+    insteadOf = "wmi:"
