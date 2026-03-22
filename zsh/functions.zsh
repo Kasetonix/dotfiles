@@ -116,15 +116,18 @@ function objdumpd { unbuffer objdump -d --visualize-jumps $1 | less -R }
 
 # compiles and runs a c/cpp or haskell program
 function ccmp   { gcc "${1}" -Wall -Wextra -Werror -std=gnu99 -o "${@//\.c/}" }
-function cr     { ccmp "${1}"; "./${1//\.c/}" }
+function cr     { ccmp "${@}"; "./${1//\.c/}" }
 function cppcmp { g++ "${1}" -Wall -Wextra -Werror -o "${@//\.cpp/}" }
-function cppr   { cppcmp "${1}"; "./${1//\.cpp/}" }
+function cppr   { cppcmp "${@}"; "./${1//\.cpp/}" }
 function ghcc   { name="${1//\.hs/}"; ghc "${name}.hs"; rm -f "${name}.o" "${name}.hi" }
-function ghcr   { ghc "${1}"; "./${1//\.hs/}" }
-function ghccr  { ghcc "${1}"; "./${1//\.hs/}" }
+function ghcr   { ghc "${@}"; "./${1//\.hs/}" }
+function ghccr  { ghcc "${@}"; "./${1//\.hs/}" }
 
 # commits to git with a given message prepended with a date
 function gc { git commit -m "$(date '+[%d.%m.%Y]') $1" }
+
+# resets the git repo to commit $1 before HEAD
+function gcn { git reset --soft HEAD~${1} }
 
 # Prepares a given filepath for sed substitution
 function spp { echo $1 | sed 's/\//\\\//g' }
