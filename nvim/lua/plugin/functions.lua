@@ -5,8 +5,8 @@ require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-        ['<C-u>'] = false,
         ['<C-d>'] = false,
+        ['<C-u>'] = false,
       },
     },
   },
@@ -95,8 +95,32 @@ require('autoclose').setup {
   },
 }
 
+--- /// NVIM-SPIDER ///
+vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>")
+vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>")
+vim.keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>")
+vim.keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>")
+
+--- /// MULTIPLE CURSORS ///
+-- require('multiple-cursors').setup {
+--   opts = {
+--     pre_hook = function()
+--       require('nvim-autopairs').disable()
+--     end,
+--     post_hook = function()
+--       require('nvim-autopairs').enable()
+--     end,
+--   }
+-- }
+-- vim.keymap.set({'n', 'i', 'v'}, "<S-Up>", "<CMD>MultipleCursorsAddUp<CR>")
+-- vim.keymap.set({'n', 'i', 'v'}, "<S-Down>", "<CMD>MultipleCursorsAddDown<CR>")
+-- vim.keymap.set({'n', 'i', 'v'}, "<leader>m", "<CMD>MultipleCursorsAddVisualArea<CR>")
+-- vim.keymap.set({'n', 'i', 'v'}, "<leader>k", "<CMD>MultipleCursorsLock<CR>")
+-- vim.keymap.set({'n', 'i', 'v'}, "<leader>|", function() require('multiple-cursors').align() end)
+
 -- /// INITIALIZED PLUGINS - NO CONFIG --- [COMMENT, WHICH-KEY] ///
 require('Comment').setup {}
 require('which-key').setup {}
+require('stay-in-place').setup {}
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -12,4 +12,11 @@ vim.keymap.set('n', "<leader>L", vim.cmd.Mason, { desc = "Open mason.nvim" })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Line swapping
+vim.keymap.set({'n', 'i', 'v'}, "<C-Up>", "<cmd>m-2<CR>")
+vim.keymap.set({'n', 'i', 'v'}, "<C-Down>", "<cmd>m+1<CR>")
+
+-- Numbers switching
+vim.keymap.set({'n', 'i', 'v'}, "<C-l>", "<cmd>set nu!<CR>")
+
 -- vim: ts=2 sts=2 sw=2 et

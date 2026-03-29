@@ -1,14 +1,17 @@
 -- /// FUNCTIONS.LUA | plugins responsible for adding functionality to neovim ///
 
 return {
-  'chiel92/vim-autoformat',   -- autoformatting
-  'ap/vim-css-color',         -- Color codes coloring in vim
-  'nvim-tree/nvim-tree.lua',  -- file manager
-  'm4xshen/autoclose.nvim',   -- automatically closing brackets
-  'folke/trouble.nvim',       -- list of warnings / errors
-  'folke/todo-comments.nvim', -- highlight TODO, FIX, etc. commments
-  'numToStr/Comment.nvim',    -- comment plugin (gc/gb)
-  'folke/which-key.nvim',     -- showing keybinds
+  'chiel92/vim-autoformat',    -- autoformatting
+  'ap/vim-css-color',          -- Color codes coloring in vim
+  'nvim-tree/nvim-tree.lua',   -- file manager
+  'm4xshen/autoclose.nvim',    -- automatically closing brackets
+  'folke/trouble.nvim',        -- list of warnings / errors
+  'folke/todo-comments.nvim',  -- highlight TODO, FIX, etc. commments
+  'numToStr/Comment.nvim',     -- comment plugin (gc/gb)
+  'folke/which-key.nvim',      -- showing keybinds
+  'chrisgrieser/nvim-spider',  -- improved word-based motions
+  'gbprod/stay-in-place.nvim', -- stops cursor movement when aligning 
+  -- 'brenton-leighton/multiple-cursors.nvim',
 
   -- Telescope
   { 'nvim-telescope/telescope.nvim',
