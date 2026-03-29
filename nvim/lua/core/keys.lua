@@ -16,6 +16,10 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set({'n', 'i', 'v'}, "<C-Up>", "<cmd>m-2<CR>")
 vim.keymap.set({'n', 'i', 'v'}, "<C-Down>", "<cmd>m+1<CR>")
 
+-- Removing fast scroll
+vim.keymap.set({'n', 'i', 'v'}, "<S-Up>", "<Up>")
+vim.keymap.set({'n', 'i', 'v'}, "<S-Down>", "<Down>")
+
 -- Numbers switching
 vim.keymap.set({'n', 'i', 'v'}, "<C-l>", "<cmd>set nu!<CR>")
 
