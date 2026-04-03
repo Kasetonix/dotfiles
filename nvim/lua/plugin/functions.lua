@@ -55,10 +55,10 @@ require("todo-comments").setup {
   },
 
   colors = {
-    error = { "DiagnosticError", "ErrorMsg", "#E06C75" },
-    warning = { "DiagnosticWarn", "WarningMsg", "#E5C07B" },
-    info = { "DiagnosticInfo", "#56B6C2" },
-    default = { "Identifier", "#ABB2BF" },
+    error = { "DiagnosticError", "ErrorMsg", "#F7768E" },
+    warning = { "DiagnosticWarn", "WarningMsg", "#E0AF68" },
+    info = { "DiagnosticInfo", "#2AC3DE" },
+    default = { "Identifier", "#C0CAF5" },
   },
 
   search = {
