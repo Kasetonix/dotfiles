@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Spotify-TUI
-Comment=Lightweight Spotify client written in Rust
-Exec=/home/kasetonix/.scripts/spt-launch.sh
-Terminal=true
-Type=Application
-Icon=/home/kasetonix/.scripts/spotify.png
-StartupNotify=false
