@@ -38,17 +38,22 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
     --color=spinner:cyan \
 "
 
+SKIPPED_DIRS=".git
+.venv
+target
+$(printf '%s\n' ~/.*)"
+SKIPPED_DIRS="${SKIPPED_DIRS//$'\n'/,}"
+SKIPPED_DIRS="${SKIPPED_DIRS//$HOME\//}"
+
 # CTRL-Y to copy the command into clipboard using wl-copy
 export FZF_CTRL_R_OPTS="
   --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
   --color header:italic"
 
 export FZF_CTRL_T_OPTS="
-  --walker-skip .git,node_modules,target,.steam,.cache,Steam,.SteamCloud"
+  --walker-skip $SKIPPED_DIRS"
 
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="
-  --walker-skip .git,node_modules,target,.steam,.cache,Steam,.SteamCloud
+  --walker-skip $SKIPPED_DIRS 
   --preview 'tree -C -L1 {}'"
-
-
