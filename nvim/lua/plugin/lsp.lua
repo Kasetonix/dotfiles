@@ -122,6 +122,13 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 -- Removing underlines
 vim.diagnostic.config({ virtual_text = true, underline = false })
 
+-- /// TREESITTER ///
+require('nvim-treesitter').setup {}
+require('nvim-treesitter').install {
+  'c', 'rust', 'lua', 'java', 'python'
+}
+
+
 -- /// NVIM-CMP | LUASNIP ///
 local cmp = require('cmp')
 local luasnip = require('luasnip')

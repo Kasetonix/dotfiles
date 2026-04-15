@@ -11,6 +11,11 @@ return {
   'SmiteshP/nvim-navbuddy',   -- symbol navigation popup
   'nvim-java/nvim-java',      -- OOTB Java LS implementation
 
+  { 'nvim-treesitter/nvim-treesitter', -- treesitter
+    lazy = false,
+    build = ':TSUpdate'
+  },
+
   { 'hrsh7th/nvim-cmp',       -- Autocompletion
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
