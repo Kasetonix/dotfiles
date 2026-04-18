@@ -55,7 +55,6 @@ require("transparent").setup {
     'SignColumn', 'CursorLineNr', 'EndOfBuffer',
     'NvimTreeNormal', 'NvimTreeNormalNC', 'NvimTreeEndOfBuffer', 'NvimTreeVertSplit',
   },
-  -- exclude_groups = {}, -- table: groups you don't want to clear
 }
 
 -- ibl -- adds indent lines

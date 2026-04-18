@@ -1,38 +1,11 @@
 -- /// FUNCTIONS.LUA | plugins responsible for adding functionality to neovim ///
 
--- /// TELESCOPE ///
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-d>'] = false,
-        ['<C-u>'] = false,
-      },
-    },
-  },
-  pickers = {
-    find_files = {
-      hidden = false, -- disabling hidden files
-    }
-  }
-}
-
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
-
--- Telescope shortcuts
-vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc = 'Search files' })
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
-vim.keymap.set('n', '<leader>/', function()
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { previewer = false })
-end, { desc = 'Fuzzily search in current buffer' })
-
 -- /// TODO-COMMENTS ///
 require("todo-comments").setup {
-  signs = true, -- icons in leftmost column
+  signs = true,
   sign_priority = 8,
 
-  keywords = { -- keywords to recognise and color
+  keywords = {
     FIX  = { icon = " ", color = "error", alt = { "BUG", "ERR", "ERROR" }, },
     TODO = { icon = " ", color = "info" },
     HACK = { icon = " ", color = "warning" },
@@ -41,17 +14,16 @@ require("todo-comments").setup {
     NOTE = { icon = " ", color = "info", alt = { "INFO" } },
   },
 
-  gui_style = { fg = "NONE", bg = "BOLD", }, -- style for highlighting
+  gui_style = { fg = "NONE", bg = "BOLD", },
   merge_keywords = true,
-  highlight = { -- highlighting of the line containing the todo comment
+  highlight = {
     multiline = true,
-    multiline_pattern = "^.", -- lua pattern to match the next line
-    multiline_context = 10, -- extra lines that will be re-evaluated when changing a line
-    -- defining how highlighting should work before, on the keyword and after it
+    multiline_pattern = "^.",
+    multiline_context = 10,
     before = "",
     keyword = "wide",
     after = "fg",
-    pattern = [[.*<(KEYWORDS)\s*:]], -- pattern for highlighting
+    pattern = [[.*<(KEYWORDS)\s*:]],
   },
 
   colors = {
@@ -70,11 +42,9 @@ require("todo-comments").setup {
       "--line-number",
       "--column",
     },
-    pattern = [[\b(KEYWORDS):]], -- ripgrep regex
+    pattern = [[\b(KEYWORDS):]],
   },
 }
-
-vim.keymap.set("n", "<leader>T", vim.cmd.TodoTelescope, { desc = "Open TodoTelescope" })
 
 -- /// NVIM-TREE ///
 -- disabling netrw
@@ -82,11 +52,10 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 require("nvim-tree").setup {
-  view = { width = 30, },         -- set width
-  filters = { dotfiles = false, }, -- Showing dotfiles
+  view = { width = 30, },
+  filters = { dotfiles = false, },
 }
-
-vim.keymap.set("n", "<leader>t", vim.cmd.NvimTreeToggle, { desc = "Toggle nvim-tree "}) -- opening the nvim-tree
+vim.keymap.set("n", "<leader>f", vim.cmd.NvimTreeToggle, { desc = "Toggle nvim-tree "})
 
 -- /// AUTOCLOSE ///
 require('autoclose').setup {
@@ -95,8 +64,7 @@ require('autoclose').setup {
   },
 }
 
--- /// INITIALIZED PLUGINS - NO CONFIG --- [COMMENT, WHICH-KEY] ///
-require('Comment').setup {}
+-- /// INITIALIZED PLUGINS - NO CONFIG --- [WHICH-KEY, STAY-IN-PLACE] ///
 require('which-key').setup {}
 require('stay-in-place').setup {}
 

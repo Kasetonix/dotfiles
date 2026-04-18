@@ -33,9 +33,7 @@ local on_attach = function(_, bufnr)
 
   lspmap('<leader>r', vim.lsp.buf.rename, 'Rename')
   lspmap('gd', vim.lsp.buf.definition, 'Go to definition')
-  lspmap('gr', require('telescope.builtin').lsp_references, 'Go to references')
   lspmap('gI', vim.lsp.buf.implementation, 'Go to implementation')
-  lspmap('<leader>s', require('telescope.builtin').lsp_document_symbols, 'Symbols')
 
   -- See `:help K` for why this keymap
   lspmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -127,7 +125,6 @@ require('nvim-treesitter').setup {}
 require('nvim-treesitter').install {
   'c', 'rust', 'lua', 'java', 'python'
 }
-
 
 -- /// NVIM-CMP | LUASNIP ///
 local cmp = require('cmp')
@@ -267,10 +264,10 @@ navbuddy.setup {
     ["r"] = nb_actions.rename(),     -- Rename currently focused symbol
     ["d"] = nb_actions.delete(),     -- Delete scope
     ["gc"] = nb_actions.comment(),   -- Comment out current scope
-    ["t"] = nb_actions.telescope(),  -- Fuzzy finder at current level.
 
     ["?"] = nb_actions.help(),       -- Open mappings help window
   },
+
   icons = {
     File          = "󰈙 ",
     Module        = " ",
