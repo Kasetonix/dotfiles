@@ -23,4 +23,10 @@ vim.keymap.set({'n', 'i', 'v'}, "<S-Down>", "<Down>")
 -- Numbers switching
 vim.keymap.set({'n', 'i', 'v'}, "<C-l>", "<cmd>set nu!<CR>")
 
+-- Window focusing
+vim.keymap.set({'n', 'i', 'v'}, "<A-Left>",  "<cmd>wincmd h<CR>")
+vim.keymap.set({'n', 'i', 'v'}, "<A-Up>",    "<cmd>wincmd k<CR>")
+vim.keymap.set({'n', 'i', 'v'}, "<A-Down>",  "<cmd>wincmd j<CR>")
+vim.keymap.set({'n', 'i', 'v'}, "<A-Right>", "<cmd>wincmd l<CR>")
+
 -- vim: ts=2 sts=2 sw=2 et
