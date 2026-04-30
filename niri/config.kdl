@@ -116,12 +116,10 @@ layout {
     }
 }
 
-// spawn-at-startup "swww-daemon";
-// spawn-at-startup "sh" "-c" "sleep 2; rm /home/kasetonix/ly-session.log"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 prefer-no-csd
-screenshot-path "~/pics/screens/niri/screen-%Y.%m.%d-%H-%M-%S.png"
+screenshot-path "~/imgs/screens/niri/screen-%Y.%m.%d-%H-%M-%S.png"
 
 animations {
     slowdown 0.9 
@@ -135,6 +133,7 @@ window-rule {
     draw-border-with-background false
     open-maximized-to-edges false 
 }
+
 
 window-rule {
     match app-id="Alacritty"
@@ -160,12 +159,18 @@ window-rule {
 }
 
 window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=0 y=0 relative-to="bottom-right"
+    open-focused false
+}
+
+window-rule {
     match app-id="steam_app_2073850" // The Finals
     open-fullscreen true
 }
 
 layer-rule {
-    match namespace="swww-daemon"
+    match namespace="awww-daemon"
     place-within-backdrop true
 }
 
@@ -195,7 +200,6 @@ layer-rule {
     geometry-corner-radius 12
 }
 
-// Example: enable rounded corners for all windows.
 window-rule {
     geometry-corner-radius 6
     clip-to-geometry true
@@ -219,8 +223,8 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
 
     // Wallpapers
-    Mod+B       { spawn "swww" "img" "/home/kasetonix/pics/walls/defwall" "-t" "grow" "--transition-duration" "2" "--transition-fps" "60" "--transition-pos" "top"; }
-    Mod+Shift+B { spawn "swww" "img" "/home/kasetonix/pics/walls/altwall" "-t" "grow" "--transition-duration" "2" "--transition-fps" "60" "--transition-pos" "top"; }
+    Mod+B       { spawn "awww" "img" "/home/kasetonix/imgs/walls/defwall" "-t" "grow" "--transition-duration" "2" "--transition-fps" "60" "--transition-pos" "top"; }
+    Mod+Shift+B { spawn "awww" "img" "/home/kasetonix/imgs/walls/altwall" "-t" "grow" "--transition-duration" "2" "--transition-fps" "60" "--transition-pos" "top"; }
 
     Mod+Space repeat=false { toggle-overview; }
 
