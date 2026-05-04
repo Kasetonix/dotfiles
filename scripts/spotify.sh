@@ -10,4 +10,4 @@ title="$(playerctl -p spotify metadata xesam:title)"
 
 [ "$(playerctl -p spotify status)" = 'Playing' ] && status='' || status=''
 
-echo "$status   ⟨$title⟩  "
+echo "${status}   ⟨${title//&/\&amp;}⟩  "
