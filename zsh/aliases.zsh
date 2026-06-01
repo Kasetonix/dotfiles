@@ -9,6 +9,7 @@ alias tfetch="fastfetch --logo-type file --logo ~/.config/fastfetch/trans.ascii"
 alias atfetch="fastfetch --logo-type file --logo ~/.config/fastfetch/arch_trans.ascii"
 alias mount="sudo mount -o dmask=000,fmask=111"
 alias umount="sudo umount"
+alias bat="bat --theme=ansi"
 
 # functionality
 alias untar='tar -xf'
