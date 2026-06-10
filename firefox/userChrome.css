@@ -1,5 +1,5 @@
-/* 
- * Sources: 
+/*
+ * Sources:
  * u/Bali10050   | https://pastebin.com/vqGZ3Kxj
  *     Oneline theme, the whole config is based on his
  * u/thereact0rr | https://www.paste.org/117526
@@ -32,20 +32,20 @@
     --arrowpanel-menuitem-border-radius: 0px !important;
 }
 
-/* Next two sections are for turning the oneline hack 
+/* Next two sections are for turning the oneline hack
  * back off when the window is narrow enough */
 @media screen and (min-width:1536px) {
-    #TabsToolbar, #nav-bar { transition: var(--animationSpeed) !important; } 
-    #TabsToolbar { margin-left: var(--navbarWidth) !important; } 
+    #TabsToolbar, #nav-bar { transition: var(--animationSpeed) !important; }
+    #TabsToolbar { margin-left: var(--navbarWidth) !important; }
 
     :root #nav-bar {
         margin-top: -44px !important;
-        height: 44px !important; 
+        height: 44px !important;
         transition: var(--animationSpeed) !important
     }
 
     #nav-bar {
-        margin-right: calc(100vw - var(--navbarWidth)) !important; 
+        margin-right: calc(100vw - var(--navbarWidth)) !important;
         vertical-align: center !important
     }
 }
@@ -56,13 +56,13 @@
 
     :root #nav-bar {
         transition: var(--animationSpeed) !important;
-        padding: 0 80px 0 5px !important; 
+        padding: 0 80px 0 5px !important;
     }
 }
 
 #nav-bar, #PersonalToolbar {
     background-color: #0000 !important;
-    background-image: none !important; 
+    background-image: none !important;
     box-shadow: none !important;
 }
 
@@ -70,12 +70,12 @@
 
 /*  Removes rounding from the top corners,   */
 #navigator-toolbox {
-    appearance: none !important; 
+    appearance: none !important;
     border-radius: 0 !important;
 }
 
 #navigator-toolbox-background {
-    background-color: Field !important; 
+    background-color: Field !important;
     background-image: none !important;
     appearance: none !important;
     border-radius: 0 !important;
@@ -88,7 +88,7 @@
 #forward-button,
 #back-button,
 #firefox-view-button,
-#save-to-pocket-button, 
+#save-to-pocket-button,
 #tracking-protection-icon-container,
 .titlebar-spacer[type="pre-tabs"],
 .titlebar-spacer[type="post-tabs"] {
@@ -99,17 +99,17 @@
 
 /*  Makes some buttons nicer  */
 #PanelUI-menu-button,
-#unified-extensions-button, 
-#reload-button, 
+#unified-extensions-button,
+#reload-button,
 #stop-button { padding: 2px !important; }
 
-#reload-button, 
+#reload-button,
 #stop-button{ margin: 1px !important; }
 
 /*  Removes urlbar border/background  */
 #urlbar-background {
-    border: none !important; 
-    outline: none !important; 
+    border: none !important;
+    outline: none !important;
     transition: .15s !important;
 }
 
@@ -123,8 +123,8 @@
 /*  Removes the background from the urlbar while not in use  */
 /*
 #urlbar:not(:hover):not([breakout][breakout-extend])>#urlbar-background {
-    box-shadow: none !important; 
-    background: #0000 !important; 
+    box-shadow: none !important;
+    background: #0000 !important;
 }
 */
 
@@ -143,7 +143,7 @@
     #urlbar .search-setting-button {
         position: absolute !important;
         bottom: 10px;
-        right: 5px 
+        right: 5px
     }
 }
 
@@ -156,7 +156,7 @@
 
 /*  Makes the sidebar a little nicer  */
 #sidebar-splitter { display: none; }
-#sidebar-header { 
+#sidebar-header {
     padding-bottom: 0 !important;
     border-bottom: 0 !important;
 }
@@ -203,7 +203,7 @@
 }
 
 /*  Fixes the urlbar color on some themes  */
-#urlbar:not([open]) { color: currentColor !important; } 
+#urlbar:not([open]) { color: currentColor !important; }
 #urlbar[open] { color: var(--toolbar-field-focus-color); }
 
 /*  Makes sidebars nicer  */
@@ -223,25 +223,25 @@
 
 /* Make all tabs small except selected one */
 /*
-.tabbrowser-tab[fadein]:not([selected]):not([pinned]) {  
+.tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
     max-width: 150px !important;
 }
 */
 
 /* Selected tabs width */
 /*
-.tabbrowser-tab[fadein][selected]:not([pinned]) {  
+.tabbrowser-tab[fadein][selected]:not([pinned]) {
     min-width: 250px !important;
 }
 */
 
 /* adaptive tab width */
 .tabbrowser-tab[fadein][selected]:not([pinned]) {
-    width: clamp(100px, 30vw, 250px) !important; 
+    width: clamp(100px, 30vw, 250px) !important;
 }
 
 .tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
-    max-width: clamp(100px, 20vw, 150px) !important; 
+    max-width: clamp(100px, 20vw, 150px) !important;
 }
 
 /* Show close button even when mouse hover on inactive tabs */
@@ -272,7 +272,7 @@
     padding:5px !important;
 }
 
-#unified-extensions-view .unified-extensions-item .unified-extensions-item-icon, 
+#unified-extensions-view .unified-extensions-item .unified-extensions-item-icon,
 #unified-extensions-view .unified-extensions-item .toolbarbutton-badge-stack {
     margin-inline-end: 0px !important;
 }
@@ -293,7 +293,7 @@
 
 #unified-extensions-view #unified-extensions-area .unified-extensions-item  {
      margin-left:2px !important;
-     margin-right:2px !important;  
+     margin-right:2px !important;
 }
 
 #unified-extensions-view .unified-extensions-list .unified-extensions-item,
@@ -301,7 +301,7 @@
      max-width: max-content;
 }
 
-tooltip { 
+tooltip {
     -moz-appearance: none !important;
     background:#24283b !important;
     color: #c0caf5 !important;
@@ -319,9 +319,13 @@ tooltip {
 }
 
 /* Remove items from image context menu */
-#context-sendimage, 
-#context-sep-setbackground, 
-#context-setDesktopBackground, 
+#context-sendimage,
+#context-sep-setbackground,
+#context-setDesktopBackground,
 #context-inspect-a11y {
   display: none !important;
+}
+
+.urlbar-visually-hidden {
+    display: none !important;
 }

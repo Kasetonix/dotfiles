@@ -1,6 +1,6 @@
-/* 
+/*
  * Source: u/Bali10050
- * https://pastebin.com/Wkeb6Njf 
+ * https://pastebin.com/Wkeb6Njf
  * Modified by u/Kasetonix
 */
 
@@ -64,7 +64,6 @@
 @-moz-document url-prefix(about:){
     body                                { background-color: var(--bg-dark) !important; }
     body,html                           { overflow-y: auto !important; font-family: JetBrainsMono Nerd Font !important; }
-    /* body,html                           { overflow-y: auto !important; font-family: Victor Mono !important; font-weight: 600 !important; } */
     .selector                           { background-color: var(--bg-light) !important; border: var(--bg-light) !important; }
     .rich-icon, .tile, .top-site-icon   { background-color: var(--bg-light) !important; }
     .section input:checked+.slider      { --newtab-primary-action-background: var(--bg-dark) !important; }
@@ -78,7 +77,9 @@
     .customize-animate-enter-done,
     .customize-menu,
     .top-site-outer:hover,
-    button { background-color: var(--bg-light) !important }
+    button {
+        background-color: var(--bg-light) !important
+    }
 }
 
 .category-button:not(:hover) { background-color: var(--bg-dark) }
@@ -92,24 +93,23 @@
     .devtools-tabbar   { background: transparent !important }
     .devtools-tab-line { border-radius: 0 0 5px 5px }
 
-    .customize-animate-enter-done, 
+    .customize-animate-enter-done,
     .customize-menu,
     .top-site-outer:hover,
-    button { background-color: transparent !important }
+    button {
+        background-color: transparent !important
+    }
 }
 
 @-moz-document url("about:home"),
 url("about:newtab") {
-    .search-wrapper
-    .search-handoff-button
-    .logo-and-wordmark {
-        display: none !important; 
+    .mobile-download-promo,
+    .logo-and-wordmark-wrapper,
+    .open-customization-button {
+        display: none !important;
     }
 
-    .wordmark { display: none !important; }
-    .personalize-button { display: none !important; }
-
-    body { 
+    body {
         background: url("bg.png") !important;
         background-size: cover !important;
         background-position: center !important;
@@ -117,14 +117,16 @@ url("about:newtab") {
 }
 
 @-moz-document url("about:privatebrowsing") {
-    .search-inner-wrapper { display: none !important; } 
-    .info-border          { display: none !important; }
-    .logo-and-wordmark    { display: none !important; }
-    .logo                 { display: none !important; }
+    .search-inner-wrapper,
+    .info-border,
+    .logo-and-wordmark,
+    .logo {
+        display: none !important;
+    }
 
-    body { 
+    body {
         filter: blur(5px) !important;
-        background: url("bg.png") !important; 
+        background: url("bg.png") !important;
         background-size: cover !important;
         background-position: center !important;
     }
