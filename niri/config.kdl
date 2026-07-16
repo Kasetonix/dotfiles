@@ -337,6 +337,8 @@ binds {
 
     Ctrl+Alt+Delete { quit; }
     Alt+Tab { spawn ""; }
+    Alt+Grave { spawn ""; }
+    Alt+Shift+Grave { spawn ""; }
 
     Mod+Escape { spawn "alacritty" "-T" "btop" "-o" "font.size=11.5" "-e" "btop"; }
     // Mod+M { power-off-monitors; }
