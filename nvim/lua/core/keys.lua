@@ -28,5 +28,6 @@ vim.keymap.set({'n', 'i', 'v'}, "<A-Left>",  "<cmd>wincmd h<CR>")
 vim.keymap.set({'n', 'i', 'v'}, "<A-Up>",    "<cmd>wincmd k<CR>")
 vim.keymap.set({'n', 'i', 'v'}, "<A-Down>",  "<cmd>wincmd j<CR>")
 vim.keymap.set({'n', 'i', 'v'}, "<A-Right>", "<cmd>wincmd l<CR>")
+vim.keymap.set({'n', 'i', 'v'}, "<A-w>",     "<cmd>wincmd w<CR>")
 
 -- vim: ts=2 sts=2 sw=2 et
