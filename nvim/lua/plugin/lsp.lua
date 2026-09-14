@@ -107,11 +107,33 @@ vim.lsp.config['haskell-language-server'] = {
   capabilities = capabilities
 }
 
+-- /// Java ///
 vim.lsp.config['java'] = {
   on_attach = on_attach,
   capabilities = capabilities,
   vim.lsp.enable('jdtls')
 }
+
+-- /// Godot ///
+require("godotdev").setup({
+  editor_host = "127.0.0.1",
+  editor_port = 6005,
+  debug_port = 6006,
+  godot_path = "/usr/bin/godot",
+  csharp = true,
+  autostart_editor_server = false,
+  formatter = false,
+  inline_hints = { enabled = true },
+  docs = {
+    renderer = "float",
+    fallback_renderer = "browser",
+    float = {
+      width = 0.8,
+      height = 0.8,
+      border = "rounded",
+    },
+  },
+})
 
 -- General diagnostics handler
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
@@ -123,7 +145,7 @@ vim.diagnostic.config({ virtual_text = true, underline = false })
 -- /// TREESITTER ///
 require('nvim-treesitter').setup {}
 require('nvim-treesitter').install {
-  'c', 'rust', 'lua', 'java', 'python'
+  'c', 'rust', 'lua', 'java', 'python', 'gdscript'
 }
 
 -- /// NVIM-CMP | LUASNIP ///

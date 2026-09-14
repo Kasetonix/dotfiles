@@ -5,11 +5,14 @@ return {
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
 
-  'neovim/nvim-lspconfig',    -- LSP Configuration & Plugins
-  'folke/lazydev.nvim',       -- LuaLS and nvim config support
-  'SmiteshP/nvim-navic',      -- show code context in statusline
-  'SmiteshP/nvim-navbuddy',   -- symbol navigation popup
-  'nvim-java/nvim-java',      -- OOTB Java LS implementation
+  'neovim/nvim-lspconfig',        -- LSP Configuration & Plugins
+  'folke/lazydev.nvim',           -- LuaLS and nvim config support
+  'SmiteshP/nvim-navic',          -- show code context in statusline
+  'SmiteshP/nvim-navbuddy',       -- symbol navigation popup
+  'mfussenegger/nvim-dap',        -- DAP
+  'rcarriga/nvim-dap-ui',         -- UI for DAPs
+  'nvim-java/nvim-java',          -- OOTB Java LS implementation
+  'Mathijs-Bakker/godotdev.nvim', -- Godot LS
 
   { 'nvim-treesitter/nvim-treesitter', -- treesitter
     lazy = false,
