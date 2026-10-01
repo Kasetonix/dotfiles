@@ -12,6 +12,13 @@
  * Modified by u/Kasetonix
 */
 
+:root {
+    --bg-dark:  #24283b;
+    --bg-light: #32344a;
+    --fg:       #c0caf5;
+    --accent:   #2ac3de;
+}
+
 /*  Removes flash before loading pages  */
 :root { --tabpanel-background-color: var(--toolbar-field-background-color) !important; }
 
@@ -328,4 +335,16 @@ tooltip {
 
 .urlbar-visually-hidden {
     display: none !important;
+}
+
+/* Makes urlbar square */
+:root {
+    --urlbarview-border-radius: 0px !important;
+    --urlbar-border-radius: 0px !important;
+}
+
+/* Fixes the background on search engine picker */
+button#main-button span.button-background.labelled {
+    background: var(--bg-dark) !important;
+    border-radius: 0px !important;
 }

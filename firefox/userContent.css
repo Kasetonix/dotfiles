@@ -117,10 +117,7 @@ url("about:newtab") {
 }
 
 @-moz-document url("about:privatebrowsing") {
-    .search-inner-wrapper,
-    .info-border,
-    .logo-and-wordmark,
-    .logo {
+    .showPrivate.showSearch.container {
         display: none !important;
     }
 
