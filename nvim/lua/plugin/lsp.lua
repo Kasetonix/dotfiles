@@ -98,7 +98,10 @@ vim.lsp.config['pyright'] = {
 -- /// Typst ///
 vim.lsp.config['tinymist'] = {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+  settings = {
+    exportPdf = "onSave"
+  }
 }
 
 -- /// Haskell ///
