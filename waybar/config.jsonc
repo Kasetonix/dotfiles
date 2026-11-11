@@ -2,7 +2,7 @@
 {
 "layer": "top", // Waybar at top layer
 "position": "top", // Waybar position (top|bottom|left|right)
-"spacing": 6, // Gaps between modules 
+"spacing": 6, // Gaps between modules
 
 // Choose the order of the modules
 "modules-left": [
@@ -21,9 +21,8 @@
     "network",
     "bluetooth",
     "pulseaudio",
-    "backlight",
-    "power-profiles-daemon",
-    "battery",
+    // "backlight",
+    // "battery",
     // "group/group-battery",
     "group/group-powermenu"
 ],
@@ -31,6 +30,8 @@
 
 /// LEFT MODULES ///
 "niri/workspaces": {
+    "hide-empty": true,
+    // "format": "{icon}",
     "format": "",
     "format-icons": {
         "active": "",
@@ -114,20 +115,7 @@
     "format": "{icon}",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
     "tooltip": true,
-    "tooltip-format": "{percent}%" 
-},
-
-"group/group-battery": {
-    "orientation": "inherit",
-    "drawer": {
-        "transition-duration": 500,
-        "children-class": "battery",
-        "transition-left-to-right": false
-    },
-    "modules": [
-        "battery",
-        "power-profiles-daemon"
-    ]
+    "tooltip-format": "{percent}%"
 },
 
 "battery": {

@@ -34,8 +34,6 @@ window#waybar {
     background: rgba(36, 40, 59, 0);
 }
 
-#workspaces button { background: @module-bg; } 
-
 #workspaces button:hover,
 #custom-spotify:hover,
 #cpu:hover,
@@ -50,15 +48,14 @@ window#waybar {
 #power-profiles-daemon:hover,
 #battery:hover,
 /* #group-battery:hover, */
-#group-powermenu:hover { 
-    background: @bg-hover; 
+#group-powermenu:hover {
+    background: @bg-hover;
     box-shadow: none;
     border-color: transparent;
 }
 
 #workspaces button.focused { background: @fg; }
 #workspaces button.urgent  { color: @fg-urgent; }
-
 
 .modules-left, .modules-center, .modules-right {
     padding: 6px 6px;
@@ -96,10 +93,10 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0px 0px;
+    padding: 0px 10px;
     margin: 4px;
 }
-
+arrow
 #battery.warning  { color: @orange; }
 #battery.critical { color: @red; }
 
