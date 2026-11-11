@@ -57,12 +57,11 @@ require("nvim-tree").setup {
 }
 vim.keymap.set("n", "<leader>f", vim.cmd.NvimTreeToggle, { desc = "Toggle nvim-tree "})
 
--- /// AUTOCLOSE ///
-require('autoclose').setup {
-  options = {
-    disabled_filetypes = { "text", "markdown", "" },
-  },
+require('nvim-autopairs').setup {
+  disable_filetype = { "text", "markdown", "" },
 }
+
+require('nvim-surround').setup {}
 
 -- /// INITIALIZED PLUGINS - NO CONFIG --- [WHICH-KEY, STAY-IN-PLACE] ///
 require('which-key').setup {}
