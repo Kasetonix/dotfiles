@@ -21,8 +21,8 @@
     "network",
     "bluetooth",
     "pulseaudio",
-    // "backlight",
-    // "battery",
+    "backlight",
+    "battery",
     // "group/group-battery",
     "group/group-powermenu"
 ],
@@ -84,7 +84,7 @@
     "format-alt": "{ipaddr}",
     "tooltip-format": "{essid}",
     "tooltip-format-ethernet": "",
-    "on-click-right": "alacritty -T 'nmtui' -e 'nmtui-connect'"
+    "on-click-right": "alacritty -T 'nmtui' \"-o\" \"colors.normal.blue='#24283b'\" \"-o\" \"colors.normal.red='#24283b'\" -e 'nmtui-connect'"
 },
 
 "bluetooth": {
@@ -184,8 +184,8 @@
 },
 
 "custom/powermenu": {
-    // "format": "󰣇",
-    "format": "",
+    "format": "󰣇",
+    // "format": "",
     "on-click": "",
     "tooltip": false,
     "on-scroll-up": "", // Prevents crashes on scroll
