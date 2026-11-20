@@ -8,6 +8,7 @@ return {
   'gbprod/stay-in-place.nvim', -- stops cursor movement when aligning
   'windwp/nvim-autopairs',     -- autopair matching brackets etc.
   'kylechui/nvim-surround',    -- adds keybinds to wrap text in matching pairs
+  'MeanderingProgrammer/render-markdown.nvim' -- rendering markdown when in normal mode
 }
 
 -- vim: ts=2 sts=2 sw=2 et

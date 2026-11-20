@@ -55,15 +55,19 @@ require("nvim-tree").setup {
   view = { width = 30, },
   filters = { dotfiles = false, },
 }
+
 vim.keymap.set("n", "<leader>f", vim.cmd.NvimTreeToggle, { desc = "Toggle nvim-tree "})
 
 require('nvim-autopairs').setup {
   disable_filetype = { "text", "markdown", "" },
 }
 
-require('nvim-surround').setup {}
+require('render-markdown').setup {
+    anti_conceal = { enabled = false },
+}
 
 -- /// INITIALIZED PLUGINS - NO CONFIG --- [WHICH-KEY, STAY-IN-PLACE] ///
+require('nvim-surround').setup {}
 require('which-key').setup {}
 require('stay-in-place').setup {}
 
