@@ -66,7 +66,6 @@ window#waybar {
 }
 
 .modules-left { margin-left: 8px; }
-
 .modules-right { margin-right: 8px; }
 
 #workspaces button,
@@ -85,7 +84,7 @@ window#waybar {
 /* #group-battery, */
 #group-powermenu
 {
-    padding: 1px 12px;
+    padding: 8px 12px;
     color: @fg;
     background: @module-bg;
     border-radius: 12px;
@@ -96,7 +95,7 @@ window#waybar {
     padding: 0px 10px;
     margin: 4px;
 }
-arrow
+
 #battery.warning  { color: @orange; }
 #battery.critical { color: @red; }
 

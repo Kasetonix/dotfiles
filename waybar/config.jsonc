@@ -23,16 +23,15 @@
     "pulseaudio",
     "backlight",
     "battery",
-    // "group/group-battery",
     "group/group-powermenu"
 ],
 
 
 /// LEFT MODULES ///
 "niri/workspaces": {
-    "hide-empty": true,
     // "format": "{icon}",
     "format": "",
+    "hide-empty": true,
     "format-icons": {
         "active": "",
         "default": ""
@@ -135,20 +134,6 @@
     "tooltip-format-plugged": "{capacity}%"
 },
 
-"power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip": false,
-    "tooltip-format": "Power profile: {profile}",
-    "format-icons": {
-        "performance": "⚡",
-        // "balanced": "☕",
-        // "balanced": "",
-        "balanced": "",
-        "power-saver": ""
-
-    }
-},
-
 "group/group-powermenu": {
     "orientation": "inherit",
     "drawer": {
@@ -184,8 +169,8 @@
 },
 
 "custom/powermenu": {
-    "format": "󰣇",
-    // "format": "",
+    // "format": "󰣇",
+    "format": "",
     "on-click": "",
     "tooltip": false,
     "on-scroll-up": "", // Prevents crashes on scroll
