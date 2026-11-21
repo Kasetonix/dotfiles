@@ -16,3 +16,6 @@ zsh/.zsh-history
 
 # Ignore the conf aliases (different from system to system)
 zsh/conf-aliases.zsh
+
+# Ignore outputs.kdl niri configuration
+niri/outputs.kdl

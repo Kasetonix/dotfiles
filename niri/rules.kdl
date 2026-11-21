@@ -1,0 +1,71 @@
+window-rule {
+    draw-border-with-background false
+    open-maximized-to-edges false
+    geometry-corner-radius 6
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id="Alacritty"
+    match title="Vencord QuickCSS Editor"
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match title="btop"
+    default-column-width { proportion 0.7; }
+}
+
+window-rule {
+    match app-id="vesktop"
+    match app-id="gimp"
+    default-column-width { proportion 0.8; }
+}
+
+window-rule {
+    match title="nmtui"
+    match title="bluetui"
+    open-floating true
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=0 y=0 relative-to="bottom-right"
+    open-focused false
+}
+
+window-rule {
+    match app-id="steam_app_2073850" // The Finals
+    open-fullscreen true
+}
+
+layer-rule {
+    match namespace="awww-daemon"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^launcher$"
+    shadow {
+        on
+        spread 2
+        softness 5
+        offset x=0 y=0
+        color "#0004"
+        draw-behind-window true
+    }
+    geometry-corner-radius 12
+}
+
+layer-rule {
+    match namespace="notifications"
+    shadow {
+        on
+        spread -1
+        softness 5
+        offset x=-5 y=5
+        color "#0004"
+        draw-behind-window true
+    }
+    geometry-corner-radius 12
+}

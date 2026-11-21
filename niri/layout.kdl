@@ -1,0 +1,58 @@
+layout {
+    gaps 16
+    center-focused-column "never"
+    default-column-width { proportion 0.7; }
+    background-color "transparent"
+    always-center-single-column
+
+    preset-column-widths {
+        proportion 0.3
+        proportion 0.5
+        proportion 0.7
+        proportion 0.8
+    }
+
+    preset-window-heights {
+        proportion 0.25
+        proportion 0.5
+        proportion 0.75
+    }
+
+    focus-ring { off; };
+
+    border {
+        width 4
+        active-color "#9aa5ce"
+        inactive-color "#565f89"
+        urgent-color "#ff9e64"
+    }
+
+    tab-indicator {
+        on
+        hide-when-single-tab
+        position "left"
+        gap 3
+        width 4
+        corner-radius 2
+    }
+
+    insert-hint {
+        on
+        color "#7dcfffaa"
+    }
+}
+
+overview {
+    zoom 0.5
+    workspace-shadow {
+        off
+    }
+}
+
+animations {
+    slowdown 0.75
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+}
