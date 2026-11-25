@@ -27,7 +27,7 @@
 * {
     font-family: Symbols Nerd Font, JetBrainsMono Nerd Font Mono;
     font-size: 12px;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 window#waybar {
@@ -89,6 +89,7 @@ window#waybar {
     background: @module-bg;
     border-radius: 12px;
     transition: 150ms ease-in-out;
+    font-weight: bolder;
 }
 
 #workspaces button {

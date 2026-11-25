@@ -21,8 +21,8 @@
     "network",
     "bluetooth",
     "pulseaudio",
-    "backlight",
-    "battery",
+    // "backlight",
+    // "battery",
     "group/group-powermenu"
 ],
 
@@ -161,11 +161,12 @@
     "interval": 1,
     "tooltip": false,
     "on-click": "playerctl -p spotify play-pause",
-    "on-click-right": "niri msg action focus-window --id $(niri msg windows | grep -E '(Window|App) ID' | grep -B1 'spotify' | sed 's/[^0-9]//g')",
+    "on-click-middle": "niri msg action focus-window --id $(niri msg windows | grep -E '(Window|App) ID' | grep -B1 'spotify' | sed 's/[^0-9]//g')",
+    "on-click-right": "$HOME/.local/bin/scripts/spotify.sh loop_cycle",
     "smooth-scrolling-threshold": 1,
     "on-scroll-up" : "playerctl -p spotify previous",
     "on-scroll-down" : "playerctl -p spotify next",
-    "exec": "$HOME/.local/bin/scripts/spotify.sh 32"
+    "exec": "$HOME/.local/bin/scripts/spotify.sh status 32"
 },
 
 "custom/powermenu": {
