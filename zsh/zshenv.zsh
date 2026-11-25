@@ -4,7 +4,12 @@ export VISUAL="nvim"
 export RANGER_LOAD_DEFAULT_RC="false"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#444b6a"
 export GROFF_NO_SGR="1"
-export MANPAGER="less -R --use-color -Dd+c -Du+g"
+
+if ! command -v nvim 2>&1 >/dev/null; then
+    export MANPAGER="less -R --use-color -Dd+c -Du+g"
+else
+    export MANPAGER="nvim +Man! -c ':set signcolumn=no'"
+fi
 
 GUTTER="#24283b"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
@@ -57,5 +62,5 @@ export FZF_CTRL_T_OPTS="\
 
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="\
-  --walker-skip $SKIPPED_DIRS 
+  --walker-skip $SKIPPED_DIRS
   --preview 'tree -C -L1 {}'"
